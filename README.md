@@ -1,5 +1,5 @@
 # Shots
-
+(This config borrows some code from [nvimdots](https://github.com/ayamir/nvimdots))
 
 ## completion
 
