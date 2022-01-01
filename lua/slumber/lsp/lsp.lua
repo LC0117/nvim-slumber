@@ -111,6 +111,7 @@ end
 nvim_lsp.texlab.setup({
     on_attach = custom_attach,
     capabilities = capabilities,
+    filetypes = {"tex", "plaintex", "latex", "bib", "bibtex"},
     settings = {
         texlab = {
             build = {
