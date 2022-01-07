@@ -23,6 +23,7 @@ packer.startup(function(use)
     use({ "nvim-lua/plenary.nvim" })
     use({ "nvim-lua/popup.nvim" })
     use({ "tami5/sqlite.lua" })
+    --use({ "ray-x/guihua.lua", run = "cd lua/fzy && make" })
 
     -- editor framework
     use({ "folke/tokyonight.nvim", config = ui.tokyo })
@@ -87,16 +88,17 @@ packer.startup(function(use)
     use({ "scalameta/nvim-metals", opt = true, event = { "BufRead *.scala", "BufRead *.sbt" }, config = lang.scala })
     use({ "mfussenegger/nvim-jdtls", opt = true, ft = "java", config = lang.jdtls })
     use({ "udalov/kotlin-vim", ft = "kotlin" })
+    use({ "lervag/vimtex", ft = {"tex", "plaintex", "latex"} })
 
     -- lsp and completion
     use({
         "neovim/nvim-lspconfig",
         opt = true,
-        after = { "lspsaga.nvim", "lsp_signature.nvim", "nvim-lsp-installer" },
-        config = lsp.lspconfig,
+        after = { "lsp_signature.nvim", "nvim-lsp-installer" },
+        config = lsp.lspconfig
     })
+    --use({ "ray-x/navigator.lua", opt = true, after = "nvim-lspconfig", config = lsp.lspconfig })
     use({ "jose-elias-alvarez/null-ls.nvim", opt = true, after = "nvim-lspconfig", config = lsp.null_ls })
-    use({ "tami5/lspsaga.nvim", opt = true, event = "BufReadPre" })
     use({ "ray-x/lsp_signature.nvim", opt = true, event = "BufReadPre" })
     use({ "rafamadriz/friendly-snippets" })
     use({
@@ -110,8 +112,7 @@ packer.startup(function(use)
             { "hrsh7th/cmp-nvim-lua", after = "cmp-nvim-lsp" },
             { "andersevenrud/cmp-tmux", after = "cmp-nvim-lua" },
             { "hrsh7th/cmp-path", after = "cmp-tmux" },
-            { "f3fora/cmp-spell", after = "cmp-path" },
-            { "hrsh7th/cmp-buffer", after = "cmp-spell" },
+            { "hrsh7th/cmp-buffer", after = "cmp-nvim-lsp" },
             { "kdheepak/cmp-latex-symbols", after = "cmp-buffer" },
             { "hrsh7th/cmp-emoji", after = "cmp-buffer" },
             { "hrsh7th/cmp-cmdline", after = "nvim-cmp" },
