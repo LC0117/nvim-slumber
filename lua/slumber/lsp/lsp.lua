@@ -34,7 +34,6 @@ capabilities.textDocument.completion.completionItem.resolveSupport = {
 local function custom_attach()
     require("lsp_signature").on_attach({
         bind = true,
-        use_lspsaga = true,
         floating_window = true,
         fix_pos = true,
         hint_enable = true,
@@ -75,14 +74,12 @@ end)
 -- These are servers easy to setup
 local clients = {
     "clangd",
-    "cssls",
     "clojure_lsp",
     "hls",
     "cmake",
     "zeta_note",
     "vimls",
     "bashls",
-    "html",
     "dockerls",
     "pylsp",
     "gopls",
@@ -98,7 +95,42 @@ local clients = {
     "spectral",
     "r_language_server",
     "fortls",
+    "html",
+    "cssls"
 }
+
+-- require("navigator").setup({
+--     debug = false,
+--     width = 0.75,
+--     height = 0.3,
+--     preview_height = 0.35, -- max height of preview windows
+--     border = {"╭", "─", "╮", "│", "╯", "─", "╰", "│"},
+--     on_attach = custom_attach,
+--     default_mapping = true,
+--     treesitter_analysis = true,
+--     transparency = 50,
+--     icons = {
+--         code_action_icon = "🏏",
+--         diagnostic_head = '🐛',
+--         diagnostic_head_severity_1 = "🈲",
+--     },
+--     lsp_installer = true,
+--     lsp = {
+--         code_action = {enable = true, sign = true, sign_priority = 40, virtual_text = true},
+--         diagnostic_scrollbar_sign = {'▃', '▆', '█'},
+--         diagnostic_virtual_text = true,
+--         format_on_save = false,
+--         servers = clients,
+--         html = {
+--             on_attach = custom_attach,
+--             capabilities = capabilities
+--         },
+--         cssls = {
+--             on_attach = custom_attach,
+--             capabilities = capabilities
+--         }
+--     }
+-- })
 
 for _, lsp in ipairs(clients) do
     nvim_lsp[lsp].setup({
@@ -111,7 +143,7 @@ end
 nvim_lsp.texlab.setup({
     on_attach = custom_attach,
     capabilities = capabilities,
-    filetypes = {"tex", "plaintex", "latex", "bib", "bibtex"},
+    filetypes = { "tex", "plaintex", "latex", "bib", "bibtex" },
     settings = {
         texlab = {
             build = {

@@ -16,7 +16,7 @@ require("telescope").setup({
             "--line-number",
             "--column",
             "--smart-case",
-            "--trim"
+            "--trim",
         },
         file_previewer = require("telescope.previewers").vim_buffer_cat.new,
         grep_previewer = require("telescope.previewers").vim_buffer_vimgrep.new,
@@ -43,8 +43,8 @@ require("telescope").setup({
     },
     pickers = {
         find_files = {
-            find_command = { "fd", "--type", "f", "--strip-cwd-prefix" }
-        }
+            find_command = { "fd", "--type", "f", "--strip-cwd-prefix" },
+        },
     },
     extensions = {
         fzf = {

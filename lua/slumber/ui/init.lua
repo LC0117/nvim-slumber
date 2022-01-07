@@ -15,12 +15,13 @@ end
 function M.tokyo()
     vim.g.tokyonight_transparent = false
     vim.g.tokyonight_transparent_sidebar = false
-    vim.g.tokyonight_style = "storm"
+    vim.g.tokyonight_style = "night"
     vim.g.tokyonight_italic_functions = true
     if vim.fn.has("gui_vimr") == 1 or vim.fn.has("neovide") == 1 then
         vim.g.tokyonight_transparent = false
         vim.g.tokyonight_transparent_sidebar = false
     end
+    vim.cmd("colorscheme tokyonight")
 end
 
 function M.blankline()
