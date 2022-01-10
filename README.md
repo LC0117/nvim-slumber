@@ -1,16 +1,21 @@
 # Shots
-(This config is mainly for making a backup of the local config and borrows some code from [nvimdots](https://github.com/ayamir/nvimdots))
 
-## completion
+### Startup -- use [startup.nvim](https://github.com/startup-nvim/startup.nvim)
 
-![cmp.png](./shots/cmp.png "Completion")
+![](./shots/startup.png)
 
+### Telescope
 
-## Telescope dash
+![](./shots/telescope.png)
 
-![dash.png](./shots/dash.png "Dash")
+### cmd completion
 
+![](./shots/cmd.png)
 
-## startup
+### file tree
 
-![startup.png](./shots/startup.png "Startup")
+![](./shots/filetree.png)
+
+### overview
+
+![](./shots/overview.png)
