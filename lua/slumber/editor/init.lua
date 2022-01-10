@@ -25,6 +25,17 @@ function M.refractor()
     })
 end
 
+function M.paper()
+    require("newpaper").setup({
+        style = "dark",
+        lualine_style = "dark",
+        contrast_sidebar = true,
+        keywords = "italic,bold",
+        italic_strings = false,
+        italic_comments = true,
+    })
+end
+
 function M.treesitter()
     require("slumber.editor.treesitter")
 end
@@ -39,10 +50,23 @@ function M.commentstring()
 end
 
 function M.context()
-    require("nvim-treesitter.configs").setup({
-        context = {
-            enable = true,
-            throttle = true,
+    require("treesitter-context").setup({
+        enable = true,
+        throttle = true,
+        patterns = {
+            default = {
+                "class",
+                "function",
+                "method",
+                "for",
+                "while",
+                "if",
+                "switch",
+                "case",
+            },
+            rust = {
+                "impl_item",
+            },
         },
     })
 end
@@ -142,7 +166,7 @@ function M.gps()
             ["tag-name"] = "炙",
             ["container-name"] = "⛶ ",
         },
-        separator = " > ",
+        separator = "  ",
         depth = 0,
         depth_limit_indicator = "..",
     })
