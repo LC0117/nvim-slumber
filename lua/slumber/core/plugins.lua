@@ -28,6 +28,7 @@ packer.startup(function(use)
     -- editor framework
     use({ "folke/tokyonight.nvim", config = ui.tokyo })
     use({ "catppuccin/nvim", as = "catppuccin", config = ui.cupcin })
+    use({ "yorik1984/newpaper.nvim", config = editor.paper })
     use({ "startup-nvim/startup.nvim", config = editor.startup })
     use({ "dstein64/vim-startuptime", opt = true, cmd = "StartupTime" })
     use({ "kyazdani42/nvim-web-devicons" })
@@ -89,6 +90,7 @@ packer.startup(function(use)
     use({ "mfussenegger/nvim-jdtls", opt = true, ft = "java", config = lang.jdtls })
     use({ "udalov/kotlin-vim", ft = "kotlin" })
     use({ "lervag/vimtex", ft = {"tex", "plaintex", "latex"} })
+    use({ "keith/swift.vim", ft = "swift" })
 
     -- lsp and completion
     use({
@@ -113,7 +115,8 @@ packer.startup(function(use)
             { "andersevenrud/cmp-tmux", after = "cmp-nvim-lua" },
             { "hrsh7th/cmp-path", after = "cmp-tmux" },
             { "hrsh7th/cmp-buffer", after = "cmp-nvim-lsp" },
-            { "kdheepak/cmp-latex-symbols", after = "cmp-buffer" },
+            { "hrsh7th/cmp-omni", after = "cmp-nvim-lsp" },
+            { "kdheepak/cmp-latex-symbols", after = "cmp-buffer", ft = {"matlab", "markdown", "txt", "julia", "r", "rmarkdown"} },
             { "hrsh7th/cmp-emoji", after = "cmp-buffer" },
             { "hrsh7th/cmp-cmdline", after = "nvim-cmp" },
             { "tzachar/cmp-tabnine", run = "./install.sh", config = lsp.tabnine, opt = true },
@@ -156,6 +159,14 @@ packer.startup(function(use)
         config = function()
             require("telescope").load_extension("fzf")
         end,
+    })
+    use({
+        "nvim-telescope/telescope-file-browser.nvim",
+        opt = true,
+        after = "telescope.nvim",
+        config = function ()
+            require("telescope").load_extension("file_browser")
+        end
     })
     use({
         "nvim-telescope/telescope-project.nvim",

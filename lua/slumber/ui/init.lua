@@ -21,7 +21,7 @@ function M.tokyo()
         vim.g.tokyonight_transparent = false
         vim.g.tokyonight_transparent_sidebar = false
     end
-    vim.cmd("colorscheme tokyonight")
+    --vim.cmd("colorscheme tokyonight")
 end
 
 function M.blankline()

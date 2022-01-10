@@ -5,7 +5,7 @@ require("telescope").setup({
         prompt_prefix = "🔭 ",
         selection_caret = " ",
         layout_config = {
-            horizontal = { prompt_position = "bottom", results_width = 0.6 },
+            horizontal = { prompt_position = "bottom", results_width = 0.4 },
             vertical = { mirror = false },
         },
         vimgrep_arguments = {
@@ -86,5 +86,8 @@ require("telescope").setup({
                 java = { "java17", "java" },
             },
         },
+        file_browser = {
+            theme = "ivy"
+        }
     },
 })

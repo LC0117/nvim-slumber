@@ -69,12 +69,13 @@ cmp.setup({
                 path = "[PATH]",
                 tmux = "[TMUX]",
                 luasnip = "[Snip]",
-                spell = "[SPELL]",
                 emoji = "[emoji]",
                 cmp_git = "[git]",
                 crates = "[crates]",
                 neorg = "[NORG]",
                 cmdline = "[cmd]",
+                latex_symbols = "[LaTeX]",
+                omni = (vim.inspect(vim_item.menu):gsub('%"', ""))
             })[entry.source.name]
 
             vim_item.abbr = string.sub(vim_item.abbr, 1, 50)
@@ -82,7 +83,7 @@ cmp.setup({
             return vim_item
         end,
     },
-    -- You can set mappings if you want
+
     mapping = {
         ["<CR>"] = cmp.mapping.confirm({ select = true }),
         ["<C-p>"] = cmp.mapping.select_prev_item(),
@@ -126,18 +127,18 @@ cmp.setup({
             require("luasnip").lsp_expand(args.body)
         end,
     },
-    -- You should specify your *installed* sources.
+
     sources = {
-        { name = "luasnip", max_item_count = 15, keyword_length = 2 },
+        { name = "luasnip", max_item_count = 5 },
         { name = "nvim_lua", max_item_count = 15 },
         { name = "nvim_lsp", max_item_count = 15 },
-        { name = "path", keyword_length = 2 },
-        { name = "spell", keyword_length = 2 },
+        { name = "omni", max_item_count = 15 },
+        { name = "path" },
         { name = "tmux", max_item_count = 10 },
         { name = "neorg" },
         { name = "buffer", keyword_length = 3 },
         { name = "cmp_tabnine" },
-        { name = "latex_symbols", max_item_count = 5 },
+        { name = "latex_symbols", max_item_count = 2 },
         { name = "emoji", max_item_count = 15 },
         { name = "cmp_git", max_item_count = 15 },
         { name = "crates", max_item_count = 15 },
