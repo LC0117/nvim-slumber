@@ -89,7 +89,7 @@ packer.startup(function(use)
     use({ "scalameta/nvim-metals", opt = true, event = { "BufRead *.scala", "BufRead *.sbt" }, config = lang.scala })
     use({ "mfussenegger/nvim-jdtls", opt = true, ft = "java", config = lang.jdtls })
     use({ "udalov/kotlin-vim", ft = "kotlin" })
-    use({ "lervag/vimtex", ft = {"tex", "plaintex", "latex"} })
+    use({ "lervag/vimtex", ft = { "tex", "plaintex", "latex" } })
     use({ "keith/swift.vim", ft = "swift" })
 
     -- lsp and completion
@@ -97,7 +97,7 @@ packer.startup(function(use)
         "neovim/nvim-lspconfig",
         opt = true,
         after = { "lsp_signature.nvim", "nvim-lsp-installer" },
-        config = lsp.lspconfig
+        config = lsp.lspconfig,
     })
     --use({ "ray-x/navigator.lua", opt = true, after = "nvim-lspconfig", config = lsp.lspconfig })
     use({ "jose-elias-alvarez/null-ls.nvim", opt = true, after = "nvim-lspconfig", config = lsp.null_ls })
@@ -116,7 +116,11 @@ packer.startup(function(use)
             { "hrsh7th/cmp-path", after = "cmp-tmux" },
             { "hrsh7th/cmp-buffer", after = "cmp-nvim-lsp" },
             { "hrsh7th/cmp-omni", after = "cmp-nvim-lsp" },
-            { "kdheepak/cmp-latex-symbols", after = "cmp-buffer", ft = {"matlab", "markdown", "txt", "julia", "r", "rmarkdown"} },
+            {
+                "kdheepak/cmp-latex-symbols",
+                after = "cmp-buffer",
+                ft = { "matlab", "markdown", "txt", "julia", "r", "rmarkdown" },
+            },
             { "hrsh7th/cmp-emoji", after = "cmp-buffer" },
             { "hrsh7th/cmp-cmdline", after = "nvim-cmp" },
             { "tzachar/cmp-tabnine", run = "./install.sh", config = lsp.tabnine, opt = true },
@@ -164,9 +168,9 @@ packer.startup(function(use)
         "nvim-telescope/telescope-file-browser.nvim",
         opt = true,
         after = "telescope.nvim",
-        config = function ()
+        config = function()
             require("telescope").load_extension("file_browser")
-        end
+        end,
     })
     use({
         "nvim-telescope/telescope-project.nvim",

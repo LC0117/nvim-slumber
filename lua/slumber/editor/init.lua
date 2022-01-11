@@ -27,12 +27,14 @@ end
 
 function M.paper()
     require("newpaper").setup({
-        style = "dark",
-        lualine_style = "dark",
+        style = "light",
         contrast_sidebar = true,
         keywords = "italic,bold",
         italic_strings = false,
         italic_comments = true,
+        italic_functions = true,
+        italic_variables = true,
+        hide_eob = true,
     })
 end
 
