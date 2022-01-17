@@ -25,16 +25,33 @@ function M.refractor()
     })
 end
 
-function M.paper()
-    require("newpaper").setup({
-        style = "light",
-        contrast_sidebar = true,
-        keywords = "italic,bold",
-        italic_strings = false,
-        italic_comments = true,
-        italic_functions = true,
-        italic_variables = true,
-        hide_eob = true,
+function M.material()
+    require("material").setup({
+        contrast = {
+            sidebars = true,
+            cursorline = true,
+        },
+        italics = {
+            comments = true,
+            keywords = true,
+            functions = true,
+        },
+        disable = {
+            eob_lines = true,
+        },
+    })
+end
+
+function M.onenord()
+    require("onenord").setup({
+        borders = true,
+        fade_nc = true,
+        styles = {
+            comments = "italic",
+            keywords = "italic,bold",
+            functions = "italic",
+            diagnostics = "underline",
+        },
     })
 end
 

@@ -28,9 +28,10 @@ packer.startup(function(use)
     -- editor framework
     use({ "folke/tokyonight.nvim", config = ui.tokyo })
     use({ "catppuccin/nvim", as = "catppuccin", config = ui.cupcin })
-    use({ "yorik1984/newpaper.nvim", config = editor.paper })
     use({ "startup-nvim/startup.nvim", config = editor.startup })
     use({ "dstein64/vim-startuptime", opt = true, cmd = "StartupTime" })
+    use({ "marko-cerovac/material.nvim", config = editor.material })
+    use({ "rmehri01/onenord.nvim", config = editor.onenord })
     use({ "kyazdani42/nvim-web-devicons" })
 
     -- ui and editing
@@ -91,16 +92,18 @@ packer.startup(function(use)
     use({ "udalov/kotlin-vim", ft = "kotlin" })
     use({ "lervag/vimtex", ft = { "tex", "plaintex", "latex" } })
     use({ "keith/swift.vim", ft = "swift" })
+    use({ "jalvesaq/Nvim-R", ft = { "r", "R", "rmd", "Rmd", "rmarkdown", "Rmarkdown" } })
 
     -- lsp and completion
     use({
         "neovim/nvim-lspconfig",
         opt = true,
-        after = { "lsp_signature.nvim", "nvim-lsp-installer" },
+        after = { "lsp_signature.nvim", "nvim-lsp-installer", "nvim-lsp-ts-utils" },
         config = lsp.lspconfig,
     })
     --use({ "ray-x/navigator.lua", opt = true, after = "nvim-lspconfig", config = lsp.lspconfig })
     use({ "jose-elias-alvarez/null-ls.nvim", opt = true, after = "nvim-lspconfig", config = lsp.null_ls })
+    use({ "jose-elias-alvarez/nvim-lsp-ts-utils", opt = true, after = "lsp_signature.nvim" })
     use({ "ray-x/lsp_signature.nvim", opt = true, event = "BufReadPre" })
     use({ "rafamadriz/friendly-snippets" })
     use({

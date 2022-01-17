@@ -77,7 +77,6 @@ local clients = {
     "clojure_lsp",
     "hls",
     "cmake",
-    "zeta_note",
     "vimls",
     "bashls",
     "dockerls",
@@ -96,41 +95,10 @@ local clients = {
     "r_language_server",
     "fortls",
     "html",
-    "cssls"
+    "cssls",
+    "svls",
+    "typeprof",
 }
-
--- require("navigator").setup({
---     debug = false,
---     width = 0.75,
---     height = 0.3,
---     preview_height = 0.35, -- max height of preview windows
---     border = {"╭", "─", "╮", "│", "╯", "─", "╰", "│"},
---     on_attach = custom_attach,
---     default_mapping = true,
---     treesitter_analysis = true,
---     transparency = 50,
---     icons = {
---         code_action_icon = "🏏",
---         diagnostic_head = '🐛',
---         diagnostic_head_severity_1 = "🈲",
---     },
---     lsp_installer = true,
---     lsp = {
---         code_action = {enable = true, sign = true, sign_priority = 40, virtual_text = true},
---         diagnostic_scrollbar_sign = {'▃', '▆', '█'},
---         diagnostic_virtual_text = true,
---         format_on_save = false,
---         servers = clients,
---         html = {
---             on_attach = custom_attach,
---             capabilities = capabilities
---         },
---         cssls = {
---             on_attach = custom_attach,
---             capabilities = capabilities
---         }
---     }
--- })
 
 for _, lsp in ipairs(clients) do
     nvim_lsp[lsp].setup({
@@ -161,6 +129,12 @@ nvim_lsp.texlab.setup({
     },
 })
 
+nvim_lsp.vls.setup({
+    cmd = { "vlangls" },
+    on_attach = custom_attach,
+    capabilities = capabilities,
+})
+
 -- this is just a example for setting LSP servers like haxe, not useful
 nvim_lsp.haxe_language_server.setup({
     on_attach = custom_attach,
@@ -170,5 +144,72 @@ nvim_lsp.haxe_language_server.setup({
 
 -- avoid several servers running for filetypes c and cpp
 nvim_lsp.sourcekit.setup({
+    on_attach = custom_attach,
+    capabilities = capabilities,
     filetypes = { "swift" },
+})
+
+-- tsserver setup
+nvim_lsp.tsserver.setup({
+    capabilities = capabilities,
+    on_attach = function(client, bufnr)
+        local ts_utils = require("nvim-lsp-ts-utils")
+
+        ts_utils.setup({
+            debug = false,
+            disable_commands = false,
+            enable_import_on_completion = false,
+
+            -- import all
+            import_all_timeout = 5000, -- ms
+            -- lower numbers = higher priority
+            import_all_priorities = {
+                same_file = 1, -- add to existing import statement
+                local_files = 2, -- git files or files with relative path markers
+                buffer_content = 3, -- loaded buffer content
+                buffers = 4, -- loaded buffer names
+            },
+            import_all_scan_buffers = 100,
+            import_all_select_source = false,
+            -- if false will avoid organizing imports
+            always_organize_imports = true,
+
+            -- filter diagnostics
+            filter_out_diagnostics_by_severity = {},
+            filter_out_diagnostics_by_code = {},
+
+            -- inlay hints
+            auto_inlay_hints = true,
+            inlay_hints_highlight = "Comment",
+            inlay_hints_priority = 200, -- priority of the hint extmarks
+            inlay_hints_throttle = 150, -- throttle the inlay hint request
+            inlay_hints_format = { -- format options for individual hint kind
+                Type = {},
+                Parameter = {},
+                Enum = {},
+                -- Example format customization for `Type` kind:
+                -- Type = {
+                --     highlight = "Comment",
+                --     text = function(text)
+                --         return "->" .. text:sub(2)
+                --     end,
+                -- },
+            },
+
+            -- update imports on file move
+            update_imports_on_move = false,
+            require_confirmation_on_move = false,
+            watch_dir = nil,
+        })
+
+        -- required to fix code action ranges and filter diagnostics
+        ts_utils.setup_client(client)
+        custom_attach()
+
+        -- no default maps, so you may want to define some here
+        local opts = { silent = true }
+        vim.api.nvim_buf_set_keymap(bufnr, "n", "gs", ":TSLspOrganize<CR>", opts)
+        vim.api.nvim_buf_set_keymap(bufnr, "n", "gr", ":TSLspRenameFile<CR>", opts)
+        vim.api.nvim_buf_set_keymap(bufnr, "n", "gi", ":TSLspImportAll<CR>", opts)
+    end,
 })

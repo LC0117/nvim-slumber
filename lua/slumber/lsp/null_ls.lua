@@ -1,12 +1,8 @@
-local b = require("null-ls").builtins
 local bf = require("null-ls").builtins.formatting
 local bd = require("null-ls").builtins.diagnostics
 local ba = require("null-ls").builtins.code_actions
 -- a lot of builtin sources
 local sources_users = {
-    b.code_actions.gitsigns.with({
-        --disabled_filetypes = {"lua"}
-    }),
     ba.eslint_d,
     ba.shellcheck,
     bf.clang_format,
