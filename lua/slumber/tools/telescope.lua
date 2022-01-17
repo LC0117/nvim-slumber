@@ -5,7 +5,7 @@ require("telescope").setup({
         prompt_prefix = "🔭 ",
         selection_caret = " ",
         layout_config = {
-            horizontal = { prompt_position = "bottom", results_width = 0.4 },
+            --horizontal = { prompt_position = "bottom" },
             vertical = { mirror = false },
         },
         vimgrep_arguments = {
@@ -24,7 +24,7 @@ require("telescope").setup({
         file_sorter = require("telescope.sorters").get_fuzzy_file,
         file_ignore_patterns = {},
         generic_sorter = require("telescope.sorters").get_generic_fuzzy_sorter,
-        path_display = { "absolute" },
+        path_display = { "relative" },
         winblend = 0,
         border = {},
         borderchars = {
@@ -86,8 +86,5 @@ require("telescope").setup({
                 java = { "java17", "java" },
             },
         },
-        file_browser = {
-            theme = "ivy"
-        }
     },
 })

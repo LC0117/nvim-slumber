@@ -39,14 +39,6 @@ parsers_config.vlang = {
     },
     filetype = "vlang",
 }
--- parsers_config.swift = {
---     install_info = {
---         url = "https://github.com/alex-pinkus/experimental-tree-sitter-swift",
---         branch = "main",
---         files = {"src/scanner.c"}
---     },
---     filetype = "swift"
--- }
 require("nvim-treesitter.install").prefer_git = true
 require("nvim-treesitter.install").compilers = { "gcc" }
 require("nvim-treesitter.configs").setup({

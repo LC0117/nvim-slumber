@@ -75,7 +75,7 @@ cmp.setup({
                 neorg = "[NORG]",
                 cmdline = "[cmd]",
                 latex_symbols = "[LaTeX]",
-                omni = (vim.inspect(vim_item.menu):gsub('%"', ""))
+                omni = (vim.inspect(vim_item.menu):gsub('%"', "")),
             })[entry.source.name]
 
             vim_item.abbr = string.sub(vim_item.abbr, 1, 50)

@@ -1,4 +1,5 @@
 vim.g.neovide_transparency = 0.9
+vim.g.neovide_remember_window_size = true
 vim.cmd([[
     function! s:write_server_name() abort
         let nvim_server_file = (has('win32') ? $TEMP : '/tmp') . '/vimtexserver.txt'
