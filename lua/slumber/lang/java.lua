@@ -3,7 +3,7 @@ local u_bundles = {
 }
 vim.list_extend(
     u_bundles,
-    vim.split(vim.fn.glob("~/.vscode/extensions/vscjava.vscode-java-test-0.33.0/server/*.jar"), "\n")
+    vim.split(vim.fn.glob("~/.vscode/extensions/vscjava.vscode-java-test-0.33.1/server/*.jar"), "\n")
 )
 
 local conf = {

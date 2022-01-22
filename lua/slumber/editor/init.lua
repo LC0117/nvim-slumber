@@ -25,6 +25,17 @@ function M.refractor()
     })
 end
 
+function M.kanagawa()
+    require("kanagawa").setup({
+        undercurl = true,
+        commentStyle = "italic",
+        functionStyle = "italic",
+        keywordStyle = "italic,bold",
+        specialException = true,
+        transparent = false
+    })
+end
+
 function M.material()
     require("material").setup({
         contrast = {
