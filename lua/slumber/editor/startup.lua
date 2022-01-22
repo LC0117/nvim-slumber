@@ -64,7 +64,6 @@ local body = {
     default_color = "",
     oldfiles_amount = 0,
 }
-
 local date = {
     type = "text",
     content = function()

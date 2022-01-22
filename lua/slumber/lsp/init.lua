@@ -16,6 +16,9 @@ function M.luasnip()
 end
 
 function M.autopairs()
+    local pairs = require("nvim-autopairs.completion.cmp")
+    require("cmp").event:on("confirm_done", pairs.on_confirm_done({ map_char = { tex = ""} }))
+    pairs.lisp[#pairs.lisp+1] = "racket"
     require("nvim-autopairs").setup({ map_cr = true })
 end
 
@@ -41,3 +44,4 @@ function M.null_ls()
 end
 
 return M
+
