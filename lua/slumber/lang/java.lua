@@ -14,6 +14,7 @@ local conf = {
     },
     on_attach = function(client, bufnr)
         require("jdtls").setup_dap({ hotcodereplace = "auto" })
+        require("navigator").on_attach()
     end,
 }
 

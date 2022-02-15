@@ -30,19 +30,18 @@ packer.startup(function(use)
     use({ "catppuccin/nvim", as = "catppuccin", config = ui.cupcin })
     use({ "startup-nvim/startup.nvim", config = editor.startup })
     use({ "dstein64/vim-startuptime", opt = true, cmd = "StartupTime" })
-    use({ "marko-cerovac/material.nvim", config = editor.material })
-    use({ "rmehri01/onenord.nvim", config = editor.onenord })
     use({ "rebelot/kanagawa.nvim", config = editor.kanagawa })
-    --use({ "ray-x/starry.nvim", opt = true, after = "nvim-treesitter" })
     use({ "kyazdani42/nvim-web-devicons" })
+    use({ "rcarriga/nvim-notify", config = editor.notify })
 
     -- ui and editing
     use({ "lukas-reineke/indent-blankline.nvim", opt = true, event = "BufRead", config = ui.blankline })
-    use({ "nvim-lualine/lualine.nvim", opt = true, after = "lualine-lsp-progress", config = ui.lualine })
-    use({ "arkav/lualine-lsp-progress", opt = true, after = "nvim-gps" })
+    use({ "nvim-lualine/lualine.nvim", opt = true, after = "nvim-gps", config = ui.lualine })
     use({ "lewis6991/gitsigns.nvim", opt = true, event = { "BufRead", "BufNewFile" }, config = ui.gitsigns })
     use({ "akinsho/bufferline.nvim", config = ui.bufferline, opt = true, event = "BufRead" })
     use({ "kyazdani42/nvim-tree.lua", opt = true, cmd = { "NvimTreeToggle", "NvimTreeOpen" }, config = ui.tree })
+    use({ "j-hui/fidget.nvim", event = "BufReadPre", config = editor.fidget })
+    --use({ "stevearc/aerial.nvim", config = ui.aerial, event = "BufRead"})
 
     -- treesitter things
     use({ "nvim-treesitter/nvim-treesitter", opt = true, event = "BufRead", config = editor.treesitter })
@@ -92,9 +91,10 @@ packer.startup(function(use)
     use({ "scalameta/nvim-metals", opt = true, event = { "BufRead *.scala", "BufRead *.sbt" }, config = lang.scala })
     use({ "mfussenegger/nvim-jdtls", opt = true, ft = "java", config = lang.jdtls })
     use({ "udalov/kotlin-vim", ft = "kotlin" })
-    use({ "lervag/vimtex", ft = { "tex", "plaintex", "latex" } })
     use({ "keith/swift.vim", ft = "swift" })
     use({ "jalvesaq/Nvim-R", ft = { "r", "R", "rmd", "Rmd", "rmarkdown", "Rmarkdown" } })
+    use({ "ollykel/v-vim", ft = { "vlang", "vsh" } })
+    use({ "JuliaEditorSupport/julia-vim" })
 
     -- lsp and completion
     use({
@@ -108,39 +108,39 @@ packer.startup(function(use)
     use({ "ray-x/lsp_signature.nvim", opt = true, event = "BufReadPre" })
     use({ "rafamadriz/friendly-snippets" })
     use({
+        "L3MON4D3/LuaSnip",
+        config = function()
+            require("luasnip.loaders.from_vscode").load()
+        end,
+    })
+    use({
         "hrsh7th/nvim-cmp",
         event = "BufRead",
         config = lsp.compe,
         requires = {
             { "lukas-reineke/cmp-under-comparator" },
-            { "saadparwaiz1/cmp_luasnip", after = "LuaSnip" },
-            { "hrsh7th/cmp-nvim-lsp", after = "cmp_luasnip" },
+            { "saadparwaiz1/cmp_luasnip", after = "nvim-cmp" },
+            { "hrsh7th/cmp-nvim-lsp", after = "nvim-cmp" },
             { "hrsh7th/cmp-nvim-lua", after = "cmp-nvim-lsp" },
             { "andersevenrud/cmp-tmux", after = "cmp-nvim-lua" },
             { "hrsh7th/cmp-path", after = "cmp-tmux" },
             { "hrsh7th/cmp-buffer", after = "cmp-nvim-lsp" },
             { "hrsh7th/cmp-omni", after = "cmp-nvim-lsp" },
-            {
-                "kdheepak/cmp-latex-symbols",
-                after = "cmp-buffer",
-                ft = { "matlab", "markdown", "txt", "julia", "r", "rmarkdown" },
-            },
             { "hrsh7th/cmp-emoji", after = "cmp-buffer" },
             { "hrsh7th/cmp-cmdline", after = "nvim-cmp" },
-            { "tzachar/cmp-tabnine", run = "./install.sh", config = lsp.tabnine, opt = true },
-            { "petertriho/cmp-git", after = "cmp_luasnip", config = lsp.cmp_git },
+            { "tzachar/cmp-tabnine", run = "./install.sh", config = lsp.tabnine, cmd = "Tabnine" },
+            { "petertriho/cmp-git", after = "cmp-nvim-lsp", config = lsp.cmp_git },
         },
     })
-    use({ "L3MON4D3/LuaSnip", after = "nvim-cmp", config = lsp.luasnip })
     use({ "windwp/nvim-autopairs", after = "nvim-cmp", config = lsp.autopairs })
     use({ "williamboman/nvim-lsp-installer", opt = true, event = "BufReadPre" })
 
     -- tools settings
-    use({ "mrjones2014/dash.nvim", opt = true, run = "make install", cmd = { "Dash", "DashWord" } })
     use({ "ellisonleao/glow.nvim", opt = true, cmd = "Glow", config = tools.glow })
     use({ "michaelb/sniprun", opt = true, run = "bash install.sh", cmd = { "SnipRun", "'<,'>SnipRun", "SnipInfo" } })
     use({ "folke/trouble.nvim", opt = true, cmd = { "Trouble", "TroubleToggle", "TroubleRefresh" } })
     use({ "folke/todo-comments.nvim", opt = true, event = "BufRead", config = tools.todo })
+    use({ "github/copilot.vim", cmd = "Copilot" })
     use({
         "nvim-neorg/neorg",
         setup = vim.cmd("autocmd BufRead,BufNewFile *.norg setlocal filetype=norg"),
@@ -174,46 +174,6 @@ packer.startup(function(use)
         after = "telescope.nvim",
         config = function()
             require("telescope").load_extension("file_browser")
-        end,
-    })
-    use({
-        "nvim-telescope/telescope-project.nvim",
-        opt = true,
-        after = "telescope.nvim",
-        config = function()
-            require("telescope").load_extension("project")
-        end,
-    })
-    use({
-        "nvim-telescope/telescope-frecency.nvim",
-        opt = true,
-        after = "telescope.nvim",
-        config = function()
-            require("telescope").load_extension("frecency")
-        end,
-    })
-    use({
-        "jvgrootveld/telescope-zoxide",
-        opt = true,
-        after = "telescope.nvim",
-        config = function()
-            require("telescope").load_extension("zoxide")
-        end,
-    })
-    use({
-        "nvim-telescope/telescope-packer.nvim",
-        opt = true,
-        after = "telescope.nvim",
-        config = function()
-            require("telescope").load_extension("packer")
-        end,
-    })
-    use({
-        "cljoly/telescope-repo.nvim",
-        opt = true,
-        after = "telescope.nvim",
-        config = function()
-            require("telescope").load_extension("repo")
         end,
     })
 end)

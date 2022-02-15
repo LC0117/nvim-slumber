@@ -26,7 +26,7 @@ require("crates").setup({
     },
     popup = {
         autofocus = false,
-        copy_register = '"',
+        copy_register = "\"",
         style = "minimal",
         border = "none",
         version_date = false,

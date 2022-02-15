@@ -53,4 +53,4 @@ local options = {
     },
 }
 require("catppuccin").setup(options)
---vim.cmd("colorscheme catppuccin")
+vim.cmd("colorscheme catppuccin")

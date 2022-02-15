@@ -2,20 +2,21 @@
 
 ### Startup -- use [startup.nvim](https://github.com/startup-nvim/startup.nvim)
 
-![](./shots/startup.png)
+![startup](./shots/startup.png)
 
 ### Telescope
 
-![](./shots/telescope.png)
+![Telescope](./shots/telescope.png)
 
 ### cmd completion
 
-![](./shots/cmd.png)
+![completion](./shots/cmd.png)
 
 ### file tree
 
-![](./shots/filetree.png)
+![tree](./shots/filetree.png)
 
 ### overview
 
-![](./shots/overview.png)
+![overview](./shots/overview.png)
+

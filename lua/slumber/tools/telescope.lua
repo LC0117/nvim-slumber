@@ -4,10 +4,14 @@ require("telescope").setup({
     defaults = {
         prompt_prefix = "🔭 ",
         selection_caret = " ",
+        layout_strategy = "horizontal",
         layout_config = {
-            --horizontal = { prompt_position = "bottom" },
-            vertical = { mirror = false },
+            horizontal = {
+                preview_cutoff = 40,
+                results_width = 0.4,
+            },
         },
+        dynamic_preview_title = true,
         vimgrep_arguments = {
             "rg",
             "--color=never",
@@ -27,16 +31,16 @@ require("telescope").setup({
         path_display = { "relative" },
         winblend = 0,
         border = {},
-        borderchars = {
-            "─",
-            "│",
-            "─",
-            "│",
-            "╭",
-            "╮",
-            "╯",
-            "╰",
-        },
+        -- borderchars = {
+        --     "─",
+        --     "│",
+        --     "─",
+        --     "│",
+        --     "╭",
+        --     "╮",
+        --     "╯",
+        --     "╰",
+        -- },
         color_devicons = true,
         use_less = true,
         set_env = { ["COLORTERM"] = "truecolor" },
@@ -88,3 +92,5 @@ require("telescope").setup({
         },
     },
 })
+
+require("telescope").load_extension("notify")
