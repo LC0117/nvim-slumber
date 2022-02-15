@@ -19,7 +19,7 @@ require("lualine").setup({
     sections = {
         lualine_a = { "mode" },
         lualine_b = { { "branch" }, { "diff" } },
-        lualine_c = { { "lsp_progress" }, { get_content, cond = gps.is_available } },
+        lualine_c = { { get_content, cond = gps.is_available } },
         lualine_x = {
             {
                 "diagnostics",
@@ -31,7 +31,7 @@ require("lualine").setup({
                 symbols = { error = " ", warn = " ", info = " " },
             },
         },
-        lualine_y = { "filetype", "encoding", apple },
+        lualine_y = { "filetype", "encoding", "fileformat" },
         lualine_z = { "progress", "location" },
     },
     inactive_sections = {

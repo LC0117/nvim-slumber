@@ -9,14 +9,6 @@ parsers_config.matlab = {
     },
     filetype = "matlab",
 }
-parsers_config.norg = {
-    install_info = {
-        url = "https://github.com/nvim-neorg/tree-sitter-norg",
-        branch = "main",
-        files = { "src/parser.c", "src/scanner.cc" },
-    },
-    filetype = "norg",
-}
 parsers_config.norg_meta = {
     install_info = {
         url = "https://github.com/nvim-neorg/tree-sitter-norg-meta",
@@ -31,14 +23,14 @@ parsers_config.norg_table = {
         branch = "main",
     },
 }
-parsers_config.vlang = {
-    install_info = {
-        url = "https://github.com/nedpals/tree-sitter-v",
-        branch = "master",
-        files = { "src/scanner.c", "src/parser.c" },
-    },
-    filetype = "vlang",
-}
+-- parsers_config.vlang = {
+--     install_info = {
+--         url = "https://github.com/nedpals/tree-sitter-v",
+--         branch = "master",
+--         files = { "src/scanner.c", "src/parser.c" },
+--     },
+--     filetype = "vlang",
+-- }
 require("nvim-treesitter.install").prefer_git = true
 require("nvim-treesitter.install").compilers = { "gcc" }
 require("nvim-treesitter.configs").setup({

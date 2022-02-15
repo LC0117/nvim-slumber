@@ -7,13 +7,15 @@ function M.sniprun()
         repl_disable = {},
         interpreter_options = {},
         display = {
+            "NvimNotify",
+            --"TempFloatingWindow",
             "Classic",
-            "VirtualTextOk",
-            "VirtualTextErr",
-            "LongTempFloatingWindow",
+        },
+        display_options = {
+            notification_timeout = 5,
         },
         inline_messages = 0,
-        borders = "shadow",
+        borders = "single",
     })
 end
 

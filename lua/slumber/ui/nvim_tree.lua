@@ -5,7 +5,7 @@ require("nvim-tree").setup({
     open_on_tab = false,
     disable_netrw = true,
     hijack_netrw = true,
-    auto_close = true,
+    auto_close = false,
     update_cwd = true,
     highlight_opened_files = true,
     auto_ignore_ft = { "startify", "dashboard", "startup" },

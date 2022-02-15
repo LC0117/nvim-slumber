@@ -25,6 +25,27 @@ function M.refractor()
     })
 end
 
+function M.fidget()
+    require("fidget").setup({})
+end
+
+function M.notify()
+    require("notify").setup({
+        stages = "fade_in_slide_out",
+        render = "default",
+        timeout = 2566,
+        max_width = 60,
+        icons = {
+            ERROR = "",
+            WARN = "",
+            INFO = "",
+            DEBUG = "",
+            TRACE = "✎",
+        },
+    })
+    vim.notify = require("notify")
+end
+
 function M.kanagawa()
     require("kanagawa").setup({
         undercurl = true,
@@ -32,24 +53,7 @@ function M.kanagawa()
         functionStyle = "italic",
         keywordStyle = "italic,bold",
         specialException = true,
-        transparent = false
-    })
-end
-
-function M.material()
-    require("material").setup({
-        contrast = {
-            sidebars = true,
-            cursorline = true,
-        },
-        italics = {
-            comments = true,
-            keywords = true,
-            functions = true,
-        },
-        disable = {
-            eob_lines = true,
-        },
+        transparent = false,
     })
 end
 

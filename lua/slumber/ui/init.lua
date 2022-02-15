@@ -1,11 +1,7 @@
 local M = {}
 
-local function to_bool(x)
-    if x == 1 then
-        return false
-    else
-        return true
-    end
+function M.aerial()
+    require("slumber.ui.aerial_symbols")
 end
 
 function M.cupcin()
