@@ -16,4 +16,5 @@ autocmd BufEnter,BufReadPre,BufRead,BufNewFile *.v setlocal filetype=vlang
 ]])
 require("slumber.core.opts")
 require("slumber.core.plugins")
+require("impatient")
 require("slumber.core.cmd_key_map")

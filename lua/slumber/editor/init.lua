@@ -1,29 +1,5 @@
 local M = {}
 
-function M.refractor()
-    require("nvim-treesitter.configs").setup({
-        refractor = {
-            highlight_definitions = { enable = true },
-            highlight_current_scope = { enable = true },
-            smart_rename = {
-                enable = true,
-                keymaps = {
-                    smart_rename = "rn",
-                },
-            },
-            navigator = {
-                enable = true,
-                keymaps = {
-                    goto_definition = "gnd",
-                    list_definitions = "gnD",
-                    list_definitions_toc = "gO",
-                    goto_next_usage = "<a-*>",
-                    goto_previous_usage = "<a-#>",
-                },
-            },
-        },
-    })
-end
 
 function M.fidget()
     require("fidget").setup({})
@@ -65,7 +41,7 @@ function M.onenord()
             comments = "italic",
             keywords = "italic,bold",
             functions = "italic",
-            diagnostics = "underline",
+            diagnostics = "undercurl",
         },
     })
 end
@@ -189,21 +165,6 @@ end
 
 function M.startup()
     require("slumber.editor.startup")
-end
-
-function M.gps()
-    require("nvim-gps").setup({
-        icons = {
-            ["class-name"] = " ",
-            ["function-name"] = " ",
-            ["method-name"] = " ",
-            ["tag-name"] = "炙",
-            ["container-name"] = "⛶ ",
-        },
-        separator = "  ",
-        depth = 0,
-        depth_limit_indicator = "..",
-    })
 end
 
 function M.matchup()

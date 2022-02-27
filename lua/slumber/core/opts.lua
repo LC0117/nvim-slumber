@@ -9,9 +9,6 @@ local function bind(options)
         end
     end
 end
-local path_sep = "/"
-local home = os.getenv("HOME")
-local cache_dir = home .. path_sep .. ".cache" .. path_sep .. "nvim" .. path_sep
 
 local options = {
     termguicolors = true,
@@ -28,11 +25,6 @@ local options = {
     backup = false,
     writebackup = false,
     swapfile = false,
-    directory = cache_dir .. "swap/",
-    undodir = cache_dir .. "undo/",
-    backupdir = cache_dir .. "backup/",
-    viewdir = cache_dir .. "view/",
-    spellfile = cache_dir .. "spell/en.utf-8.add",
     cursorline = true,
     cursorcolumn = true,
     showtabline = 2,
