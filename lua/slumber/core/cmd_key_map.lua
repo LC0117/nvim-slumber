@@ -14,3 +14,6 @@ map("n", "<leader>mm", [[<Cmd>lua require('material.functions').toggle_style()<C
 map("n", "<leader><leader>", [[<Cmd>lua vim.lsp.buf.formatting_sync()<CR>]], nsil)
 
 map("n", "<c-q>", "<Cmd>qall<CR>", nsil)
+map("n", "<c-r>", "<cmd>lua require('cosmic-ui').rename()<cr>", nsil)
+map("n", "<leader>ca", "<cmd>lua require('cosmic-ui').code_actions()<cr>", nsil)
+map("v", "<leader>ca", "<cmd>lua require('cosmic-ui').range_code_actions()<cr>", nsil)

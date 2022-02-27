@@ -1,14 +1,6 @@
 local function apple()
     return [[]]
 end
-local gps = require("nvim-gps")
-local function get_content()
-    if gps.is_available() then
-        return gps.get_location()
-    else
-        return ""
-    end
-end
 require("lualine").setup({
     options = {
         icons_enabled = true,
@@ -19,7 +11,7 @@ require("lualine").setup({
     sections = {
         lualine_a = { "mode" },
         lualine_b = { { "branch" }, { "diff" } },
-        lualine_c = { { get_content, cond = gps.is_available } },
+        lualine_c = { },
         lualine_x = {
             {
                 "diagnostics",

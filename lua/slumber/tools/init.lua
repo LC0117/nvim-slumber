@@ -23,20 +23,12 @@ function M.glow()
     vim.g.glow_border = "rounded"
 end
 
-function M.octo()
-    require("slumber.tools.octo")
-end
-
 function M.telescope()
     require("slumber.tools.telescope")
 end
 
 function M.todo()
     require("todo-comments").setup({})
-end
-
-function M.trouble()
-    require("trouble").setup({})
 end
 
 function M.comment()
@@ -116,10 +108,6 @@ function M.toggleterm()
         close_on_exit = true, -- close the terminal window when the process exits
         shell = vim.o.shell, -- change the default shell
     })
-end
-
-function M.neorg()
-    require("slumber.tools.org")
 end
 
 return M

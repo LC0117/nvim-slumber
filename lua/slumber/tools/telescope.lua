@@ -55,23 +55,6 @@ require("telescope").setup({
             fuzzy = true,
             case_mode = "smart_case",
         },
-        frecency = {
-            show_scores = true,
-            show_unindexed = true,
-            ignore_patterns = { "*.git/*", "*/tmp/*" },
-            workspaces = {
-                ["conf"] = "~/.config",
-                ["nvim"] = home .. "/.config/nvim",
-                ["play"] = home .. "/Proj/playGround",
-                ["note"] = home .. "/Proj/notebooks",
-            },
-        },
-        project = {
-            base_dirs = {
-                "~/Proj/playGround",
-                "~/.config/nvim",
-            },
-        },
         dash = {
             dash_app_path = "/Applications/Dash.app",
             search_engine = "duckduckgo",

@@ -60,18 +60,12 @@ cmp.setup({
 
             vim_item.menu = ({
                 cmp_tabnine = "[TN]", -- tabnine is lazy-loaded
-                buffer = "[BUFFER]",
                 luasnip = "[Snip]",
                 nvim_lsp = "[LSP]",
-                nvim_lua = "[nLua]",
                 path = "[PATH]",
-                tmux = "[TMUX]",
                 emoji = "[emoji]",
-                cmp_git = "[git]",
-                crates = "[crates]",
                 neorg = "[NORG]",
-                cmdline = "[cmd]",
-                omni = (vim.inspect(vim_item.menu):gsub("%\"", "")),
+                cmdline = "[cmd]"
             })[entry.source.name]
 
             vim_item.abbr = string.sub(vim_item.abbr, 1, 50)
@@ -109,17 +103,10 @@ cmp.setup({
 
     sources = {
         { name = "luasnip", max_item_count = 5 },
-        { name = "nvim_lua", max_item_count = 15 },
         { name = "nvim_lsp", max_item_count = 15 },
         { name = "cmp_tabnine", keyword_length = 2 },
-        { name = "omni", max_item_count = 15 },
         { name = "path" },
-        { name = "tmux", max_item_count = 10 },
-        { name = "neorg" },
-        { name = "buffer", keyword_length = 3 },
         { name = "emoji", max_item_count = 15 },
-        { name = "cmp_git", max_item_count = 15 },
-        { name = "crates", max_item_count = 15 },
         { name = "cmdline" },
     },
 
