@@ -67,6 +67,7 @@ local clients = {
     "pyright",
     "ocamllsp",
     "fsautocomplete",
+    "rust_analyzer"
 }
 
 for _, cli in ipairs(clients) do
