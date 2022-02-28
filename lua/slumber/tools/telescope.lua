@@ -5,10 +5,15 @@ require("telescope").setup({
         prompt_prefix = "🔭 ",
         selection_caret = " ",
         layout_strategy = "horizontal",
+        entry_prefix = "  ",
+        initial_mode = "insert",
+        selection_strategy = "reset",
+        sorting_strategy = "ascending",
         layout_config = {
             horizontal = {
-                preview_cutoff = 40,
-                results_width = 0.4,
+                results_width = 0.8,
+                prompt_position = "top",
+                preview_width = 0.55
             },
         },
         dynamic_preview_title = true,

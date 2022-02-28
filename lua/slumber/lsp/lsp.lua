@@ -2,6 +2,12 @@ local lsp_installer = require("nvim-lsp-installer")
 local nlsp = require("lspconfig")
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
+vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+    border = "rounded",
+})
+vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
+    border = "rounded",
+})
 
 lsp_installer.settings({
     ui = {
@@ -111,10 +117,13 @@ nlsp.vls.setup({
     cmd = { "vlangls" },
     filetypes = { "vlang", "vsh" },
     on_attach = custom_attach,
-    capabilities = capabilities
+    capabilities = capabilities,
 })
 nlsp.sourcekit.setup({
     filetypes = { "swift" },
     on_attach = custom_attach,
-    capabilities = capabilities
+    capabilities = capabilities,
+})
+nlsp.jdtls.setup({
+    cmd = { "jdtls" },
 })

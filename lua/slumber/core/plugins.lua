@@ -47,13 +47,13 @@ packer.startup(function(use)
                 border_style = "rounded",
                 rename = {
                     border = {
-                        title = " Rename ",
+                        title = " Rename  ",
                         title_align = "left",
                     },
                     prompt = " ",
                 },
                 code_actions = {
-                    title = "Code Actions",
+                    title = " Code Actions ",
                     title_align = "center",
                 },
             })

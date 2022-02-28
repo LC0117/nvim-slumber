@@ -27,6 +27,11 @@ cmp.setup({
             cmp.config.compare.order,
         },
     },
+
+    documentation = {
+        border = "rounded"
+    },
+
     formatting = {
         format = function(entry, vim_item)
             local lspkind_icons = {
