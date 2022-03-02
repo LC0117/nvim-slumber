@@ -8,6 +8,17 @@ function M.cupcin()
     require("slumber.ui.cupcin")
 end
 
+function M.onenord()
+    require("onenord").setup({
+        styles = {
+            comments = "italic",
+            diagnostics = "undercurl",
+            keywords = "italic,bold",
+            functions = "italic"
+        }
+    })
+end
+
 function M.tokyo()
     vim.g.tokyonight_transparent = false
     vim.g.tokyonight_transparent_sidebar = false
@@ -17,7 +28,6 @@ function M.tokyo()
         vim.g.tokyonight_transparent = false
         vim.g.tokyonight_transparent_sidebar = false
     end
-    vim.cmd("colorscheme tokyonight")
 end
 
 function M.blankline()
