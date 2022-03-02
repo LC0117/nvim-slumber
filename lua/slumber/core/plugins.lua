@@ -19,7 +19,7 @@ packer.init({
 
 packer.startup(function(use)
     use({ "wbthomason/packer.nvim" })
-    use 'lewis6991/impatient.nvim'
+    use("lewis6991/impatient.nvim")
     use({ "nvim-lua/plenary.nvim" })
     use({ "nvim-lua/popup.nvim" })
 
@@ -29,36 +29,19 @@ packer.startup(function(use)
     use({ "startup-nvim/startup.nvim", config = editor.startup })
     use({ "dstein64/vim-startuptime", opt = true, cmd = "StartupTime" })
     use({ "rebelot/kanagawa.nvim", config = editor.kanagawa })
+    use({ "rmehri01/onenord.nvim", config = ui.onenord})
+    use({ "Mofiqul/dracula.nvim"})
+    use({ "Mofiqul/vscode.nvim"})
     use({ "kyazdani42/nvim-web-devicons" })
     use({ "rcarriga/nvim-notify", config = editor.notify })
 
     -- ui and editing
     use({ "lukas-reineke/indent-blankline.nvim", opt = true, event = "BufRead", config = ui.blankline })
-    use({ "nvim-lualine/lualine.nvim",  config = ui.lualine })
+    use({ "nvim-lualine/lualine.nvim", config = ui.lualine })
     use({ "lewis6991/gitsigns.nvim", opt = true, event = { "BufRead", "BufNewFile" }, config = ui.gitsigns })
     use({ "akinsho/bufferline.nvim", config = ui.bufferline, opt = true, event = "BufRead" })
     use({ "kyazdani42/nvim-tree.lua", opt = true, cmd = { "NvimTreeToggle", "NvimTreeOpen" }, config = ui.tree })
     use({ "j-hui/fidget.nvim", event = "BufReadPre", config = editor.fidget })
-    use({
-        "CosmicNvim/cosmic-ui",
-        requires = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
-        config = function()
-            require("cosmic-ui").setup({
-                border_style = "rounded",
-                rename = {
-                    border = {
-                        title = " Rename  ",
-                        title_align = "left",
-                    },
-                    prompt = " ",
-                },
-                code_actions = {
-                    title = " Code Actions ",
-                    title_align = "center",
-                },
-            })
-        end,
-    })
 
     -- treesitter things
     use({ "nvim-treesitter/nvim-treesitter", config = editor.treesitter })
@@ -83,9 +66,17 @@ packer.startup(function(use)
 
     -- lsp and completion
     use({ "neovim/nvim-lspconfig", config = lsp.lspconfig })
+    use({
+        "tami5/lspsaga.nvim",
+        config = function()
+            require("lspsaga").setup({
+                border_style = "round"
+            })
+        end,
+    })
     use({ "jubnzv/virtual-types.nvim" })
     use({ "jose-elias-alvarez/null-ls.nvim", config = lsp.null_ls })
-    use({ "jose-elias-alvarez/nvim-lsp-ts-utils", after = "lsp_signature.nvim" })
+    use({ "jose-elias-alvarez/nvim-lsp-ts-utils" })
     use({ "ray-x/lsp_signature.nvim" })
     use({ "rafamadriz/friendly-snippets" })
     use({
