@@ -1,5 +1,5 @@
 vim.cmd([[
-set guifont=JetBrainsMono\ Nerd\ Font:h12
+set guifont=JetBrainsMono\ Nerd\ Font\ Mono:h12
 if exists("g:neoray")
     NeoraySet CursorAnimTime 0.08
     NeoraySet Transparency   0.95
@@ -16,10 +16,5 @@ autocmd BufEnter,BufReadPre,BufRead,BufNewFile *.v setlocal filetype=vlang
 ]])
 require("slumber.core.opts")
 require("slumber.core.plugins")
-require("impatient")
 require("slumber.core.cmd_key_map")
----@diagnostic disable-next-line: unused-function
-local function some(no)
-    print(no)
-end
 
