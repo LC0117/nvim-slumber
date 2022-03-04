@@ -19,39 +19,39 @@ packer.init({
 
 packer.startup(function(use)
     use({ "wbthomason/packer.nvim" })
-    use("lewis6991/impatient.nvim")
     use({ "nvim-lua/plenary.nvim" })
+    use({ "ray-x/guihua.lua", run = "cd lua/fzy && make" })
     use({ "nvim-lua/popup.nvim" })
 
     -- editor framework
-    use({ "folke/tokyonight.nvim", config = ui.tokyo })
     use({ "catppuccin/nvim", as = "catppuccin", config = ui.cupcin })
     use({ "startup-nvim/startup.nvim", config = editor.startup })
     use({ "dstein64/vim-startuptime", opt = true, cmd = "StartupTime" })
     use({ "rebelot/kanagawa.nvim", config = editor.kanagawa })
     use({ "rmehri01/onenord.nvim", config = ui.onenord})
-    use({ "Mofiqul/dracula.nvim"})
     use({ "Mofiqul/vscode.nvim"})
     use({ "kyazdani42/nvim-web-devicons" })
     use({ "rcarriga/nvim-notify", config = editor.notify })
 
     -- ui and editing
     use({ "lukas-reineke/indent-blankline.nvim", opt = true, event = "BufRead", config = ui.blankline })
-    use({ "nvim-lualine/lualine.nvim", config = ui.lualine })
+    use({ "nvim-lualine/lualine.nvim", event = "BufRead", config = ui.lualine })
     use({ "lewis6991/gitsigns.nvim", opt = true, event = { "BufRead", "BufNewFile" }, config = ui.gitsigns })
     use({ "akinsho/bufferline.nvim", config = ui.bufferline, opt = true, event = "BufRead" })
     use({ "kyazdani42/nvim-tree.lua", opt = true, cmd = { "NvimTreeToggle", "NvimTreeOpen" }, config = ui.tree })
     use({ "j-hui/fidget.nvim", event = "BufReadPre", config = editor.fidget })
 
     -- treesitter things
-    use({ "nvim-treesitter/nvim-treesitter", config = editor.treesitter })
-    use({ "romgrk/nvim-treesitter-context", config = editor.context })
+    use({ "nvim-treesitter/nvim-treesitter", event = "BufRead", config = editor.treesitter })
+    use({ "romgrk/nvim-treesitter-context", after = "nvim-treesitter", config = editor.context })
     use({
         "nvim-treesitter/nvim-treesitter-textobjects",
+        after = "nvim-treesitter",
         config = editor.textobjects,
     })
     use({
         "JoosepAlviste/nvim-ts-context-commentstring",
+        after = "nvim-treesitter",
         config = editor.commentstring,
     })
     use({ "p00f/nvim-ts-rainbow", after = "nvim-treesitter", config = editor.rainbow })
@@ -65,19 +65,12 @@ packer.startup(function(use)
     use({ "JuliaEditorSupport/julia-vim" })
 
     -- lsp and completion
-    use({ "neovim/nvim-lspconfig", config = lsp.lspconfig })
-    use({
-        "tami5/lspsaga.nvim",
-        config = function()
-            require("lspsaga").setup({
-                border_style = "round"
-            })
-        end,
-    })
-    use({ "jubnzv/virtual-types.nvim" })
-    use({ "jose-elias-alvarez/null-ls.nvim", config = lsp.null_ls })
-    use({ "jose-elias-alvarez/nvim-lsp-ts-utils" })
-    use({ "ray-x/lsp_signature.nvim" })
+    use({ "neovim/nvim-lspconfig", event = "BufReadPre" })
+    use({ "jose-elias-alvarez/null-ls.nvim", config = lsp.null_ls, after = "nvim-lspconfig" })
+    use({ "jose-elias-alvarez/nvim-lsp-ts-utils", after = "nvim-lspconfig" })
+    use({ "ray-x/lsp_signature.nvim", after = "nvim-lspconfig" })
+    use({ "williamboman/nvim-lsp-installer", after = {"lsp_signature.nvim", "nvim-lsp-ts-utils"} })
+    use({ "ray-x/navigator.lua", after = "nvim-lsp-installer", config = lsp.lspconfig })
     use({ "rafamadriz/friendly-snippets" })
     use({
         "L3MON4D3/LuaSnip",
@@ -88,19 +81,18 @@ packer.startup(function(use)
     use({
         "hrsh7th/nvim-cmp",
         config = lsp.compe,
+        event = "InsertEnter",
         requires = {
             { "lukas-reineke/cmp-under-comparator" },
             { "saadparwaiz1/cmp_luasnip", after = "nvim-cmp" },
             { "hrsh7th/cmp-nvim-lsp", after = "nvim-cmp" },
-            { "hrsh7th/cmp-path" },
-            { "hrsh7th/cmp-emoji" },
+            { "hrsh7th/cmp-path", after = "nvim-cmp" },
+            { "hrsh7th/cmp-emoji", after = "nvim-cmp" },
             { "hrsh7th/cmp-cmdline", after = "nvim-cmp" },
             { "tzachar/cmp-tabnine", run = "./install.sh", config = lsp.tabnine, cmd = "Tabnine" },
         },
     })
-    use({ "windwp/nvim-autopairs", config = lsp.autopairs })
-    use({ "williamboman/nvim-lsp-installer" })
-
+    use({ "windwp/nvim-autopairs", config = lsp.autopairs, after = "nvim-cmp" })
     -- tools settings
     use({ "ellisonleao/glow.nvim", opt = true, cmd = "Glow", config = tools.glow })
     use({ "michaelb/sniprun", opt = true, run = "bash install.sh", cmd = { "SnipRun", "'<,'>SnipRun", "SnipInfo" } })
@@ -132,3 +124,4 @@ packer.startup(function(use)
         end,
     })
 end)
+

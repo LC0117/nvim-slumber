@@ -26,7 +26,6 @@ local options = {
     writebackup = false,
     swapfile = false,
     cursorline = true,
-    cursorcolumn = true,
     showtabline = 2,
     showbreak = "↳  ",
     listchars = "tab:»·,nbsp:+,trail:·,extends:→,precedes:←",
@@ -61,3 +60,4 @@ local function mkwork()
 end
 
 mkwork()
+

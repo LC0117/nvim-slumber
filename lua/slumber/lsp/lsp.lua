@@ -1,7 +1,4 @@
 local lsp_installer = require("nvim-lsp-installer")
-local nlsp = require("lspconfig")
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
     border = "rounded",
 })
@@ -27,17 +24,48 @@ local function custom_attach()
         hi_parameter = "Search",
         hint_prefix = ": ",
         handler_opts = { border = "rounded" },
-        transparency = 30,
+        transparency = 50,
     })
-    require("virtualtypes").on_attach()
 end
 
 lsp_installer.on_server_ready(function(server)
     local opts = {}
-    opts.capabilities = capabilities
     opts.on_attach = custom_attach
     server:setup(opts)
 end)
+
+local function ts_on_attach(client, bufnr)
+    local ts_utils = require("nvim-lsp-ts-utils")
+    ts_utils.setup({
+        enable_import_on_completion = true,
+        update_imports_on_move = true,
+        require_confirmation_on_move = false,
+    })
+    ts_utils.setup_client(client)
+    local opts = { silent = true }
+    vim.api.nvim_buf_set_keymap(bufnr, "n", "gs", ":TSLspOrganize<CR>", opts)
+    vim.api.nvim_buf_set_keymap(bufnr, "n", "gr", ":TSLspRenameFile<CR>", opts)
+    vim.api.nvim_buf_set_keymap(bufnr, "n", "gi", ":TSLspImportAll<CR>", opts)
+    custom_attach()
+end
+
+local lua_setup = {
+    on_attach = custom_attach,
+    settings = {
+        Lua = {
+            diagnostics = { globals = { "vim", "packer_plugins" } },
+            workspace = {
+                library = {
+                    [vim.fn.expand("$VIMRUNTIME/lua")] = true,
+                    [vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
+                },
+                maxPreload = 100000,
+                preloadFileSize = 10000,
+            },
+            telemetry = { enable = false },
+        },
+    },
+}
 
 -- These are servers easy to setup
 local clients = {
@@ -70,61 +98,27 @@ local clients = {
     "rust_analyzer"
 }
 
-for _, cli in ipairs(clients) do
-    nlsp[cli].setup({
-        on_attach = custom_attach,
-        capabilities = capabilities,
-    })
-end
-
-local function ts_on_attach(client, bufnr)
-    local ts_utils = require("nvim-lsp-ts-utils")
-    ts_utils.setup({
-        enable_import_on_completion = true,
-        update_imports_on_move = true,
-        require_confirmation_on_move = false,
-    })
-    ts_utils.setup_client(client)
-    local opts = { silent = true }
-    vim.api.nvim_buf_set_keymap(bufnr, "n", "gs", ":TSLspOrganize<CR>", opts)
-    vim.api.nvim_buf_set_keymap(bufnr, "n", "gr", ":TSLspRenameFile<CR>", opts)
-    vim.api.nvim_buf_set_keymap(bufnr, "n", "gi", ":TSLspImportAll<CR>", opts)
-    custom_attach()
-end
-nlsp.tsserver.setup({
-    init_options = require("nvim-lsp-ts-utils").init_options,
-    capabilities = capabilities,
-    on_attach = ts_on_attach,
-})
-nlsp.sumneko_lua.setup({
+require("navigator").setup({
     on_attach = custom_attach,
-    capabilities = capabilities,
-    settings = {
-        Lua = {
-            diagnostics = { globals = { "vim", "packer_plugins" } },
-            workspace = {
-                library = {
-                    [vim.fn.expand("$VIMRUNTIME/lua")] = true,
-                    [vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
-                },
-                maxPreload = 100000,
-                preloadFileSize = 10000,
-            },
-            telemetry = { enable = false },
+    treesitter_analysis = true,
+    transparency = 50,
+    lsp_signature_help = true,
+    border = {"╭", "─", "╮", "│", "╯", "─", "╰", "│"},
+    icons = {},
+    lsp_installer = true,
+    lsp = {
+        code_action = {enable = true, sign = true, sign_priority = 40, virtual_text = true},
+        code_lens_action = {enable = true, sign = true, sign_priority = 40, virtual_text = true},
+        format_on_save = false,
+        disable_lsp = {"pyright", "jedi-language-server", "flow", "ccls"},
+        tsserver = {
+            init_options = require("nvim-lsp-ts-utils").init_options,
+            on_attach = ts_on_attach
         },
-    },
+        sumneko_lua = lua_setup,
+        sourcekit = {filetypes = {"swift"}},
+        jdtls = {cmd = {"jdtls"}},
+        servers = clients
+    }
 })
-nlsp.vls.setup({
-    cmd = { "vlangls" },
-    filetypes = { "vlang", "vsh" },
-    on_attach = custom_attach,
-    capabilities = capabilities,
-})
-nlsp.sourcekit.setup({
-    filetypes = { "swift" },
-    on_attach = custom_attach,
-    capabilities = capabilities,
-})
-nlsp.jdtls.setup({
-    cmd = { "jdtls" },
-})
+
