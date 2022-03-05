@@ -3,6 +3,12 @@ local ui = require("slumber.ui")
 local tools = require("slumber.tools")
 local lsp = require("slumber.lsp")
 
+local fn = vim.fn
+local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+if fn.empty(fn.glob(install_path)) > 0 then
+  packer_bootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+end
+
 local packer = require("packer")
 packer.init({
     display = {
@@ -20,7 +26,6 @@ packer.init({
 packer.startup(function(use)
     use({ "wbthomason/packer.nvim" })
     use({ "nvim-lua/plenary.nvim" })
-    use({ "ray-x/guihua.lua", run = "cd lua/fzy && make" })
     use({ "nvim-lua/popup.nvim" })
 
     -- editor framework
@@ -69,8 +74,16 @@ packer.startup(function(use)
     use({ "jose-elias-alvarez/null-ls.nvim", config = lsp.null_ls, after = "nvim-lspconfig" })
     use({ "jose-elias-alvarez/nvim-lsp-ts-utils", after = "nvim-lspconfig" })
     use({ "ray-x/lsp_signature.nvim", after = "nvim-lspconfig" })
-    use({ "williamboman/nvim-lsp-installer", after = {"lsp_signature.nvim", "nvim-lsp-ts-utils"} })
-    use({ "ray-x/navigator.lua", after = "nvim-lsp-installer", config = lsp.lspconfig })
+    use({ "williamboman/nvim-lsp-installer", after = {"lsp_signature.nvim", "nvim-lsp-ts-utils"}, config = lsp.lspconfig})
+    use({
+        "tami5/lspsaga.nvim",
+        event = "BufRead",
+        config = function()
+            require("lspsaga").setup({
+                border_style = "round",
+            })
+        end
+    })
     use({ "rafamadriz/friendly-snippets" })
     use({
         "L3MON4D3/LuaSnip",

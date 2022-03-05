@@ -1,10 +1,23 @@
 local lsp_installer = require("nvim-lsp-installer")
+local nlsp = require("lspconfig")
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
     border = "rounded",
 })
 vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
     border = "rounded",
 })
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+capabilities.textDocument.completion.completionItem.preselectSupport = true
+capabilities.textDocument.completion.completionItem.insertReplaceSupport = true
+capabilities.textDocument.completion.completionItem.labelDetailsSupport = true
+capabilities.textDocument.completion.completionItem.deprecatedSupport = true
+capabilities.textDocument.completion.completionItem.commitCharactersSupport = true
+capabilities.textDocument.completion.completionItem.tagSupport = {valueSet = {1}}
+capabilities.textDocument.completion.completionItem.resolveSupport = {
+properties = {'documentation', 'detail', 'additionalTextEdits'}
+}
+capabilities.workspace.configuration = true
 
 lsp_installer.settings({
     ui = {
@@ -28,12 +41,6 @@ local function custom_attach()
     })
 end
 
-lsp_installer.on_server_ready(function(server)
-    local opts = {}
-    opts.on_attach = custom_attach
-    server:setup(opts)
-end)
-
 local function ts_on_attach(client, bufnr)
     local ts_utils = require("nvim-lsp-ts-utils")
     ts_utils.setup({
@@ -49,23 +56,31 @@ local function ts_on_attach(client, bufnr)
     custom_attach()
 end
 
-local lua_setup = {
-    on_attach = custom_attach,
-    settings = {
-        Lua = {
-            diagnostics = { globals = { "vim", "packer_plugins" } },
-            workspace = {
-                library = {
-                    [vim.fn.expand("$VIMRUNTIME/lua")] = true,
-                    [vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
-                },
-                maxPreload = 100000,
-                preloadFileSize = 10000,
-            },
-            telemetry = { enable = false },
-        },
-    },
-}
+lsp_installer.on_server_ready(function(server)
+    local opts = {}
+    opts.on_attach = custom_attach
+    opts.capabilities = capabilities
+    if server.name == "sumneko_lua" then
+        opts.settings = {
+			Lua = {
+				diagnostics = { globals = { "vim" } },
+				workspace = {
+					library = {
+						[vim.fn.expand("$VIMRUNTIME/lua")] = true,
+						[vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
+					},
+					maxPreload = 100000,
+					preloadFileSize = 10000,
+				},
+				telemetry = { enable = false },
+			},
+		}
+    elseif opts.name == "tsserver" then
+        opts.on_attach = ts_on_attach
+    end
+    server:setup(opts)
+end)
+
 
 -- These are servers easy to setup
 local clients = {
@@ -98,27 +113,9 @@ local clients = {
     "rust_analyzer"
 }
 
-require("navigator").setup({
-    on_attach = custom_attach,
-    treesitter_analysis = true,
-    transparency = 50,
-    lsp_signature_help = true,
-    border = {"╭", "─", "╮", "│", "╯", "─", "╰", "│"},
-    icons = {},
-    lsp_installer = true,
-    lsp = {
-        code_action = {enable = true, sign = true, sign_priority = 40, virtual_text = true},
-        code_lens_action = {enable = true, sign = true, sign_priority = 40, virtual_text = true},
-        format_on_save = false,
-        disable_lsp = {"pyright", "jedi-language-server", "flow", "ccls"},
-        tsserver = {
-            init_options = require("nvim-lsp-ts-utils").init_options,
-            on_attach = ts_on_attach
-        },
-        sumneko_lua = lua_setup,
-        sourcekit = {filetypes = {"swift"}},
-        jdtls = {cmd = {"jdtls"}},
-        servers = clients
-    }
-})
-
+for _, lsp in ipairs(clients) do
+    nlsp[lsp].setup({
+        on_attach = custom_attach,
+        capabilities = capabilities
+    })
+end
