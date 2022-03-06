@@ -82,40 +82,40 @@ lsp_installer.on_server_ready(function(server)
 end)
 
 
--- These are servers easy to setup
-local clients = {
-    "clangd",
-    "clojure_lsp",
-    "hls",
-    "cmake",
-    "vimls",
-    "bashls",
-    "dockerls",
-    "gopls",
-    "taplo",
-    "zls",
-    "volar",
-    "yamlls",
-    "solargraph",
-    "julials",
-    "jsonls",
-    "graphql",
-    "spectral",
-    "r_language_server",
-    "fortls",
-    "html",
-    "cssls",
-    "svls",
-    "typeprof",
-    "pyright",
-    "ocamllsp",
-    "fsautocomplete",
-    "rust_analyzer"
-}
-
-for _, lsp in ipairs(clients) do
-    nlsp[lsp].setup({
-        on_attach = custom_attach,
-        capabilities = capabilities
-    })
-end
+-- -- These are servers easy to setup
+-- local clients = {
+--     "clangd",
+--     "clojure_lsp",
+--     "hls",
+--     "cmake",
+--     "vimls",
+--     "bashls",
+--     "dockerls",
+--     "gopls",
+--     "taplo",
+--     "zls",
+--     "volar",
+--     "yamlls",
+--     "solargraph",
+--     "julials",
+--     "jsonls",
+--     "graphql",
+--     "spectral",
+--     "r_language_server",
+--     "fortls",
+--     "html",
+--     "cssls",
+--     "svls",
+--     "typeprof",
+--     "pyright",
+--     "ocamllsp",
+--     "fsautocomplete",
+--     "rust_analyzer"
+-- }
+--
+-- for _, lsp in ipairs(clients) do
+--     nlsp[lsp].setup({
+--         on_attach = custom_attach,
+--         capabilities = capabilities
+--     })
+-- end
