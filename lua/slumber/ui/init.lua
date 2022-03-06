@@ -4,15 +4,23 @@ function M.cupcin()
     require("slumber.ui.cupcin")
 end
 
-function M.onenord()
-    require("onenord").setup({
+function M.onedarkpro()
+    require("onedarkpro").setup({
         styles = {
             comments = "italic",
-            diagnostics = "undercurl",
-            keywords = "italic,bold",
-            functions = "italic"
+            keywords = "bold,italic",
+            functions = "italic",
+        },
+        options = {
+            bold = true,
+            italic = true,
+            underline = true,
+            undercurl = true,
+            cursorline = true,
+            terminal_colors = true
         }
     })
+    require("onedarkpro").load()
 end
 
 -- function M.tokyo()
