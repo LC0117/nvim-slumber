@@ -16,3 +16,7 @@ map("n", "<leader>m", [[:lua require("vscode").change_style("dark")<CR>]], nsil)
 
 map("n", "<c-q>", "<Cmd>qall<CR>", nsil)
 
+map("n", "<c-r>", [[<Cmd>Lspsaga rename<CR>]], nsil)
+map("n", "K", [[:Lspsaga hover_doc<CR>]], nsil)
+map("n", "<leader>ca", [[:Lspsaga code_action<CR>]], nsil)
+map("v", "<leader>ca", [[:Lspsaga range_code_action<CR>]], nsil)
