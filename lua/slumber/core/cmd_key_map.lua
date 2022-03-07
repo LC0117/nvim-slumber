@@ -1,23 +1,30 @@
 vim.cmd([[let mapleader = ","]])
 local map = vim.api.nvim_set_keymap
-local sil = { silent = true }
 local nsil = { noremap = true, silent = true }
+
+local function nmap(key, cmd)
+    map("n", key, cmd, nsil)
+end
+
+local function vmap(key, cmd)
+    map("v", key, cmd, nsil)
+end
 -- telescope settings
-map("n", "<c-f>", ":Telescope fd<CR>", sil)
-map("n", "<c-g>", "<Cmd>Telescope live_grep<CR>", sil)
+nmap("<C-F>", [[:Telescope fd<CR>]])
+nmap("<C-G>", [[:Telescope live_grep<CR>]])
 
 -- material toggle style
 map("n", "<leader>mm", [[<Cmd>lua require('material.functions').toggle_style()<CR>]], nsil)
 
 -- lsp formatting
-map("n", "<leader><leader>", [[<Cmd>lua vim.lsp.buf.formatting_sync()<CR>]], nsil)
-map("n", "<leader>l", [[:lua require("vscode").change_style("light")<CR>]], nsil)
-map("n", "<leader>m", [[:lua require("vscode").change_style("dark")<CR>]], nsil)
+nmap("<leader><leader>", [[:lua vim.lsp.buf.formatting_sync()<CR>]])
+nmap("<leader>l", [[:lua require("vscode").change_style("light")<CR>]])
+nmap("<leader>m", [[:lua require("vscode").change_style("dark")<CR>]])
 
-map("n", "<c-q>", "<Cmd>qall<CR>", nsil)
+nmap("<C-Q>", [[<Cmd>qall<CR>]])
+nmap("<C-S>", [[:wall<CR>]])
 
-map("n", "<c-r>", [[<Cmd>Lspsaga rename<CR>]], nsil)
-map("n", "K", [[:Lspsaga hover_doc<CR>]], nsil)
-map("n", "<leader>ca", [[:Lspsaga code_action<CR>]], nsil)
-map("v", "<leader>ca", [[:Lspsaga range_code_action<CR>]], nsil)
-map("n", "<space><space>", [[:set guifont=JetBrainsMono\ NF:h12<CR>]], nsil)
+vmap("<c-r>", [[<Cmd>Lspsaga rename<CR>]])
+nmap("K", [[:Lspsaga hover_doc<CR>]])
+nmap("<leader>ca", [[:Lspsaga code_action<CR>]])
+vmap("<leader>ca", [[:Lspsaga range_code_action<CR>]])
