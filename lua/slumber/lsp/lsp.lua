@@ -37,7 +37,7 @@ local function custom_attach()
         hi_parameter = "Search",
         hint_prefix = ": ",
         handler_opts = { border = "rounded" },
-        transparency = 50,
+        transparency = 20,
     })
 end
 

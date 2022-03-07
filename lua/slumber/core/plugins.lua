@@ -81,6 +81,12 @@ packer.startup(function(use)
         config = function()
             require("lspsaga").setup({
                 border_style = "round",
+                code_action_prompt = {
+                    enable = true,
+                    sign = true,
+                    sign_priority = 60,
+                    virtual_text = false
+                }
             })
         end
     })
