@@ -6,7 +6,7 @@ This repo is mainly for my backup. It works well on my mac and PC.
 
 ## Some nice shots
 
-### Beatiful startup view with utilities
+### Beautiful startup view with utilities
 
 ![startup](https://slumber233-1307554241.cos.ap-beijing.myqcloud.com/pics/nvim-slumber/startup.png)
 
