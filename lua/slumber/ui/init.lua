@@ -17,7 +17,7 @@ function M.onedarkpro()
             underline = true,
             undercurl = true,
             cursorline = true,
-            terminal_colors = true
+            terminal_colors = true,
         }
     })
     require("onedarkpro").load()

@@ -4,9 +4,16 @@ local tools = require("slumber.tools")
 local lsp = require("slumber.lsp")
 
 local fn = vim.fn
-local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
 if fn.empty(fn.glob(install_path)) > 0 then
-  packer_bootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+    packer_bootstrap = fn.system({
+        "git",
+        "clone",
+        "--depth",
+        "1",
+        "https://github.com/wbthomason/packer.nvim",
+        install_path,
+    })
 end
 
 local packer = require("packer")
@@ -33,8 +40,8 @@ packer.startup(function(use)
     use({ "startup-nvim/startup.nvim", config = editor.startup })
     use({ "dstein64/vim-startuptime", opt = true, cmd = "StartupTime" })
     use({ "rebelot/kanagawa.nvim", config = editor.kanagawa })
-    use({ "olimorris/onedarkpro.nvim", config = ui.onedarkpro})
-    use({ "Mofiqul/vscode.nvim"})
+    use({ "olimorris/onedarkpro.nvim", config = ui.onedarkpro })
+    use({ "Mofiqul/vscode.nvim" })
     use({ "kyazdani42/nvim-web-devicons" })
     use({ "rcarriga/nvim-notify", config = editor.notify })
 
@@ -68,13 +75,21 @@ packer.startup(function(use)
     use({ "keith/swift.vim", ft = "swift" })
     use({ "ollykel/v-vim", ft = { "vlang", "vsh" } })
     use({ "JuliaEditorSupport/julia-vim" })
+    use({
+        "ionide/Ionide-vim",
+        ft = { "fsharp", "fs", "fsi", "fsx" },
+    })
 
     -- lsp and completion
     use({ "neovim/nvim-lspconfig", event = "BufReadPre" })
     use({ "jose-elias-alvarez/null-ls.nvim", config = lsp.null_ls, after = "nvim-lspconfig" })
     use({ "jose-elias-alvarez/nvim-lsp-ts-utils", after = "nvim-lspconfig" })
     use({ "ray-x/lsp_signature.nvim", after = "nvim-lspconfig" })
-    use({ "williamboman/nvim-lsp-installer", after = {"lsp_signature.nvim", "nvim-lsp-ts-utils"}, config = lsp.lspconfig})
+    use({
+        "williamboman/nvim-lsp-installer",
+        after = { "lsp_signature.nvim", "nvim-lsp-ts-utils" },
+        config = lsp.lspconfig,
+    })
     use({
         "tami5/lspsaga.nvim",
         event = "BufRead",
@@ -85,10 +100,10 @@ packer.startup(function(use)
                     enable = true,
                     sign = true,
                     sign_priority = 60,
-                    virtual_text = false
-                }
+                    virtual_text = false,
+                },
             })
-        end
+        end,
     })
     use({ "rafamadriz/friendly-snippets" })
     use({
@@ -143,4 +158,3 @@ packer.startup(function(use)
         end,
     })
 end)
-
