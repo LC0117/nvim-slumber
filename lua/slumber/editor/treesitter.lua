@@ -1,5 +1,5 @@
-vim.api.nvim_command("set foldmethod=expr")
-vim.api.nvim_command("set foldexpr=nvim_treesitter#foldexpr()")
+vim.cmd("set foldmethod=expr")
+vim.cmd("set foldexpr=nvim_treesitter#foldexpr()")
 local parsers_config = require("nvim-treesitter.parsers").get_parser_configs()
 parsers_config.matlab = {
     install_info = {
