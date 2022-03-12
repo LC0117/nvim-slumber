@@ -46,7 +46,6 @@ local binds = {
     shiftwidth = 4,
     softtabstop = -1,
     relativenumber = true,
-    foldenable = false,
 }
 
 local function mkwork()
