@@ -110,6 +110,7 @@ local clients = {
   'pyright',
   'ocamllsp',
   'rust_analyzer',
+  'dartls'
 }
 
 for _, lsp in ipairs(clients) do
