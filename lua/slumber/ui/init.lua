@@ -1,26 +1,26 @@
 local M = {}
 
 function M.cupcin()
-    require("slumber.ui.cupcin")
+  require('slumber.ui.cupcin')
 end
 
 function M.onedarkpro()
-    require("onedarkpro").setup({
-        styles = {
-            comments = "italic",
-            keywords = "bold,italic",
-            functions = "italic",
-        },
-        options = {
-            bold = true,
-            italic = true,
-            underline = true,
-            undercurl = true,
-            cursorline = true,
-            terminal_colors = true,
-        }
-    })
-    require("onedarkpro").load()
+  require('onedarkpro').setup({
+    styles = {
+      comments = 'italic',
+      keywords = 'bold,italic',
+      functions = 'italic',
+    },
+    options = {
+      bold = true,
+      italic = true,
+      underline = true,
+      undercurl = true,
+      cursorline = true,
+      terminal_colors = true,
+    },
+  })
+  require('onedarkpro').load()
 end
 
 -- function M.tokyo()
@@ -35,23 +35,23 @@ end
 -- end
 
 function M.blankline()
-    require("slumber.ui.indent_blankline")
+  require('slumber.ui.indent_blankline')
 end
 
 function M.lualine()
-    require("slumber.ui.lualine")
+  require('slumber.ui.lualine')
 end
 
 function M.bufferline()
-    require("slumber.ui.bufferline")
+  require('slumber.ui.bufferline')
 end
 
 function M.gitsigns()
-    require("slumber.ui.gitsigns")
+  require('slumber.ui.gitsigns')
 end
 
 function M.tree()
-    require("slumber.ui.nvim_tree")
+  require('slumber.ui.nvim_tree')
 end
 
 return M

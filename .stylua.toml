@@ -1,3 +1,3 @@
-indent_width = 4
+indent_width = 2
 indent_type = "Spaces"
-quote_style = "ForceDouble"
+quote_style = "ForceSingle"
