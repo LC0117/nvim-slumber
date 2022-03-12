@@ -69,6 +69,17 @@ packer.startup(function(use)
   use({ 'p00f/nvim-ts-rainbow', after = 'nvim-treesitter', config = editor.rainbow })
   use({ 'andymass/vim-matchup', after = 'nvim-treesitter', config = editor.matchup })
   use({ 'windwp/nvim-ts-autotag', after = 'nvim-treesitter', config = editor.autotag })
+  use({
+    'anuvyklack/pretty-fold.nvim',
+    after = "nvim-treesitter",
+    config = function ()
+      require('pretty-fold').setup()
+      require('pretty-fold.preview').setup({
+        key = 'h',
+        border = 'rounded'
+      })
+    end
+  })
 
   -- language and develop
   use({ 'udalov/kotlin-vim', ft = 'kotlin' })
