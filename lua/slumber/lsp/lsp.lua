@@ -18,7 +18,7 @@ capabilities.textDocument.completion.completionItem.resolveSupport = {
   properties = { 'documentation', 'detail', 'additionalTextEdits' },
 }
 capabilities.workspace.configuration = true
-capabilities.offsetEncodings = { 'utf-16' }
+capabilities.offsetEncoding = { 'utf-16' }
 
 lsp_installer.settings({
   ui = {
