@@ -109,6 +109,7 @@ local clients = {
     "typeprof",
     "pyright",
     "ocamllsp",
+    "rust_analyzer"
 }
 
 for _, lsp in ipairs(clients) do
