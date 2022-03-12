@@ -1,2 +1,1 @@
-require("slumber")
-
+require('slumber')
