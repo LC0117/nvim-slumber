@@ -23,9 +23,9 @@ capabilities.offsetEncoding = { 'utf-16' }
 lsp_installer.settings({
   ui = {
     icons = {
-      server_installed = '✓',
-      server_pending = '➜',
-      server_uninstalled = '✗',
+      server_installed = '',
+      server_pending = '',
+      server_uninstalled = '',
     },
   },
 })
