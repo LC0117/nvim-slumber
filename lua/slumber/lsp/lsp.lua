@@ -107,7 +107,7 @@ local clients = {
   'cssls',
   'svls',
   'typeprof',
-  'pyright',
+  'pylsp',
   'ocamllsp',
   'rust_analyzer',
   'dartls'
