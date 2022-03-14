@@ -13,9 +13,6 @@ end
 nmap('<C-F>', [[:Telescope fd<CR>]])
 nmap('<C-G>', [[:Telescope live_grep<CR>]])
 
--- material toggle style
-map('n', '<leader>mm', [[<Cmd>lua require('material.functions').toggle_style()<CR>]], nsil)
-
 -- lsp formatting
 nmap('<leader><leader>', [[:lua vim.lsp.buf.formatting_sync()<CR>]])
 nmap('<leader>l', [[:lua require("vscode").change_style("light")<CR>]])
@@ -28,3 +25,7 @@ vmap('<c-r>', [[<Cmd>Lspsaga rename<CR>]])
 nmap('K', [[:Lspsaga hover_doc<CR>]])
 nmap('<leader>ca', [[:Lspsaga code_action<CR>]])
 vmap('<leader>ca', [[:Lspsaga range_code_action<CR>]])
+
+-- NvimTree settings
+nmap('<C-x>', [[:NvimTreeFocus<CR>]])
+nmap('<C-n>', [[:NvimTreeToggle<CR>]])

@@ -140,7 +140,7 @@ packer.startup(function(use)
   use({ 'windwp/nvim-autopairs', config = lsp.autopairs, after = 'nvim-cmp' })
   -- tools settings
   use({ 'ellisonleao/glow.nvim', opt = true, cmd = 'Glow', config = tools.glow })
-  use({ 'michaelb/sniprun', opt = true, run = 'bash install.sh', cmd = { 'SnipRun', '\'<,\'>SnipRun', 'SnipInfo' } })
+  use({ 'michaelb/sniprun', opt = true, run = 'bash install.sh', config = tools.sniprun, cmd = { 'SnipRun', '\'<,\'>SnipRun', 'SnipInfo' } })
   use({ 'folke/todo-comments.nvim', opt = true, event = 'BufRead', config = tools.todo })
   use({ 'numToStr/Comment.nvim', opt = true, after = 'nvim-ts-context-commentstring', config = tools.comment })
   use({ 'kevinhwang91/nvim-hlslens', opt = true, event = 'BufRead', config = tools.hlslens })
