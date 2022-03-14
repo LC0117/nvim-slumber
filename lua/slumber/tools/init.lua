@@ -8,14 +8,13 @@ function M.sniprun()
     interpreter_options = {},
     display = {
       'NvimNotify',
-      --"TempFloatingWindow",
-      'Classic',
+      'TempFloatingWindow',
     },
     display_options = {
       notification_timeout = 5,
     },
     inline_messages = 0,
-    borders = 'single',
+    borders = 'shadow',
   })
 end
 

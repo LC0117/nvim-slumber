@@ -40,7 +40,9 @@ local sources_users = {
   }),
   bd.chktex,
   bd.checkmake,
-  bd.cspell,
+  bd.cspell.with({
+    filetypes = { 'java', 'python', 'py' }
+  }),
   bd.php,
   bd.cppcheck,
   bd.eslint,
