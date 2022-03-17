@@ -1,6 +1,6 @@
 local options = {
   transparent_background = false,
-  --term_colors = true,
+  term_colors = true,
   styles = {
     comments = 'italic',
     functions = 'italic',

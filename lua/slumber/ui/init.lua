@@ -38,6 +38,19 @@ function M.blankline()
   require('slumber.ui.indent_blankline')
 end
 
+function M.fox()
+  require('nightfox').setup({
+    options = {
+      dim_inactive = true,
+      styles = {
+        comments = 'italic',
+        functions = 'italic',
+        keywords = 'bold',
+      },
+    },
+  })
+end
+
 function M.lualine()
   require('slumber.ui.lualine')
 end
