@@ -37,6 +37,9 @@ packer.startup(function(use)
 
   -- editor framework
   use({ 'catppuccin/nvim', as = 'catppuccin', config = ui.cupcin })
+  use({ 'shaunsingh/nord.nvim' })
+  use({ 'EdenEast/nightfox.nvim', config = ui.fox })
+  use({ 'rose-pine/neovim' })
   use({ 'startup-nvim/startup.nvim', config = editor.startup })
   use({ 'dstein64/vim-startuptime', opt = true, cmd = 'StartupTime' })
   use({ 'rebelot/kanagawa.nvim', config = editor.kanagawa })
@@ -71,14 +74,14 @@ packer.startup(function(use)
   use({ 'windwp/nvim-ts-autotag', after = 'nvim-treesitter', config = editor.autotag })
   use({
     'anuvyklack/pretty-fold.nvim',
-    after = "nvim-treesitter",
-    config = function ()
+    after = 'nvim-treesitter',
+    config = function()
       require('pretty-fold').setup()
       require('pretty-fold.preview').setup({
         key = 'h',
-        border = 'rounded'
+        border = 'rounded',
       })
-    end
+    end,
   })
 
   -- language and develop
@@ -89,6 +92,17 @@ packer.startup(function(use)
   use({
     'ionide/Ionide-vim',
     ft = { 'fsharp', 'fs', 'fsi', 'fsx' },
+  })
+  use({
+    'Saecki/crates.nvim',
+    after = 'nvim-cmp',
+    config = function()
+      require('crates').setup()
+      local cmp = require('cmp')
+      local config = cmp.get_config()
+      table.insert(config.sources, { name = 'crates' })
+      cmp.setup(config)
+    end,
   })
 
   -- lsp and completion
@@ -140,7 +154,13 @@ packer.startup(function(use)
   use({ 'windwp/nvim-autopairs', config = lsp.autopairs, after = 'nvim-cmp' })
   -- tools settings
   use({ 'ellisonleao/glow.nvim', opt = true, cmd = 'Glow', config = tools.glow })
-  use({ 'michaelb/sniprun', opt = true, run = 'bash install.sh', config = tools.sniprun, cmd = { 'SnipRun', '\'<,\'>SnipRun', 'SnipInfo' } })
+  use({
+    'michaelb/sniprun',
+    opt = true,
+    run = 'bash install.sh',
+    config = tools.sniprun,
+    cmd = { 'SnipRun', '\'<,\'>SnipRun', 'SnipInfo' },
+  })
   use({ 'folke/todo-comments.nvim', opt = true, event = 'BufRead', config = tools.todo })
   use({ 'numToStr/Comment.nvim', opt = true, after = 'nvim-ts-context-commentstring', config = tools.comment })
   use({ 'kevinhwang91/nvim-hlslens', opt = true, event = 'BufRead', config = tools.hlslens })

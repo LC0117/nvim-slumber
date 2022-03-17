@@ -1,6 +1,6 @@
 # Backup
 
-This repo is mainly for my backup. It works well on my mac and PC.
+This repo is mainly for my backup. It works well on my mac and PC. Installation is quite easy. Just make sure you have `git` installed in PATH, clone this repo, and open `nvim`. A command `:PackerSync` should be enough.
 
 
 

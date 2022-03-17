@@ -14,7 +14,11 @@ function M.sniprun()
       notification_timeout = 5,
     },
     inline_messages = 0,
-    borders = 'shadow',
+    borders = 'double',
+    snipruncolors = {
+      SniprunFloatingWinOk = { fg = '#98c379', ctermfg = 'Cyan' },
+      SniprunFloatingWinErr = { fg = '#abb2bf', ctermfg = 'DarkRed' },
+    },
   })
 end
 

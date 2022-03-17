@@ -7,7 +7,7 @@ parsers_config.matlab = {
   },
   filetype = 'matlab',
 }
-require('nvim-treesitter.install').prefer_git = true
+--require('nvim-treesitter.install').prefer_git = true
 -- require("nvim-treesitter.install").compilers = { "gcc" }
 require('nvim-treesitter.configs').setup({
   --ensure_installed = "maintained",

@@ -64,6 +64,7 @@ lsp_installer.on_server_ready(function(server)
   if server.name == 'sumneko_lua' then
     opts.settings = {
       Lua = {
+        completion = { callSnippet = 'replace' },
         diagnostics = { globals = { 'vim' } },
         workspace = {
           library = {
