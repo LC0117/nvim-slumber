@@ -30,7 +30,7 @@ lsp_installer.settings({
   },
 })
 
-local function custom_attach()
+local function custom_attach(client, bufnr)
   require('lsp_signature').on_attach({
     bind = true,
     floating_window = true,
@@ -40,6 +40,7 @@ local function custom_attach()
     handler_opts = { border = 'rounded' },
     transparency = 20,
   })
+  require('aerial').on_attach(client, bufnr)
 end
 
 local function ts_on_attach(client, bufnr)
@@ -54,7 +55,7 @@ local function ts_on_attach(client, bufnr)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gs', ':TSLspOrganize<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gr', ':TSLspRenameFile<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gi', ':TSLspImportAll<CR>', opts)
-  custom_attach()
+  custom_attach(client, bufnr)
 end
 
 lsp_installer.on_server_ready(function(server)
@@ -111,7 +112,7 @@ local clients = {
   'pylsp',
   'ocamllsp',
   'rust_analyzer',
-  'dartls'
+  'dartls',
 }
 
 for _, lsp in ipairs(clients) do

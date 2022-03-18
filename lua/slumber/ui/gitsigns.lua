@@ -17,6 +17,6 @@ require('gitsigns').setup({
   word_diff = false,
   diff_opts = { internal = true },
   preview_config = {
-    border = 'rounded'
-  }
+    border = 'rounded',
+  },
 })

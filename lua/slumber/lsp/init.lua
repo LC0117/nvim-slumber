@@ -28,4 +28,8 @@ function M.null_ls()
   require('slumber.lsp.null_ls')
 end
 
+function M.aerial()
+  require('slumber.lsp.aerial_symbols')
+end
+
 return M

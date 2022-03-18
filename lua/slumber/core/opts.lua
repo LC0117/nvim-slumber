@@ -50,7 +50,6 @@ local binds = {
 
 local function mkwork()
   vim.cmd([[filetype plugin indent on]])
-  vim.g.python_host_prog = '/usr/bin/python'
   vim.g.python3_host_prog = '/usr/bin/python3'
   for k, v in pairs(options) do
     vim.o[k] = v

@@ -11,7 +11,15 @@ require('lualine').setup({
   sections = {
     lualine_a = { { 'mode', separator = { left = '' }, right_padding = 2 } },
     lualine_b = { { 'branch' }, { 'diff' } },
-    lualine_c = {},
+    lualine_c = {
+      'aerial',
+      {
+        sep = '',
+        depth = nil,
+        dense = false,
+        dense_sep = '..',
+      },
+    },
     lualine_x = {
       {
         'diagnostics',
@@ -35,5 +43,10 @@ require('lualine').setup({
     lualine_z = {},
   },
   tabline = {},
-  extensions = {},
+  extensions = {
+    'nvim-tree',
+    'toggleterm',
+    'aerial',
+    'symbols-outline',
+  },
 })

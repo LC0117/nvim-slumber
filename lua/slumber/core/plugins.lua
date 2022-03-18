@@ -32,6 +32,13 @@ packer.init({
 
 packer.startup(function(use)
   use({ 'wbthomason/packer.nvim' })
+  use({
+    'lewis6991/impatient.nvim',
+    config = function()
+      require('impatient')
+      require('impatient').enable_profile()
+    end,
+  })
   use({ 'nvim-lua/plenary.nvim' })
   use({ 'nvim-lua/popup.nvim' })
 
@@ -41,7 +48,6 @@ packer.startup(function(use)
   use({ 'EdenEast/nightfox.nvim', config = ui.fox })
   use({ 'rose-pine/neovim' })
   use({ 'startup-nvim/startup.nvim', config = editor.startup })
-  use({ 'dstein64/vim-startuptime', opt = true, cmd = 'StartupTime' })
   use({ 'rebelot/kanagawa.nvim', config = editor.kanagawa })
   use({ 'olimorris/onedarkpro.nvim', config = ui.onedarkpro })
   use({ 'Mofiqul/vscode.nvim' })
@@ -50,7 +56,7 @@ packer.startup(function(use)
 
   -- ui and editing
   use({ 'lukas-reineke/indent-blankline.nvim', opt = true, event = 'BufRead', config = ui.blankline })
-  use({ 'nvim-lualine/lualine.nvim', event = 'BufRead', config = ui.lualine })
+  use({ 'nvim-lualine/lualine.nvim', after = 'nvim-lsp-installer', config = ui.lualine })
   use({ 'lewis6991/gitsigns.nvim', opt = true, event = { 'BufRead', 'BufNewFile' }, config = ui.gitsigns })
   use({ 'akinsho/bufferline.nvim', config = ui.bufferline, opt = true, event = 'BufRead' })
   use({ 'kyazdani42/nvim-tree.lua', opt = true, cmd = { 'NvimTreeToggle', 'NvimTreeOpen' }, config = ui.tree })
@@ -110,9 +116,10 @@ packer.startup(function(use)
   use({ 'jose-elias-alvarez/null-ls.nvim', config = lsp.null_ls, after = 'nvim-lspconfig' })
   use({ 'jose-elias-alvarez/nvim-lsp-ts-utils', after = 'nvim-lspconfig' })
   use({ 'ray-x/lsp_signature.nvim', after = 'nvim-lspconfig' })
+  use({ 'stevearc/aerial.nvim', after = 'nvim-lspconfig', config = lsp.aerial })
   use({
     'williamboman/nvim-lsp-installer',
-    after = { 'lsp_signature.nvim', 'nvim-lsp-ts-utils' },
+    after = { 'lsp_signature.nvim', 'nvim-lsp-ts-utils', 'aerial.nvim' },
     config = lsp.lspconfig,
   })
   use({

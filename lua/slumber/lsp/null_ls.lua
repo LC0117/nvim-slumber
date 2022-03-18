@@ -11,7 +11,7 @@ local sources_users = {
   bc.tags,
   bf.black,
   bf.clang_format.with({
-    filetypes = { 'c', 'cpp' }
+    filetypes = { 'c', 'cpp' },
   }),
   bf.fourmolu,
   bf.cmake_format,
@@ -41,7 +41,7 @@ local sources_users = {
   bd.chktex,
   bd.checkmake,
   bd.cspell.with({
-    filetypes = { 'java', 'python', 'py' }
+    filetypes = { 'java', 'python', 'py' },
   }),
   bd.php,
   bd.cppcheck,

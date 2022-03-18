@@ -45,7 +45,7 @@ function M.fox()
       styles = {
         comments = 'italic',
         functions = 'italic',
-        keywords = 'bold',
+        keywords = 'bold,italic',
       },
     },
   })

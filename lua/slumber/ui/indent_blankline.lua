@@ -5,10 +5,9 @@ require('indent_blankline').setup({
   show_current_context_start = true,
   show_trailing_blankline_indent = false,
   filetype_exclude = {
-    'startify',
-    'dashboard',
     'dotooagenda',
     'log',
+    'special',
     'fugitive',
     'gitcommit',
     'packer',
@@ -26,9 +25,10 @@ require('indent_blankline').setup({
     'undotree',
     'flutterToolsOutline',
     'startup',
+    'nofile',
     '', -- for all buffers without a file type
   },
-  buftype_exclude = { 'terminal', 'nofile' },
+  buftype_exclude = { 'terminal', 'nofile', 'special' },
   context_patterns = {
     'class',
     'function',
