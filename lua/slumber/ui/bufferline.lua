@@ -13,7 +13,7 @@ require('bufferline').setup({
     show_tab_indicators = true,
     diagnostics = 'nvim_lsp',
     always_show_bufferline = true,
-    separator_style = 'thin',
+    separator_style = 'thick',
     offsets = {
       {
         filetype = 'NvimTree',

@@ -119,4 +119,3 @@ require('startup').create_mappings({
   ['<leader>nf'] = '<cmd>Telescope new_file<CR>',
 })
 require('startup').setup(settings)
---require("startup").setup({theme = "dashboard"})

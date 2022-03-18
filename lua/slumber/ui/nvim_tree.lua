@@ -1,46 +1,31 @@
-vim.cmd[[
-let g:nvim_tree_icons = {
-    \ 'default': '',
-    \ 'symlink': '',
-    \ 'git': {
-    \   'unstaged': "",
-    \   'staged': "",
-    \   'unmerged': "",
-    \   'renamed': "➜",
-    \   'untracked': "★",
-    \   'deleted': "",
-    \   'ignored': "◌"
-    \   },
-    \ 'folder': {
-    \   'arrow_open': "",
-    \   'arrow_closed': "",
-    \   'default': "",
-    \   'open': "",
-    \   'empty': "",
-    \   'empty_open': "",
-    \   'symlink': "",
-    \   'symlink_open': "",
-    \   }
-    \ }
-]]
-
+vim.g.nvim_tree_icons = {
+  git = {
+    ignored = '',
+  },
+}
+vim.g.nvim_tree_indent_markers = 1
 local tree_cb = require('nvim-tree.config').nvim_tree_callback
 require('nvim-tree').setup({
   ignore = { '.git' },
   git = {
     enable = true,
-    ignore = false
+    ignore = false,
   },
-  open_on_tab = false,
-  disable_netrw = true,
+  disable_netrw = false,
   hijack_netrw = true,
   auto_close = false,
-  update_cwd = true,
+  update_cwd = false,
   highlight_opened_files = true,
   auto_ignore_ft = { 'startify', 'dashboard', 'startup' },
+  actions = {
+    open_file = {
+      quit_on_open = false,
+      resize_window = false,
+    },
+  },
   update_focused_file = {
     enable = true,
-    update_cwd = true,
+    update_cwd = false,
     ignore_list = {},
   },
   view = {

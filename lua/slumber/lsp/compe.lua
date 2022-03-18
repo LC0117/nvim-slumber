@@ -29,7 +29,7 @@ cmp.setup({
   },
 
   experimental = {
-    ghost_text = true
+    ghost_text = true,
   },
 
   documentation = {
@@ -75,7 +75,7 @@ cmp.setup({
         emoji = '[emoji]',
         neorg = '[NORG]',
         cmdline = '[cmd]',
-        crates = '[crates.io]'
+        crates = '[crates.io]',
       })[entry.source.name]
 
       vim_item.abbr = string.sub(vim_item.abbr, 1, 50)
