@@ -41,6 +41,7 @@ packer.startup(function(use)
   })
   use({ 'nvim-lua/plenary.nvim' })
   use({ 'nvim-lua/popup.nvim' })
+  use({ 'MunifTanjim/nui.nvim' })
 
   -- editor framework
   use({ 'catppuccin/nvim', as = 'catppuccin', config = ui.cupcin })
@@ -53,6 +54,7 @@ packer.startup(function(use)
   use({ 'Mofiqul/vscode.nvim' })
   use({ 'kyazdani42/nvim-web-devicons' })
   use({ 'rcarriga/nvim-notify', config = editor.notify })
+  use({ 'karb94/neoscroll.nvim', config = editor.neoscroll, event = 'BufRead' })
 
   -- ui and editing
   use({ 'lukas-reineke/indent-blankline.nvim', opt = true, event = 'BufRead', config = ui.blankline })
