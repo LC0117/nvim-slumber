@@ -11,7 +11,7 @@ cmp.setup.cmdline(':', {
 })
 cmp.setup.cmdline('/', {
   sources = {
-    { name = 'buffer', max_item_count = 15 },
+    { name = 'buffer', max_item_count = 10 },
   },
 })
 cmp.setup({

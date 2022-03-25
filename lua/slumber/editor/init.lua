@@ -1,7 +1,11 @@
 local M = {}
 
 function M.fidget()
-  require('fidget').setup({})
+  require('fidget').setup({
+    text = {
+      spinner = 'moon',
+    },
+  })
 end
 
 function M.notify()
@@ -47,6 +51,13 @@ end
 
 function M.treesitter()
   require('slumber.editor.treesitter')
+end
+
+function M.neoscroll()
+  require('neoscroll').setup({
+    hide_cursor = true,
+    stop_eof = true,
+  })
 end
 
 function M.commentstring()

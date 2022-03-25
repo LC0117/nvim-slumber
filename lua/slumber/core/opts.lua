@@ -21,7 +21,7 @@ local options = {
   virtualedit = 'block',
   encoding = 'utf-8',
   viewoptions = 'folds,cursor,curdir,slash,unix',
-  laststatus = 2,
+  laststatus = 3,
   backup = false,
   writebackup = false,
   swapfile = false,
@@ -30,6 +30,7 @@ local options = {
   showbreak = '↳  ',
   listchars = 'tab:»·,nbsp:+,trail:·,extends:→,precedes:←',
   backspace = 'indent,eol,start',
+  updatetime = 150,
 }
 
 local binds = {

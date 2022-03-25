@@ -1,4 +1,4 @@
-vim.cmd([[let mapleader = ","]])
+vim.cmd([[let mapleader = " "]])
 local map = vim.api.nvim_set_keymap
 local nsil = { noremap = true, silent = true }
 
@@ -10,8 +10,8 @@ local function vmap(key, cmd)
   map('v', key, cmd, nsil)
 end
 -- telescope settings
-nmap('<C-F>', [[:Telescope fd<CR>]])
-nmap('<C-G>', [[:Telescope live_grep<CR>]])
+nmap('<leader>f', [[:Telescope fd<CR>]])
+nmap('<leader>g', [[:Telescope live_grep<CR>]])
 
 -- lsp formatting
 nmap('<leader><leader>', [[:lua vim.lsp.buf.formatting_sync()<CR>]])

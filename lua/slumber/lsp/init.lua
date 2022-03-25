@@ -15,6 +15,22 @@ function M.cmp_git()
   require('cmp_git').setup()
 end
 
+function M.lspsaga()
+  require('lspsaga').setup({
+    border_style = 'round',
+    code_action_prompt = {
+      enable = true,
+      sign = true,
+      sign_priority = 60,
+      virtual_text = false,
+    },
+    error_sign = '❌',
+    warn_sign = '⚠️',
+    hint_sign = '💡',
+    infor_sign = 'ℹ️',
+  })
+end
+
 function M.compe()
   require('slumber.lsp.compe')
 end
