@@ -1,12 +1,10 @@
-local function apple()
-  return [[]]
-end
 require('lualine').setup({
   options = {
     icons_enabled = true,
     theme = 'auto',
     component_separators = { left = '|', right = '|' },
     section_separators = { left = '', right = '' },
+    globalstatus = true
   },
   sections = {
     lualine_a = { { 'mode', separator = { left = '' }, right_padding = 2 } },
@@ -43,10 +41,4 @@ require('lualine').setup({
     lualine_z = {},
   },
   tabline = {},
-  extensions = {
-    'nvim-tree',
-    'toggleterm',
-    'aerial',
-    'symbols-outline',
-  },
 })
