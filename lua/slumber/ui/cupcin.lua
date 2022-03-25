@@ -13,10 +13,10 @@ local options = {
     native_lsp = {
       enabled = true,
       virtual_text = {
-        errors = 'italic',
-        hints = 'italic',
+        errors = 'italic,bold',
+        hints = 'NONE',
         warnings = 'italic',
-        information = 'italic',
+        information = 'NONE',
       },
       underlines = {
         errors = 'undercurl',

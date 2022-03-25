@@ -2,11 +2,9 @@ local bf = require('null-ls').builtins.formatting
 local bd = require('null-ls').builtins.diagnostics
 local ba = require('null-ls').builtins.code_actions
 local bc = require('null-ls').builtins.completion
-local methods = require('null-ls').methods
 -- a lot of builtin sources
 local sources_users = {
   ba.eslint,
-  ba.gitsigns,
   ba.shellcheck,
   bc.tags,
   bf.black,

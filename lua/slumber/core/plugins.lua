@@ -127,17 +127,7 @@ packer.startup(function(use)
   use({
     'tami5/lspsaga.nvim',
     event = 'BufRead',
-    config = function()
-      require('lspsaga').setup({
-        border_style = 'round',
-        code_action_prompt = {
-          enable = true,
-          sign = true,
-          sign_priority = 60,
-          virtual_text = false,
-        },
-      })
-    end,
+    config = lsp.lspsaga,
   })
   use({ 'rafamadriz/friendly-snippets' })
   use({
