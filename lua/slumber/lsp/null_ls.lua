@@ -6,6 +6,7 @@ local bc = require('null-ls').builtins.completion
 local sources_users = {
   ba.eslint,
   ba.shellcheck,
+  ba.refactoring,
   bc.tags,
   bf.black,
   bf.clang_format.with({
