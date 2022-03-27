@@ -8,6 +8,10 @@ function M.fidget()
   })
 end
 
+function M.refactor()
+  require('refactoring').setup({})
+end
+
 function M.notify()
   require('notify').setup({
     stages = 'fade_in_slide_out',
@@ -25,28 +29,8 @@ function M.notify()
   vim.notify = require('notify')
 end
 
-function M.kanagawa()
-  require('kanagawa').setup({
-    undercurl = true,
-    commentStyle = 'italic',
-    functionStyle = 'italic',
-    keywordStyle = 'italic,bold',
-    specialException = true,
-    transparent = false,
-  })
-end
-
-function M.onenord()
-  require('onenord').setup({
-    borders = true,
-    fade_nc = true,
-    styles = {
-      comments = 'italic',
-      keywords = 'italic,bold',
-      functions = 'italic',
-      diagnostics = 'undercurl',
-    },
-  })
+function M.textobjects()
+    require("slumber.editor.textobjects")
 end
 
 function M.treesitter()
@@ -104,60 +88,6 @@ function M.autotag()
         'typescriptreact',
         'vue',
         'svelte',
-      },
-    },
-  })
-end
-
-function M.textobjects()
-  require('nvim-treesitter.configs').setup({
-    textobjects = {
-      select = {
-        enable = true,
-        lookahead = true,
-        keymaps = {
-          ['af'] = '@function.outer',
-          ['if'] = '@function.inner',
-          ['ac'] = '@class.outer',
-          ['ic'] = '@class.inner',
-        },
-      },
-      swap = {
-        enable = true,
-        swap_next = {
-          ['<leader>sn'] = '@parameter.inner',
-        },
-        swap_previous = {
-          ['<leader>sN'] = '@parameter.inner',
-        },
-      },
-      move = {
-        enable = true,
-        set_jumps = true,
-        goto_next_start = {
-          [']m'] = '@function.outer',
-          [']]'] = '@class.outer',
-        },
-        goto_next_end = {
-          [']M'] = '@function.outer',
-          [']['] = '@class.outer',
-        },
-        goto_previous_start = {
-          ['[m'] = '@function.outer',
-          ['[['] = '@class.outer',
-        },
-        goto_previous_end = {
-          ['[M'] = '@function.outer',
-          ['[]'] = '@class.outer',
-        },
-      },
-      lsp_interop = {
-        enable = true,
-        border = 'none',
-        peek_definition_code = {
-          ['<leader>df'] = '@function.outer',
-          ['<leader>dF'] = '@class.outer',
-        },
       },
     },
   })
