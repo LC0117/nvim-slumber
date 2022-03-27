@@ -4,7 +4,7 @@ local options = {
   styles = {
     comments = 'italic',
     functions = 'italic',
-    keywords = 'italic',
+    keywords = 'italic,bold',
     strings = 'NONE',
     variables = 'NONE',
   },
