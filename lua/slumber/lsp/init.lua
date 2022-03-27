@@ -23,11 +23,7 @@ function M.lspsaga()
       sign = true,
       sign_priority = 60,
       virtual_text = false,
-    },
-    error_sign = '❌',
-    warn_sign = '⚠️',
-    hint_sign = '💡',
-    infor_sign = 'ℹ️',
+    }
   })
 end
 

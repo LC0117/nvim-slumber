@@ -14,8 +14,5 @@ require("nvim-tree").setup({
     enable = true,
     update_cwd = false,
     ignore_list = {},
-  },
-  diagnostics = {
-      enable = true
   }
 })
