@@ -99,6 +99,18 @@ packer.startup(function(use)
   use({ 'ollykel/v-vim', ft = { 'vlang', 'vsh' } })
   use({ 'JuliaEditorSupport/julia-vim' })
   use({
+    'akinsho/pubspec-assist.nvim',
+    ft = { 'yaml', 'yml' },
+    rocks = {
+      'lyaml',
+      server = 'http://rocks.moonscript.org',
+      env = { YAML_DIR = '/opt/homebrew/opt/libyaml' },
+    },
+    config = function()
+      require('pubspec-assist').setup()
+    end,
+  })
+  use({
     'ionide/Ionide-vim',
     ft = { 'fsharp', 'fs', 'fsi', 'fsx' },
   })
