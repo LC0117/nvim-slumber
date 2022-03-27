@@ -30,7 +30,7 @@ function M.notify()
 end
 
 function M.textobjects()
-    require("slumber.editor.textobjects")
+  require('slumber.editor.textobjects')
 end
 
 function M.treesitter()
@@ -108,12 +108,14 @@ function M.startup()
 end
 
 function M.matchup()
-  vim.cmd([[let g:matchup_matchparen_offscreen = {'method': 'popup'}]])
   require('nvim-treesitter.configs').setup({
     matchup = {
       enable = true,
     },
   })
+  vim.g.matchup_matchparen_offscreen = {
+    method = 'popup',
+  }
 end
 
 return M
