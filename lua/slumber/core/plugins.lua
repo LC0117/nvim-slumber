@@ -49,7 +49,7 @@ packer.startup(function(use)
   use({ 'EdenEast/nightfox.nvim', config = ui.fox })
   use({ 'rose-pine/neovim' })
   use({ 'startup-nvim/startup.nvim', config = editor.startup })
-  use({ 'rebelot/kanagawa.nvim', config = editor.kanagawa })
+  use({ 'rebelot/kanagawa.nvim', config = ui.kanagawa })
   use({ 'olimorris/onedarkpro.nvim', config = ui.onedarkpro })
   use({ 'Mofiqul/vscode.nvim' })
   use({ 'kyazdani42/nvim-web-devicons' })
@@ -66,6 +66,7 @@ packer.startup(function(use)
 
   -- treesitter things
   use({ 'nvim-treesitter/nvim-treesitter', event = 'BufRead', config = editor.treesitter })
+  use({ 'ThePrimeagen/refactoring.nvim', after = 'nvim-treesitter', config = editor.refactor })
   use({ 'romgrk/nvim-treesitter-context', after = 'nvim-treesitter', config = editor.context })
   use({
     'nvim-treesitter/nvim-treesitter-textobjects',

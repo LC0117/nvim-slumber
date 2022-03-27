@@ -23,6 +23,17 @@ function M.onedarkpro()
   require('onedarkpro').load()
 end
 
+function M.kanagawa()
+  require('kanagawa').setup({
+    undercurl = true,
+    commentStyle = 'italic',
+    functionStyle = 'italic',
+    keywordStyle = 'italic,bold',
+    specialException = true,
+    transparent = false,
+  })
+end
+
 -- function M.tokyo()
 --     vim.g.tokyonight_transparent = false
 --     vim.g.tokyonight_transparent_sidebar = false
