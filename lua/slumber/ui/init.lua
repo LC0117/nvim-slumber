@@ -1,57 +1,5 @@
 local M = {}
 
-function M.cupcin()
-  require('slumber.ui.cupcin')
-end
-
-function M.onedarkpro()
-  require('onedarkpro').setup({
-    styles = {
-      comments = 'italic',
-      keywords = 'bold,italic',
-      functions = 'italic',
-    },
-    options = {
-      bold = true,
-      italic = true,
-      underline = true,
-      undercurl = true,
-      cursorline = true,
-      terminal_colors = true,
-      transparency = function()
-        if vim.fn.exists('g:neovide') == 1 then
-          return true
-        else
-          return false
-        end
-      end,
-    },
-  })
-  require('onedarkpro').load()
-end
-
-function M.kanagawa()
-  require('kanagawa').setup({
-    undercurl = true,
-    commentStyle = 'italic',
-    functionStyle = 'italic',
-    keywordStyle = 'italic,bold',
-    specialException = true,
-    transparent = false,
-  })
-end
-
--- function M.tokyo()
---     vim.g.tokyonight_transparent = false
---     vim.g.tokyonight_transparent_sidebar = false
---     vim.g.tokyonight_style = "night"
---     vim.g.tokyonight_italic_functions = true
---     if vim.fn.has("gui_vimr") == 1 or vim.fn.has("neovide") == 1 then
---         vim.g.tokyonight_transparent = false
---         vim.g.tokyonight_transparent_sidebar = false
---     end
--- end
-
 function M.blankline()
   require('slumber.ui.indent_blankline')
 end
