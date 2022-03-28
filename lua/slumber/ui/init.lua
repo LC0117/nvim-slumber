@@ -1,9 +1,5 @@
 local M = {}
 
-function M.blankline()
-  require('slumber.ui.indent_blankline')
-end
-
 function M.fox()
   require('nightfox').setup({
     options = {

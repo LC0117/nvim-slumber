@@ -57,7 +57,6 @@ packer.startup(function(use)
   use({ 'karb94/neoscroll.nvim', config = editor.neoscroll, event = 'BufRead' })
 
   -- ui and editing
-  use({ 'lukas-reineke/indent-blankline.nvim', opt = true, event = 'BufRead', config = ui.blankline })
   use({ 'nvim-lualine/lualine.nvim', after = 'nvim-lsp-installer', config = ui.lualine })
   use({ 'lewis6991/gitsigns.nvim', opt = true, event = { 'BufRead', 'BufNewFile' }, config = ui.gitsigns })
   use({ 'akinsho/bufferline.nvim', config = ui.bufferline, opt = true, event = 'BufRead' })
