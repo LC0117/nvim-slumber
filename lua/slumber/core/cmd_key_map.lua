@@ -21,7 +21,7 @@ nmap('<leader>m', [[:lua require("vscode").change_style("dark")<CR>]])
 nmap('<C-Q>', [[<Cmd>qall<CR>]])
 nmap('<C-S>', [[:wall<CR>]])
 
-vmap('<c-r>', [[<Cmd>Lspsaga rename<CR>]])
+vmap('<leader>r', [[<Cmd>Lspsaga rename<CR>]])
 nmap('K', [[:Lspsaga hover_doc<CR>]])
 nmap('<leader>ca', [[:Lspsaga code_action<CR>]])
 vmap('<leader>ca', [[:Lspsaga range_code_action<CR>]])
