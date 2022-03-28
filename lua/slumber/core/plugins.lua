@@ -61,7 +61,7 @@ packer.startup(function(use)
   use({ 'nvim-lualine/lualine.nvim', after = 'nvim-lsp-installer', config = ui.lualine })
   use({ 'lewis6991/gitsigns.nvim', opt = true, event = { 'BufRead', 'BufNewFile' }, config = ui.gitsigns })
   use({ 'akinsho/bufferline.nvim', config = ui.bufferline, opt = true, event = 'BufRead' })
-  use({ 'kyazdani42/nvim-tree.lua', opt = true, cmd = { 'NvimTreeToggle', 'NvimTreeOpen' }, config = ui.tree })
+  use({ 'nvim-neo-tree/neo-tree.nvim', config = ui.tree, cmd = 'Neotree' })
   use({ 'j-hui/fidget.nvim', event = 'BufReadPre', config = editor.fidget })
 
   -- treesitter things

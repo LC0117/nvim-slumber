@@ -18,6 +18,13 @@ function M.onedarkpro()
       undercurl = true,
       cursorline = true,
       terminal_colors = true,
+      transparency = function()
+        if vim.fn.exists('g:neovide') == 1 then
+          return true
+        else
+          return false
+        end
+      end,
     },
   })
   require('onedarkpro').load()

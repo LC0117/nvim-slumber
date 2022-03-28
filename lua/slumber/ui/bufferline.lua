@@ -16,7 +16,7 @@ require('bufferline').setup({
     separator_style = 'thin',
     offsets = {
       {
-        filetype = 'NvimTree',
+        filetype = 'neo-tree',
         text = 'File Explorer',
         text_align = 'center',
         padding = 1,
