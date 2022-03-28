@@ -7,6 +7,7 @@ local function gui_no_trans()
 end
 
 local no_gui = gui_no_trans()
+local gui = not no_gui
 
 -- colorscheme catppuccin
 local options = {
@@ -42,7 +43,7 @@ local options = {
     gitsigns = true,
     telescope = true,
     nvimtree = {
-      enabled = true,
+      enabled = false,
       show_root = false,
     },
     which_key = false,
@@ -106,3 +107,11 @@ require('nightfox').setup({
     transparent = no_gui,
   },
 })
+
+require('rose-pine').setup({
+  dark_variant = 'moon',
+  dim_nc_background = gui,
+  disable_background = no_gui,
+})
+
+vim.g.vscode_transparent = 1 - vim.fn.exists('g:neovide') - vim.fn.has('gui_vimr')

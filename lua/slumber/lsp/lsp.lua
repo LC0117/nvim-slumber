@@ -38,7 +38,7 @@ local function custom_attach(client, bufnr)
     hi_parameter = 'Search',
     hint_prefix = ': ',
     handler_opts = { border = 'rounded' },
-    transparency = 20,
+    transparency = 0,
   })
   require('aerial').on_attach(client, bufnr)
 end
