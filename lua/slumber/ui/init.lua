@@ -1,18 +1,5 @@
 local M = {}
 
-function M.fox()
-  require('nightfox').setup({
-    options = {
-      dim_inactive = true,
-      styles = {
-        comments = 'italic',
-        functions = 'italic',
-        keywords = 'bold,italic',
-      },
-    },
-  })
-end
-
 function M.lualine()
   require('slumber.ui.lualine')
 end
