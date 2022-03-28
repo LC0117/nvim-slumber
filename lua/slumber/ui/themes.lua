@@ -6,8 +6,16 @@ local function gui_no_trans()
   end
 end
 
+local function gui_trans()
+  if vim.fn.exists('g:neovide') == 1 or vim.fn.has('gui_vimr') == 1 then
+    return true
+  else
+    return false
+  end
+end
+
 local no_gui = gui_no_trans()
-local gui = not no_gui
+local gui = gui_trans()
 
 -- colorscheme catppuccin
 local options = {
@@ -81,9 +89,9 @@ require('onedarkpro').setup({
     cursorline = true,
     terminal_colors = true,
     transparency = no_gui,
+    window_unfocused_color = gui,
   },
 })
-require('onedarkpro').load() --makes onedarkpro the default theme
 
 -- kanagawa
 require('kanagawa').setup({
@@ -93,12 +101,13 @@ require('kanagawa').setup({
   keywordStyle = 'italic,bold',
   specialException = true,
   transparent = no_gui,
+  dimInactive = gui,
 })
 
 -- nightfox
 require('nightfox').setup({
   options = {
-    dim_inactive = true,
+    dim_inactive = gui,
     styles = {
       comments = 'italic',
       functions = 'italic',
@@ -115,3 +124,4 @@ require('rose-pine').setup({
 })
 
 vim.g.vscode_transparent = 1 - vim.fn.exists('g:neovide') - vim.fn.has('gui_vimr')
+vim.cmd('colorscheme catppuccin')
