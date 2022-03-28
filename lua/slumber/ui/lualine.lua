@@ -12,7 +12,7 @@ require('lualine').setup({
     lualine_c = {
       'aerial',
       {
-        sep = '',
+        separator = '',
         depth = nil,
         dense = false,
         dense_sep = '..',

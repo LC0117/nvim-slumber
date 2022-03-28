@@ -1,5 +1,7 @@
 vim.g.neovide_transparency = 0.9
-vim.cmd([[let g:neovide_remember_window_size = v:true]])
+vim.g.neovide_remember_window_size = true
+vim.g.neovide_input_use_logo = true
+vim.g.neovide_cursor_vfx_mode = "torpedo"
 vim.cmd([[
     function! s:write_server_name() abort
         let nvim_server_file = (has('win32') ? $TEMP : '/tmp') . '/vimtexserver.txt'

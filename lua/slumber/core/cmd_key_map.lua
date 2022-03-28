@@ -27,5 +27,5 @@ nmap('<leader>ca', [[:Lspsaga code_action<CR>]])
 vmap('<leader>ca', [[:Lspsaga range_code_action<CR>]])
 
 -- NvimTree settings
-nmap('<C-x>', [[:NvimTreeFocus<CR>]])
-nmap('<C-n>', [[:NvimTreeToggle<CR>]])
+nmap('<C-x>', [[:Neotree focus<CR>]])
+nmap('<C-n>', [[:Neotree<CR>]])
