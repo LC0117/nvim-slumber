@@ -16,4 +16,8 @@ function M.tree()
   require('slumber.ui.nvim_tree')
 end
 
+function M.blankline()
+  require('slumber.ui.indentline')
+end
+
 return M

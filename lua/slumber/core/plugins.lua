@@ -62,6 +62,7 @@ packer.startup(function(use)
   use({ 'akinsho/bufferline.nvim', config = ui.bufferline, opt = true, event = 'BufRead' })
   use({ 'nvim-neo-tree/neo-tree.nvim', config = ui.tree, cmd = 'Neotree' })
   use({ 'j-hui/fidget.nvim', event = 'BufReadPre', config = editor.fidget })
+  use({ 'lukas-reineke/indent-blankline.nvim', opt = true, event = 'BufRead', config = ui.blankline })
 
   -- treesitter things
   use({ 'nvim-treesitter/nvim-treesitter', event = 'BufRead', config = editor.treesitter })
