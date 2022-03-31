@@ -1,0 +1,30 @@
+require('indent_blankline').setup({
+  char = '│',
+  show_first_indent_level = true,
+  indentLine_enabled = 1,
+  filetype_exclude = {
+    'startify',
+    'dashboard',
+    'log',
+    'fugitive',
+    'gitcommit',
+    'packer',
+    'vimwiki',
+    'markdown',
+    'json',
+    'txt',
+    'help',
+    'todoist',
+    'neo-tree',
+    'git',
+    'TelescopePrompt',
+    'undotree',
+    'flutterToolsOutline',
+    '', -- for all buffers without a file type
+  },
+  buftype_exclude = { 'terminal', 'nofile', 'special', '' },
+  show_trailing_blankline_indent = false,
+  show_current_context = true,
+  show_current_context_start = true,
+})
+vim.cmd('autocmd CursorMoved * IndentBlanklineRefresh')

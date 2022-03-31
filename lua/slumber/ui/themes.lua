@@ -1,25 +1,6 @@
-local function gui_no_trans()
-  if vim.fn.exists('g:neovide') == 1 or vim.fn.has('gui_vimr') == 1 then
-    return false
-  else
-    return true
-  end
-end
-
-local function gui_trans()
-  if vim.fn.exists('g:neovide') == 1 or vim.fn.has('gui_vimr') == 1 then
-    return true
-  else
-    return false
-  end
-end
-
-local no_gui = gui_no_trans()
-local gui = gui_trans()
-
 -- colorscheme catppuccin
 local options = {
-  transparent_background = no_gui,
+  transparent_background = false,
   term_colors = true,
   styles = {
     comments = 'italic',
@@ -88,8 +69,8 @@ require('onedarkpro').setup({
     undercurl = true,
     cursorline = true,
     terminal_colors = true,
-    transparency = no_gui,
-    window_unfocused_color = gui,
+    transparency = false,
+    window_unfocused_color = false,
   },
 })
 
@@ -100,28 +81,27 @@ require('kanagawa').setup({
   functionStyle = 'italic',
   keywordStyle = 'italic,bold',
   specialException = true,
-  transparent = no_gui,
-  dimInactive = gui,
+  transparent = false,
+  dimInactive = false,
 })
 
 -- nightfox
 require('nightfox').setup({
   options = {
-    dim_inactive = gui,
+    dim_inactive = false,
     styles = {
       comments = 'italic',
       functions = 'italic',
       keywords = 'bold,italic',
     },
-    transparent = no_gui,
+    transparent = false,
   },
 })
 
 require('rose-pine').setup({
   dark_variant = 'moon',
-  dim_nc_background = gui,
-  disable_background = no_gui,
+  dim_nc_background = false,
+  disable_background = false,
 })
 
-vim.g.vscode_transparent = 1 - vim.fn.exists('g:neovide') - vim.fn.has('gui_vimr')
-vim.cmd('colorscheme catppuccin')
+require('onedarkpro').load()
