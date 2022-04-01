@@ -20,7 +20,7 @@ local packer = require('packer')
 packer.init({
   display = {
     open_fn = function()
-      return require('packer.util').float({ border = 'single' })
+      return require('packer.util').float({ border = 'rounded' })
     end,
   },
   max_jobs = 20,
