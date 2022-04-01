@@ -49,7 +49,7 @@ require('neo-tree').setup({
       symbols = {
         added = '✚',
         deleted = '✖',
-        modified = '',
+        -- modified = '',
         renamed = '',
         untracked = '',
         ignored = '',
@@ -93,7 +93,7 @@ require('neo-tree').setup({
     filtered_items = {
       visible = false, -- when true, they will just be displayed differently than normal items
       hide_dotfiles = true,
-      hide_gitignored = false,
+      hide_gitignored = true,
       hide_by_name = {
         '.DS_Store',
         'thumbs.db',
