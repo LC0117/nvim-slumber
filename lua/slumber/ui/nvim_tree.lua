@@ -49,7 +49,7 @@ require('neo-tree').setup({
       symbols = {
         added = '✚',
         deleted = '✖',
-        -- modified = '',
+        modified = '',
         renamed = '',
         untracked = '',
         ignored = '',
