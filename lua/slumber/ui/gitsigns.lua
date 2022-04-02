@@ -1,8 +1,9 @@
 require('gitsigns').setup({
   signs = {
     delete = { hl = 'GitSignsDelete', text = '' },
+    change = {hl = 'GitSignsChange', text = ''},
     topdelete = { hl = 'GitSignsDelete', text = '' },
-    changedelete = { hl = 'GitSignsChange', text = '' },
+    changedelete = { hl = 'GitSignsChange', text = 'ﯞ' },
   },
   linehl = false,
   numhl = true,
