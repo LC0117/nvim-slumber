@@ -48,6 +48,8 @@ packer.startup(function(use)
     'rose-pine/neovim',
     'rebelot/kanagawa.nvim',
     'olimorris/onedarkpro.nvim',
+    'marko-cerovac/material.nvim',
+    'folke/tokyonight.nvim'
   })
   use({ 'startup-nvim/startup.nvim', config = editor.startup })
   use({ 'rcarriga/nvim-notify', config = editor.notify })
