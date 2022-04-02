@@ -104,4 +104,16 @@ require('rose-pine').setup({
   disable_background = false,
 })
 
+vim.g.material_style = "oceanic"
+vim.g.tokyonight_italic_functions = true
+require('material').setup({
+  italics = {
+    comments = true,
+    keywords = false,
+    functions = true,
+    strings = false,
+    variables = false,
+  },
+})
+
 require('onedarkpro').load()
