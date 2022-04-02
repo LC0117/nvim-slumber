@@ -31,28 +31,25 @@ packer.init({
 })
 
 packer.startup(function(use)
-  use({ 'wbthomason/packer.nvim' })
   use({
+    'wbthomason/packer.nvim',
     'lewis6991/impatient.nvim',
-    config = function()
-      require('impatient')
-      require('impatient').enable_profile()
-    end,
+    'nvim-lua/plenary.nvim',
+    'nvim-lua/popup.nvim',
+    'MunifTanjim/nui.nvim',
+    'kyazdani42/nvim-web-devicons',
   })
-  use({ 'nvim-lua/plenary.nvim' })
-  use({ 'nvim-lua/popup.nvim' })
-  use({ 'MunifTanjim/nui.nvim' })
 
   -- editor framework
-  use({ 'catppuccin/nvim', as = 'catppuccin' })
-  use({ 'shaunsingh/nord.nvim' })
-  use({ 'EdenEast/nightfox.nvim' })
-  use({ 'rose-pine/neovim' })
+  use({
+    { 'catppuccin/nvim', as = 'catppuccin' },
+    'shaunsingh/nord.nvim',
+    'EdenEast/nightfox.nvim',
+    'rose-pine/neovim',
+    'rebelot/kanagawa.nvim',
+    'olimorris/onedarkpro.nvim',
+  })
   use({ 'startup-nvim/startup.nvim', config = editor.startup })
-  use({ 'rebelot/kanagawa.nvim' })
-  use({ 'olimorris/onedarkpro.nvim' })
-  use({ 'Mofiqul/vscode.nvim' })
-  use({ 'kyazdani42/nvim-web-devicons' })
   use({ 'rcarriga/nvim-notify', config = editor.notify })
   use({ 'karb94/neoscroll.nvim', config = editor.neoscroll, event = 'BufRead' })
 
