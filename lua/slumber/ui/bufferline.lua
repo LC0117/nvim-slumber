@@ -19,7 +19,6 @@ require('bufferline').setup({
         filetype = 'neo-tree',
         text = 'File Explorer',
         text_align = 'center',
-        padding = 1,
       },
     },
   },
