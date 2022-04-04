@@ -28,11 +28,6 @@ M['akinsho/bufferline.nvim'] = {
   config = [[require('slumber.plugins.bufferline')]],
 }
 
-M['lukas-reineke/indent-blankline.nvim'] = {
-  event = 'BufRead',
-  config = [[require('slumber.plugins.blankline')]],
-}
-
 M['nvim-neo-tree/neo-tree.nvim'] = {
   cmd = 'Neotree',
   config = [[require('slumber.plugins.filetree')]],
