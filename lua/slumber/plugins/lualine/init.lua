@@ -4,7 +4,7 @@ require('lualine').setup({
     theme = 'auto',
     component_separators = { left = '|', right = '|' },
     section_separators = { left = '', right = '' },
-    globalstatus = true
+    globalstatus = true,
   },
   sections = {
     lualine_a = { { 'mode', separator = { left = '' }, right_padding = 2 } },
