@@ -87,29 +87,15 @@ end)
 -- These are servers easy to setup
 local clients = {
   'clangd',
-  'clojure_lsp',
   'hls',
-  'cmake',
-  'vimls',
-  'bashls',
-  'dockerls',
   'gopls',
-  'taplo',
   'zls',
   'volar',
-  'yamlls',
   'solargraph',
-  'julials',
-  'jsonls',
   'r_language_server',
-  'fortls',
-  'html',
-  'svls',
-  'typeprof',
   'pylsp',
   'ocamllsp',
   'rust_analyzer',
-  'dartls',
 }
 
 for _, lsp in ipairs(clients) do
