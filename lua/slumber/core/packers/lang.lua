@@ -34,11 +34,10 @@ M['neovim/nvim-lspconfig'] = {
     { 'stevearc/aerial.nvim', after = 'nvim-treesitter', config = [[require('slumber.plugins.aerial')]] },
     { 'ray-x/lsp_signature.nvim', after = 'nvim-lspconfig', config = [[require('slumber.plugins.lsp_signature')]] },
     { 'jose-elias-alvarez/nvim-lsp-ts-utils' },
+    { 'b0o/schemastore.nvim' },
   },
   config = [[require('slumber.lsp')]],
 }
-
-M['JuliaEditorSupport/julia-vim'] = {}
 
 M['vuki656/package-info.nvim'] = {
   event = 'BufEnter package.json',

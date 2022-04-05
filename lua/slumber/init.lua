@@ -11,4 +11,5 @@ vim.cmd([[
     autocmd FileType tex,plaintex,latex call s:write_server_name()
 ]])
 require('impatient')
+vim.notify = require('notify')
 require('slumber.core')
