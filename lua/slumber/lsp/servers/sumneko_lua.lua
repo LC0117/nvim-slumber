@@ -1,4 +1,4 @@
-local defaults = require("slumber.lsp.defaults")
+local defaults = require('slumber.lsp.defaults')
 local M = {}
 
 M.settings = {

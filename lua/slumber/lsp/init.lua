@@ -8,7 +8,7 @@ vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.s
 local severity = vim.diagnostic.severity
 vim.diagnostic.config({
   virtual_text = {
-      prefix = '🙉🏻',
+    prefix = '🙉🏻',
     format = function(diagnostic)
       if diagnostic.severity == severity.ERROR then
         return string.format('❗️ERROR: %s', diagnostic.message)
