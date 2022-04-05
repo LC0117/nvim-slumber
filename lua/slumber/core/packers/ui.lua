@@ -30,6 +30,7 @@ M['akinsho/bufferline.nvim'] = {
 
 M['nvim-neo-tree/neo-tree.nvim'] = {
   cmd = 'Neotree',
+  setup = [[vim.g.neo_tree_remove_legacy_commands = 1]],
   config = [[require('slumber.plugins.filetree')]],
 }
 

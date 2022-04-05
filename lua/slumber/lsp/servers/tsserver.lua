@@ -1,4 +1,5 @@
 local M = {}
+local defaults = require("slumber.lsp.defaults")
 
 function M.on_attach(client, bufnr)
   local ts_utils = require('nvim-lsp-ts-utils')
@@ -36,6 +37,9 @@ function M.on_attach(client, bufnr)
 
   -- required to fix code action ranges and filter diagnostics
   ts_utils.setup_client(client)
+  defaults.on_attach(client, bufnr)
 end
+
+M.capabilities = defaults.capabilities
 
 return M

@@ -67,7 +67,8 @@ M['hrsh7th/nvim-cmp'] = {
     },
     {
       'L3MON4D3/LuaSnip',
-      requires = 'rafamadriz/friendly-snippets',
+      requires = { 'rafamadriz/friendly-snippets', event = 'BufRead' },
+      after = 'friendly-snippets',
       config = function()
         require('luasnip.loaders.from_vscode').load()
       end,
