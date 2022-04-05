@@ -21,6 +21,8 @@ installer.on_server_ready(function(server)
     opts = require('slumber.lsp.servers.tsserver')
   elseif server.name == 'jsonls' then
     opts = require('slumber.lsp.servers.jsonls')
+  elseif server.name == 'tailwindcss' then
+    opts = require('lua.slumber.lsp.servers.tailwindcss')
   end
   server:setup(opts)
 end)

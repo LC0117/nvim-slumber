@@ -7,6 +7,14 @@ M['nvim-telescope/telescope.nvim'] = {
   end,
 }
 
+M['ray-x/guihua.lua'] = {
+  event = 'BufRead',
+  run = 'cd lua/fzy && make',
+  config = function()
+    require('guihua').setup()
+  end,
+}
+
 M['nvim-telescope/telescope-file-browser.nvim'] = {
   opt = true,
   after = 'telescope.nvim',
@@ -22,6 +30,11 @@ M['nvim-telescope/telescope-fzf-native.nvim'] = {
   config = function()
     require('telescope').load_extension('fzf')
   end,
+}
+
+M['stevearc/dressing.nvim'] = {
+  event = 'BufRead',
+  config = [[require('slumber.plugins.dressing')]],
 }
 
 M['kevinhwang91/nvim-hlslens'] = {
@@ -94,6 +107,13 @@ M['karb94/neoscroll.nvim'] = {
       hide_cursor = true,
       stop_eof = true,
     })
+  end,
+}
+
+M['NvChad/nvim-colorizer.lua'] = {
+  cmd = 'ColorizerToggle',
+  config = function()
+    require('colorizer').setup()
   end,
 }
 
