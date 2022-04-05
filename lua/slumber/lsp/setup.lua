@@ -2,9 +2,7 @@ local nlsp = require('lspconfig')
 local defaults = require('slumber.lsp.defaults')
 
 local clients = {
-  'clangd',
   'hls',
-  'gopls',
   'zls',
   'r_language_server',
   'pylsp',
