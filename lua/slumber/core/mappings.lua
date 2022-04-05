@@ -22,7 +22,15 @@ nmap(',w', [[:w<CR>]])
 
 vmap('<leader>r', [[<Cmd>Lspsaga rename<CR>]])
 nmap('K', [[:lua vim.lsp.buf.hover()<CR>]])
-nmap('<leader>ca', [[:lua vim.lsp.buf.code_action()<CR>]])
+nmap(
+  '<leader>ca',
+  [[:lua require('telescope.builtin').lsp_code_actions(require('telescope.themes').get_cursor({layout_config={height=15}}))<CR>]]
+)
+vmap(
+  '<leader>ca',
+  [[:lua require('telescope.builtin').lsp_range_code_actions(require('telescope.themes').get_cursor({layout_config={height=15}}))<CR>]]
+)
+
 vmap('<leader>ca', [[:lua vim.lsp.buf.range_code_action()<CR>]])
 
 -- NvimTree settings
