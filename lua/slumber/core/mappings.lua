@@ -31,8 +31,6 @@ vmap(
   [[:lua require('telescope.builtin').lsp_range_code_actions(require('telescope.themes').get_cursor({layout_config={height=15}}))<CR>]]
 )
 
-vmap('<leader>ca', [[:lua vim.lsp.buf.range_code_action()<CR>]])
-
 -- NvimTree settings
 nmap('<C-a>', [[:Neotree focus<CR>]])
 nmap('<C-n>', [[:Neotree<CR>]])
