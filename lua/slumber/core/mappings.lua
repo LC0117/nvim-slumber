@@ -34,8 +34,9 @@ vmap(
 vmap('<leader>ca', [[:lua vim.lsp.buf.range_code_action()<CR>]])
 
 -- NvimTree settings
-nmap('<C-x>', [[:Neotree focus<CR>]])
+nmap('<C-a>', [[:Neotree focus<CR>]])
 nmap('<C-n>', [[:Neotree<CR>]])
+nmap('<C-G>', [[:Neotree git_status<CR>]])
 
 -- gitsigns settings
 nmap(',gb', [[:Gitsigns blame_line<CR>]])
