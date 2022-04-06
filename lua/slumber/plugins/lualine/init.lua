@@ -10,13 +10,7 @@ require('lualine').setup({
     lualine_a = { { 'mode', separator = { left = '' }, right_padding = 2 } },
     lualine_b = { { 'branch' }, { 'diff' } },
     lualine_c = {
-      'aerial',
-      {
-        separator = '',
-        depth = nil,
-        dense = false,
-        dense_sep = '..',
-      },
+      { 'aerial', sep = '  ', depth = nil, dense = false, dense_sep = '..' },
     },
     lualine_x = {
       {
