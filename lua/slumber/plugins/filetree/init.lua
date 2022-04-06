@@ -40,6 +40,38 @@ require('neo-tree').setup({
       },
     },
   },
+  renderers = {
+    directory = {
+      { 'indent' },
+      { 'icon' },
+      { 'current_filter' },
+      {
+        'name',
+        use_git_status_colors = true,
+      },
+      {
+        'symlink_target',
+        highlight = 'NeoTreeSymbolicLinkTarget',
+      },
+      { 'clipboard' },
+      { 'git_status' },
+    },
+    file = {
+      { 'indent' },
+      { 'icon' },
+      {
+        'name',
+        use_git_status_colors = true,
+      },
+      {
+        'symlink_target',
+        highlight = 'NeoTreeSymbolicLinkTarget',
+      },
+      { 'bufnr' },
+      { 'clipboard' },
+      { 'git_status' },
+    },
+  },
   window = {
     position = 'left',
     width = 40,
