@@ -17,7 +17,7 @@ require('toggleterm').setup({
   persist_size = true,
   direction = 'horizontal',
   close_on_exit = true, -- close the terminal window when the process exits
-  shell = '/opt/homebrew/bin/zsh', -- change the default shell
+  shell = vim.o.shell, -- change the default shell
   float_opts = {
     border = 'curved',
   },

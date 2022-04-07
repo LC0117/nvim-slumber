@@ -31,7 +31,7 @@ local options = {
   listchars = 'tab:»·,nbsp:+,trail:·,extends:→,precedes:←',
   backspace = 'indent,eol,start',
   updatetime = 150,
-  shell = '/opt/homebrew/bin/zsh',
+  --shell = '/opt/homebrew/bin/zsh',
 }
 
 local binds = {
