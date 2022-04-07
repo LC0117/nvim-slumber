@@ -2,5 +2,4 @@ vim.cmd([[autocmd BufEnter,BufReadPre,BufRead,BufNewFile *.v setlocal filetype=v
 vim.cmd([[set guifont=CaskaydiaCove\ Nerd\ Font\ Mono:h12]])
 require('slumber.core.opts')
 require('slumber.core.packers')
-require('slumber.core.theme')
 require('slumber.core.mappings')
