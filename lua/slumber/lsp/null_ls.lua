@@ -8,17 +8,24 @@ local sources_users = {
   ba.shellcheck,
   bc.tags,
   bf.black,
+  -- formatter for c and cpp
   bf.clang_format.with({
     filetypes = { 'c', 'cpp' },
   }),
+  -- haskell formatter
   bf.fourmolu,
+  -- cmake
   bf.cmake_format,
-  bf.gofmt,
+  -- java
   bf.google_java_format,
+  -- kotlin
   bf.ktlint,
+  -- latex
   bf.latexindent,
+  -- perl
   bf.perltidy,
-  bf.pg_format,
+  -- sql
+  bf.sqlfluff,
   bf.remark,
   bf.scalafmt,
   bf.shfmt,
@@ -37,19 +44,39 @@ local sources_users = {
     filetypes = { 'markdown' },
   }),
   bd.chktex,
+  -- make file linter
   bd.checkmake,
+  -- spellchecker
   bd.cspell.with({
     filetypes = { 'java', 'python', 'py' },
   }),
+  -- php internal linter
   bd.php,
+  -- cpp linter
   bd.cppcheck,
+  -- js, ts, jsx, ysx linter
   bd.eslint,
+  -- go linter
   bd.golangci_lint,
   bd.revive,
+  -- add fish lint rules
+  bd.fish,
+  -- lua checker
   bd.selene,
+  -- dockerfile helper
+  bd.hadolint,
+  -- shell script checker
   bd.shellcheck,
+  -- kotlin linter
+  bd.ktlint,
+  -- ruby checker
+  bd.rubocop,
+  -- css linter
   bd.stylelint,
+  -- vimscript linter
   bd.vint,
+  -- sql stuff
+  bd.sqlfluff,
 }
 require('null-ls').setup({
   sources = sources_users,
