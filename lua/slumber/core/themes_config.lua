@@ -104,6 +104,11 @@ function M.nightfox()
         functions = 'italic',
         keywords = 'bold,italic',
       },
+      inverse = {
+        match_paren = true,
+        visual = true,
+        search = false,
+      },
       transparent = false,
     },
   })
