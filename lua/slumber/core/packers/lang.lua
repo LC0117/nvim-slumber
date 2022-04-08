@@ -69,7 +69,7 @@ M['mfussenegger/nvim-dap'] = {
     { 'rcarriga/nvim-dap-ui', after = 'nvim-dap', config = [[require('slumber.plugins.dap.ui')]] },
     { 'theHamsta/nvim-dap-virtual-text', after = 'nvim-dap', config = [[require('slumber.plugins.dap.virtual')]] },
   },
-  config = [[require('slumber.plugins.dap')]]
+  config = [[require('slumber.plugins.dap')]],
 }
 
 M['Saecki/crates.nvim'] = {
