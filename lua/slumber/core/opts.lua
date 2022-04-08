@@ -42,6 +42,8 @@ local options = {
   tabstop = 4,
   undofile = true,
   redrawtime = 1500,
+  formatoptions = '1jcroql',
+  number = true,
   relativenumber = true,
   ignorecase = true,
 }
