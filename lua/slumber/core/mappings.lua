@@ -1,4 +1,3 @@
-vim.cmd([[let mapleader = " "]])
 local map = vim.api.nvim_set_keymap
 local nsil = { noremap = true, silent = true }
 

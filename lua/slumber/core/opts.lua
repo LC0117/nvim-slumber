@@ -1,14 +1,11 @@
-local function bind(options)
-  for k, v in pairs(options) do
-    if v == true then
-      vim.cmd('set ' .. k)
-    elseif v == false then
-      vim.cmd('set no' .. k)
-    else
-      vim.cmd('set ' .. k .. '=' .. v)
-    end
-  end
-end
+local g_options = {
+  mapleader = ' ',
+  neovide_transparency = 0.9,
+  neovide_remember_window_size = true,
+  neovide_input_use_logo = true,
+  neovide_cursor_vfx_mode = 'torpedo',
+  neovide_cursor_unfocused_outline_width = 0.125,
+}
 
 local options = {
   termguicolors = true,
@@ -20,7 +17,6 @@ local options = {
   magic = true,
   virtualedit = 'block',
   encoding = 'utf-8',
-  viewoptions = 'folds,cursor,curdir,slash,unix',
   laststatus = 3,
   backup = false,
   writebackup = false,
@@ -28,35 +24,32 @@ local options = {
   cursorline = true,
   showtabline = 2,
   showbreak = '↳  ',
-  listchars = 'tab:»·,nbsp:+,trail:·,extends:→,precedes:←',
-  backspace = 'indent,eol,start',
+  listchars = {
+    tab = '❘-',
+    trail = '·',
+    lead = '·',
+    extends = '»',
+    precedes = '«',
+    nbsp = '×',
+  },
+  backspace = { 'eol', 'indent', 'start' },
   updatetime = 150,
-  --shell = '/opt/homebrew/bin/zsh',
-}
-
-local binds = {
-  undofile = true,
-  synmaxcol = 2500,
-  formatoptions = '1jcroql',
-  expandtab = true,
   autoindent = true,
-  number = true,
-  linebreak = true,
-  conceallevel = 0,
-  concealcursor = 'niv',
-  tabstop = 4,
+  expandtab = true,
   shiftwidth = 4,
-  softtabstop = -1,
+  smartindent = true,
+  softtabstop = 4,
+  tabstop = 4,
+  undofile = true,
+  redrawtime = 1500,
   relativenumber = true,
+  ignorecase = true,
 }
 
-local function mkwork()
-  vim.cmd([[filetype plugin indent on]])
-  vim.g.python3_host_prog = '/usr/bin/python3'
-  for k, v in pairs(options) do
-    vim.o[k] = v
-  end
-  bind(binds)
+vim.cmd([[filetype plugin indent on]])
+for k, v in pairs(g_options) do
+  vim.g[k] = v
 end
-
-mkwork()
+for k, v in pairs(options) do
+  vim.opt[k] = v
+end
