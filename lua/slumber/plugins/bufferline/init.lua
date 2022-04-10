@@ -1,3 +1,4 @@
+local groups = require('bufferline.groups')
 require('bufferline').setup({
   options = {
     number = 'none',
@@ -19,6 +20,31 @@ require('bufferline').setup({
         filetype = 'neo-tree',
         text = 'File Explorer',
         text_align = 'center',
+      },
+    },
+    groups = {
+      options = {
+        toggle_hidden_on_enter = true,
+      },
+      items = {
+        groups.builtin.ungrouped,
+        {
+          name = 'Tests',
+          priority = 2,
+          icon = ' ',
+          matcher = function(buf)
+            return buf.name:match('%_test')
+              or buf.name:match('%Test')
+              or buf.name:match('%Tests')
+              or buf.name:match('%_spec')
+          end,
+        },
+        {
+          name = 'Docs',
+          matcher = function(buf)
+            return buf.name:match('%.md') or buf.name:match('%.tex')
+          end,
+        },
       },
     },
   },

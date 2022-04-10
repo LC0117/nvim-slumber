@@ -2,7 +2,7 @@ local defaults = require('slumber.lsp.defaults')
 -- NOTE: This path should be updated periodically
 local extension_path = vim.env.HOME .. '/.vscode/extensions/vadimcn.vscode-lldb-1.7.0/'
 local codelldb_path = extension_path .. 'adapter/codelldb'
-local liblldb_path = extension_path .. 'lldb/lib/liblldb.so'
+local liblldb_path = extension_path .. 'lldb/lib/liblldb.dylib'
 
 local opts = {
   tools = {
