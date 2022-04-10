@@ -42,13 +42,14 @@ local options = {
   tabstop = 4,
   undofile = true,
   redrawtime = 1500,
-  formatoptions = '1jcroql',
   number = true,
   relativenumber = true,
   ignorecase = true,
 }
 
-vim.cmd([[filetype plugin indent on]])
+vim.cmd([[
+filetype plugin indent on
+]])
 for k, v in pairs(g_options) do
   vim.g[k] = v
 end

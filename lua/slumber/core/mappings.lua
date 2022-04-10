@@ -38,3 +38,8 @@ nmap('<C-G>', [[:Neotree git_status<CR>]])
 -- gitsigns settings
 nmap(',gb', [[:Gitsigns blame_line<CR>]])
 nmap(',gt', [[:Gitsigns toggle_current_line_blame<CR>]])
+
+-- bufferline mappings
+nmap('b]', [[:BufferLineCycleNext<CR>]])
+nmap('b[', [[:BufferLineCyclePrev<CR>]])
+nmap('bp', [[:BufferLineTogglePin<CR>]])
