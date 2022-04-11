@@ -4,9 +4,9 @@ require('hlslens').setup({
     local indicator, text, chunks
     local absRelIdx = math.abs(relIdx)
     if absRelIdx > 1 then
-      indicator = ('%d%s'):format(absRelIdx, sfw ~= (relIdx > 1) and '▲' or '▼')
+      indicator = ('%d%s'):format(absRelIdx, sfw ~= (relIdx > 1) and ' ' or ' ')
     elseif absRelIdx == 1 then
-      indicator = sfw ~= (relIdx == 1) and '▲' or '▼'
+      indicator = sfw ~= (relIdx == 1) and ' ' or ' '
     else
       indicator = ''
     end
