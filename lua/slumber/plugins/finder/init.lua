@@ -1,5 +1,3 @@
-local home = os.getenv('HOME')
-
 require('telescope').setup({
   defaults = {
     prompt_prefix = '🔭 ',

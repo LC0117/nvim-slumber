@@ -7,6 +7,11 @@ M['nvim-telescope/telescope.nvim'] = {
   end,
 }
 
+M['mrjones2014/dash.nvim'] = {
+  after = 'telescope.nvim',
+  run = 'make install',
+}
+
 M['ray-x/guihua.lua'] = {
   event = 'BufRead',
   run = 'cd lua/fzy && make',
