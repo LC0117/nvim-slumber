@@ -64,7 +64,7 @@ M['ionide/Ionide-vim'] = {
 }
 
 M['mfussenegger/nvim-dap'] = {
-  event = 'BufRead',
+  event = 'BufWinEnter',
   requires = {
     { 'rcarriga/nvim-dap-ui', after = 'nvim-dap', config = [[require('slumber.plugins.dap.ui')]] },
     { 'theHamsta/nvim-dap-virtual-text', after = 'nvim-dap', config = [[require('slumber.plugins.dap.virtual')]] },

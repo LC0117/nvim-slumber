@@ -1,5 +1,10 @@
 local dapers = vim.fn.stdpath('data') .. '/dapers'
 local dap = require('dap')
+vim.fn.sign_define('DapBreakpoint', {text = [[]], texthl = 'DiagnosticWarning'})
+vim.fn.sign_define('DapBreakPointCondition', {text = [[]], texthl = 'DiagnosticInfo'})
+vim.fn.sign_define('DapBreakpointRejected', {text = [[]], texthl = 'DiagnosticError'})
+vim.fn.sign_define('DapStopped', {text = [[]], texthl = 'DiagnosticHint'})
+vim.fn.sign_define('DapLogponit', {text = [[]], texthl = 'String'})
 
 dap.adapters.node2 = {
   type = 'executable',
@@ -31,7 +36,7 @@ dap.configurations.javascript = {
   },
 }
 
-dap.configurations.cpp = {
+dap.configurations.c = {
   {
     name = 'Launch',
     type = 'lldb',
@@ -47,4 +52,4 @@ dap.configurations.cpp = {
   },
 }
 
-dap.configurations.c = dap.configurations.cpp
+dap.configurations.cpp = dap.configurations.c
