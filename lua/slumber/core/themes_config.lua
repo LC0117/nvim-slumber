@@ -1,10 +1,9 @@
 local M = {}
-local U = require('slumber.core.utils')
 
 -- colorscheme catppuccin
 function M.catppuccin()
   local options = {
-    transparent_background = true,
+    transparent_background = false,
     term_colors = true,
     styles = {
       comments = 'italic',
