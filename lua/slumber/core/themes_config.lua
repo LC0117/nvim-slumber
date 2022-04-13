@@ -1,9 +1,10 @@
 local M = {}
+local U = require('slumber.core.utils')
 
 -- colorscheme catppuccin
 function M.catppuccin()
   local options = {
-    transparent_background = false,
+    transparent_background = true,
     term_colors = true,
     styles = {
       comments = 'italic',
@@ -40,7 +41,7 @@ function M.catppuccin()
       },
       which_key = false,
       indent_blankline = {
-        enabled = true,
+        enabled = false,
         colored_indent_levels = true,
       },
       dashboard = false,
