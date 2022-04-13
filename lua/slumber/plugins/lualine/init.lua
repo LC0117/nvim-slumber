@@ -7,7 +7,10 @@ require('lualine').setup({
     globalstatus = true,
   },
   sections = {
-    lualine_a = { { 'mode', separator = { left = '' }, right_padding = 2 } },
+    lualine_a = {
+      { 'mode', separator = { left = '' }, right_padding = 2 },
+      'tabs',
+    },
     lualine_b = { { 'branch' }, { 'diff' } },
     lualine_c = {
       { 'aerial', sep = '  ', depth = nil, dense = false, dense_sep = '..' },
@@ -16,11 +19,14 @@ require('lualine').setup({
       {
         'diagnostics',
         sources = { 'nvim_diagnostic' },
-        color_error = '#BF616A',
-        color_warn = '#EBCB8B',
-        color_info = '#81A1AC',
-        color_hint = '#88C0D0',
-        symbols = { error = ' ', warn = ' ', info = ' ' },
+        sections = { 'error', 'warn', 'info', 'hint' },
+        diagnostics_color = {
+          error = 'DiagnosticError',
+          warn = 'DiagnosticWarn',
+          info = 'DiagnosticInfo',
+          hint = 'DiagnosticHint',
+        },
+        symbols = { error = ' ', warn = ' ', info = ' ', hint = '' },
       },
     },
     lualine_y = { 'filetype', 'encoding', 'fileformat' },
