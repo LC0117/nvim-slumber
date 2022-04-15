@@ -61,8 +61,6 @@ local sources_users = {
   bd.revive,
   -- add fish lint rules
   bd.fish,
-  -- lua checker
-  bd.selene,
   -- dockerfile helper
   bd.hadolint,
   -- shell script checker
