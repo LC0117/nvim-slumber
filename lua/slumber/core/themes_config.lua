@@ -74,8 +74,8 @@ function M.onedarkpro()
       undercurl = true,
       cursorline = true,
       terminal_colors = true,
-      transparency = false,
-      window_unfocused_color = false,
+      transparency = true,
+      window_unfocussed_color = false,
     },
   })
   require('onedarkpro').load()
