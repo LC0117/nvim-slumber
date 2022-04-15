@@ -74,11 +74,10 @@ function M.onedarkpro()
       undercurl = true,
       cursorline = true,
       terminal_colors = true,
-      transparency = true,
+      transparency = false,
       window_unfocussed_color = false,
     },
   })
-  require('onedarkpro').load()
 end
 
 -- kanagawa
@@ -119,8 +118,9 @@ function M.rose_pine()
   require('rose-pine').setup({
     dark_variant = 'moon',
     dim_nc_background = false,
-    disable_background = false,
+    disable_background = true,
   })
+  vim.cmd('colorscheme rose-pine')
 end
 
 -- material theme
