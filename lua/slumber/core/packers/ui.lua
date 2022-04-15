@@ -35,4 +35,24 @@ M['nvim-neo-tree/neo-tree.nvim'] = {
   config = [[require('slumber.plugins.filetree')]],
 }
 
+M['lukas-reineke/indent-blankline.nvim'] = {
+  event = 'BufWinEnter',
+  setup = function ()
+    vim.g.indent_blankline_filetype_exclude = {
+        "lspinfo", "packer", "checkhealth", "help", "man",
+        "aerial", "neo-tree", "nvim-lsp-installer", ""
+    }
+    vim.g.indent_blankline_buftype_exclude = {
+        "terminal", "nofile", "quickfix", "Scrach"
+    }
+  end,
+  config = function()
+    require('indent_blankline').setup({
+      show_current_context = true,
+      show_current_context_start = true,
+      space_char_blankline = ' ',
+    })
+  end,
+}
+
 return M
