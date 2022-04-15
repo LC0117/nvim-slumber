@@ -41,6 +41,7 @@ require('bufferline').setup({
         },
         {
           name = 'Docs',
+          icon = '',
           matcher = function(buf)
             return buf.name:match('%.md') or buf.name:match('%.tex')
           end,
