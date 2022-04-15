@@ -5,11 +5,13 @@ end
 local cmp = require('cmp')
 local luasnip = require('luasnip')
 cmp.setup.cmdline(':', {
+  mapping = cmp.mapping.preset.cmdline(),
   sources = {
     { name = 'cmdline', max_item_count = 15 },
   },
 })
 cmp.setup.cmdline('/', {
+  mapping = cmp.mapping.preset.cmdline(),
   sources = {
     { name = 'buffer', max_item_count = 10 },
   },
@@ -41,8 +43,10 @@ cmp.setup({
     ghost_text = true,
   },
 
-  documentation = {
-    border = 'rounded',
+  window = {
+    documentation = {
+      border = 'rounded',
+    },
   },
 
   formatting = {
