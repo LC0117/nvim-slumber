@@ -1,3 +1,4 @@
+local U = require('slumber.core.utils')
 require('telescope').setup({
   defaults = {
     prompt_prefix = '🔭 ',
@@ -48,7 +49,7 @@ require('telescope').setup({
       fuzzy = true,
       case_mode = 'smart_case',
     },
-    dash = {
+    dash = U.is_mac and {
       dash_app_path = '/Applications/Dash.app',
       search_engine = 'duckduckgo',
       debounce = 10,

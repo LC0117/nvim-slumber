@@ -1,5 +1,6 @@
 local U = require('slumber.core.utils')
 local defaults = require('slumber.lsp.defaults')
+local sep = U.path_sep
 local extension_path = vim.env.HOME .. '/.vscode/extensions/vadimcn.vscode-lldb-1.7.0/'
 local codelldb_path = extension_path .. 'adapter/codelldb'
 local liblldb_path
@@ -8,7 +9,7 @@ if U.is_mac then
 elseif U.is_linux then
   liblldb_path = extension_path .. 'lldb/lib/liblldb.so'
 elseif U.is_windows then
-  liblldb_path = extension_path .. 'lldb/lib/liblldb.dll'
+  liblldb_path = extension_path .. 'lldb\\lib\\liblldb.dll'
 end
 
 local opts = {
