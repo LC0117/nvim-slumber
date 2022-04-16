@@ -8,7 +8,7 @@ M['nvim-telescope/telescope.nvim'] = {
 }
 
 M['mrjones2014/dash.nvim'] = {
-  after = 'telescope.nvim',
+  cmd = { 'Dash', 'DashWord' },
   run = 'make install',
 }
 
