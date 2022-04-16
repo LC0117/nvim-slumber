@@ -2,12 +2,9 @@ local nlsp = require('lspconfig')
 local defaults = require('slumber.lsp.defaults')
 
 local clients = {
-  'hls',
   'zls',
   'r_language_server',
-  'pylsp',
   'ocamllsp',
-  'rust_analyzer',
 }
 
 for _, lsp in ipairs(clients) do

@@ -45,6 +45,7 @@ local options = {
   number = true,
   relativenumber = true,
   ignorecase = true,
+  guifont = 'OperatorMono Nerd Font:h12'
 }
 
 vim.cmd([[
