@@ -4,7 +4,7 @@ local M = {}
 function M.catppuccin()
   local options = {
     transparent_background = false,
-    term_colors = true,
+    term_colors = false,
     styles = {
       comments = 'italic',
       functions = 'italic',
@@ -118,7 +118,7 @@ function M.rose_pine()
   require('rose-pine').setup({
     dark_variant = 'moon',
     dim_nc_background = false,
-    disable_background = true,
+    disable_background = false,
   })
   vim.cmd('colorscheme rose-pine')
 end
