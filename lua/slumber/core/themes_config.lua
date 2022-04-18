@@ -40,7 +40,7 @@ function M.catppuccin()
       },
       which_key = false,
       indent_blankline = {
-        enabled = false,
+        enabled = true,
         colored_indent_levels = true,
       },
       dashboard = false,

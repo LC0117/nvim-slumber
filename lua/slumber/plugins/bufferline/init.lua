@@ -27,15 +27,15 @@ require('bufferline').setup({
         toggle_hidden_on_enter = true,
       },
       items = {
+        groups.builtin.pinned:with({ icon = '' }),
         groups.builtin.ungrouped,
         {
           name = 'Tests',
-          priority = 2,
           icon = ' ',
           matcher = function(buf)
             return buf.name:match('%_test')
-              or buf.name:match('%Test')
-              or buf.name:match('%Tests')
+              or buf.name:match('%_Test')
+              or buf.name:match('%_Tests')
               or buf.name:match('%_spec')
           end,
         },
@@ -44,6 +44,12 @@ require('bufferline').setup({
           icon = '',
           matcher = function(buf)
             return buf.name:match('%.md') or buf.name:match('%.tex')
+          end,
+        },
+        {
+          name = 'Dotfiles',
+          matcher = function(buf)
+            return buf.name:sub(1, 1) == '.'
           end,
         },
       },

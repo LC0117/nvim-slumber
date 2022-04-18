@@ -37,13 +37,24 @@ M['nvim-neo-tree/neo-tree.nvim'] = {
 
 M['lukas-reineke/indent-blankline.nvim'] = {
   event = 'BufWinEnter',
-  setup = function ()
+  setup = function()
     vim.g.indent_blankline_filetype_exclude = {
-        "lspinfo", "packer", "checkhealth", "help", "man",
-        "aerial", "neo-tree", "nvim-lsp-installer", ""
+      'lspinfo',
+      'packer',
+      'checkhealth',
+      'help',
+      'man',
+      'aerial',
+      'neo-tree',
+      'nvim-lsp-installer',
+      'dap-repl',
+      '',
     }
     vim.g.indent_blankline_buftype_exclude = {
-        "terminal", "nofile", "quickfix", "Scrach"
+      'terminal',
+      'nofile',
+      'quickfix',
+      'Scrach',
     }
   end,
   config = function()
@@ -51,6 +62,14 @@ M['lukas-reineke/indent-blankline.nvim'] = {
       show_current_context = true,
       show_current_context_start = true,
       space_char_blankline = ' ',
+      char_highlight_list = {
+        'IndentBlanklineIndent1',
+        'IndentBlanklineIndent2',
+        'IndentBlanklineIndent3',
+        'IndentBlanklineIndent4',
+        'IndentBlanklineIndent5',
+        'IndentBlanklineIndent6',
+      },
     })
   end,
 }

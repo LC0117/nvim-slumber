@@ -24,7 +24,7 @@ require('nvim-treesitter.configs').setup({
     enable_autocmd = false,
   },
   rainbow = {
-    enable = true,
+    enable = t,
     extended_mode = true,
     max_file_lines = 3000,
   },
