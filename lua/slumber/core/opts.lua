@@ -1,3 +1,11 @@
+local U = require("slumber.core.utils")
+local font
+if U.is_mac then
+  font = 'OperatorMono Nerd Font:h13'
+else
+  font = 'OperatorMono Nerd Font:h12'
+end
+
 local g_options = {
   mapleader = ' ',
   neovide_transparency = 0.9,
@@ -45,7 +53,7 @@ local options = {
   number = true,
   relativenumber = true,
   ignorecase = true,
-  guifont = 'OperatorMono Nerd Font:h12'
+  guifont = font
 }
 
 vim.cmd([[

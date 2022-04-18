@@ -37,6 +37,8 @@ M['neovim/nvim-lspconfig'] = {
     { 'b0o/schemastore.nvim' },
     { 'p00f/clangd_extensions.nvim', after = 'nvim-lspconfig', config = [[require('slumber.lsp.servers.clangd')]] },
     { 'ray-x/go.nvim', ft = 'go', config = [[require('slumber.lsp.servers.go')]] },
+    { 'mfussenegger/nvim-jdtls', ft = 'java', config = [[require('slumber.lsp.servers.jdtls')]] },
+    { 'scalameta/nvim-metals', ft = { 'scala', 'sbt' }, config = [[require('slumber.lsp.servers.metals')]] },
     { 'princejoogie/tailwind-highlight.nvim' },
     {
       'simrat39/rust-tools.nvim',

@@ -2,30 +2,28 @@
 
 This repo is mainly for my backup. It works well on my mac and PC. Installation is quite easy. Just make sure you have `git` installed in PATH, clone this repo, and open `nvim`. A command `:PackerSync` should be enough.
 
-
-
 ## Some nice shots
 
 ### Beautiful startup view with utilities
 
 ![startup](https://slumber233-1307554241.cos.ap-beijing.myqcloud.com/pics/nvim-slumber/startup.png)
 
-### Word find and fuzzy search
+### Overview of utilities
 
-![findword](https://slumber233-1307554241.cos.ap-beijing.myqcloud.com/pics/nvim-slumber/findword.png)
+![](https://slumber233-1307554241.cos.ap-beijing.myqcloud.com/pics/nvim-slumber/overview_iterm.png)
 
-### Diagnostic virtual text
+### Finder and word fuzzy-find
 
-![](https://slumber233-1307554241.cos.ap-beijing.myqcloud.com/pics/nvim-slumber/diagnostic.png)
+![](https://slumber233-1307554241.cos.ap-beijing.myqcloud.com/pics/nvim-slumber/finder.png)
 
-### Hover doc and notification
+![](https://slumber233-1307554241.cos.ap-beijing.myqcloud.com/pics%2Fnvim-slumber%2Ffuzzy_word.png)
 
-![](https://slumber233-1307554241.cos.ap-beijing.myqcloud.com/pics/nvim-slumber/notify.png)
+### Debug
 
-### Rename
+![](https://slumber233-1307554241.cos.ap-beijing.myqcloud.com/pics/nvim-slumber/debugger.png)
 
-![](https://slumber233-1307554241.cos.ap-beijing.myqcloud.com/pics/nvim-slumber/rename.png)
+### Code actions
 
-### File tree-view
+![](https://slumber233-1307554241.cos.ap-beijing.myqcloud.com/pics/nvim-slumber/codeactions.png)
 
-![](https://slumber233-1307554241.cos.ap-beijing.myqcloud.com/pics/nvim-slumber/treeview.png)
+![](https://slumber233-1307554241.cos.ap-beijing.myqcloud.com/pics%2Fnvim-slumber%2Fneovide_hover_Actions.png)

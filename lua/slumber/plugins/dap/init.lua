@@ -1,10 +1,10 @@
 local dapers = vim.fn.stdpath('data') .. '/dapers'
 local dap = require('dap')
-vim.fn.sign_define('DapBreakpoint', {text = [[]], texthl = 'DiagnosticWarning'})
-vim.fn.sign_define('DapBreakPointCondition', {text = [[]], texthl = 'DiagnosticInfo'})
-vim.fn.sign_define('DapBreakpointRejected', {text = [[]], texthl = 'DiagnosticError'})
-vim.fn.sign_define('DapStopped', {text = [[]], texthl = 'DiagnosticHint'})
-vim.fn.sign_define('DapLogponit', {text = [[]], texthl = 'String'})
+vim.fn.sign_define('DapBreakpoint', { text = [[]], texthl = 'DiagnosticWarning' })
+vim.fn.sign_define('DapBreakPointCondition', { text = [[]], texthl = 'DiagnosticInfo' })
+vim.fn.sign_define('DapBreakpointRejected', { text = [[]], texthl = 'DiagnosticError' })
+vim.fn.sign_define('DapStopped', { text = [[]], texthl = 'DiagnosticHint' })
+vim.fn.sign_define('DapLogponit', { text = [[]], texthl = 'String' })
 
 dap.adapters.node2 = {
   type = 'executable',
@@ -15,6 +15,11 @@ dap.adapters.lldb = {
   type = 'executable',
   command = 'lldb-vscode',
   name = 'lldb',
+}
+dap.adapters.python = {
+  type = 'executable',
+  command = vim.env.HOME .. '/.local/opt/virtualenvs/debugpyenv/bin/python',
+  args = { '-m', 'debugpy.adapter' },
 }
 
 dap.configurations.javascript = {
@@ -36,7 +41,7 @@ dap.configurations.javascript = {
   },
 }
 
-dap.configurations.c = {
+dap.configurations.cpp = {
   {
     name = 'Launch',
     type = 'lldb',
@@ -52,4 +57,22 @@ dap.configurations.c = {
   },
 }
 
-dap.configurations.cpp = dap.configurations.c
+dap.configurations.c = dap.configurations.cpp
+dap.configurations.python = {
+  {
+    name = 'Launch file',
+    type = 'python',
+    request = 'launch',
+    program = '${file}',
+    pythonPath = function ()
+      local cwd = vim.fn.getcwd()
+      if vim.fn.executable(cwd .. '/venv/bin/python') == 1 then
+        return cwd .. '/venv/bin/python'
+      elseif vim.fn.executable(cwd .. '/.venv/bin/python') == 1 then
+        return cwd .. '/.venv/bin/python'
+      else
+        return '/opt/homebrew/bin/python3'
+      end
+    end
+  }
+}
