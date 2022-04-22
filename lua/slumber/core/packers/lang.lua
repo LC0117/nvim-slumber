@@ -16,7 +16,7 @@ M['nvim-treesitter/nvim-treesitter'] = {
     },
     { 'nvim-treesitter/nvim-treesitter-refactor', opt = true, after = 'nvim-treesitter' },
     {
-      'romgrk/nvim-treesitter-context',
+      'lewis6991/nvim-treesitter-context',
       opt = true,
       after = 'nvim-treesitter',
       config = [[require('slumber.plugins.treesitter.context')]],
@@ -82,6 +82,20 @@ M['Saecki/crates.nvim'] = {
     local config = cmp.get_config()
     table.insert(config.sources, { name = 'crates' })
     cmp.setup(config)
+  end,
+}
+
+M['akinsho/pubspec-assist.nvim'] = {
+  event = 'BufRead pubspec.yaml',
+  rocks = {
+    {
+      'lyaml',
+      server = 'http://rocks.moonscript.org',
+      env = { YAML_DIR = '/opt/homebrew/Cellar/libyaml/0.2.5/' },
+    },
+  },
+  config = function()
+    require('pubspec-assist').setup()
   end,
 }
 

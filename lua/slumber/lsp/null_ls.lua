@@ -67,8 +67,6 @@ local sources_users = {
   bd.shellcheck,
   -- kotlin linter
   bd.ktlint,
-  -- ruby checker
-  bd.rubocop,
   -- css linter
   bd.stylelint,
   -- vimscript linter
