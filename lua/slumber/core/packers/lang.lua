@@ -99,4 +99,12 @@ M['akinsho/pubspec-assist.nvim'] = {
   end,
 }
 
+M['f3fora/nvim-texlabconfig'] = {
+  config = function ()
+    require("texlabconfig").setup()
+  end,
+  ft = {'tex', 'plaintex', 'bib'},
+  cmd = 'TexlabInverseSearch'
+}
+
 return M
