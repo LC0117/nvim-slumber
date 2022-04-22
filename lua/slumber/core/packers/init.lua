@@ -22,6 +22,9 @@ packer.init({
   git = {
     clone_timeout = 400,
   },
+  luarocks = {
+    python_cmd = 'python3'
+  }
 })
 
 local function get_repos(m)

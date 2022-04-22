@@ -105,12 +105,13 @@ M['windwp/nvim-autopairs'] = {
   end,
 }
 
-M['karb94/neoscroll.nvim'] = {
+M['declancm/cinnamon.nvim'] = {
   event = 'BufWinEnter',
   config = function()
-    require('neoscroll').setup({
-      hide_cursor = true,
-      stop_eof = true,
+    require('cinnamon').setup({
+      default_keymaps = true,
+      extra_keymaps = true,
+      extended_keymaps = true
     })
   end,
 }
