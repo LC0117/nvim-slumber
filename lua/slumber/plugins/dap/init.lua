@@ -1,4 +1,6 @@
-local dapers = vim.fn.stdpath('data') .. '/dapers'
+local U = require("slumber.core.utils")
+local path = U.path
+local dapers = path.concat({vim.fn.stdpath('data'), 'dapers'})
 local dap = require('dap')
 vim.fn.sign_define('DapBreakpoint', { text = [[]], texthl = 'DiagnosticWarning' })
 vim.fn.sign_define('DapBreakPointCondition', { text = [[]], texthl = 'DiagnosticInfo' })
@@ -47,7 +49,7 @@ dap.configurations.cpp = {
     type = 'lldb',
     request = 'launch',
     program = function()
-      return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+      return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. path.sep, 'file')
     end,
     cwd = '${workspaceFolder}',
     stopOnEntry = false,
