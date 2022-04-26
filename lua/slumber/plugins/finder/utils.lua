@@ -2,24 +2,6 @@ local M = {}
 local themes = require('telescope.themes')
 local builtin = require('telescope.builtin')
 
-function M.code_action()
-  local opts = {
-    layout_config = {
-      height = 15,
-    },
-  }
-  builtin.lsp_code_actions(themes.get_cursor(opts))
-end
-
-function M.range_code_action()
-  local opts = {
-    layout_config = {
-      height = 15,
-    },
-  }
-  builtin.lsp_range_code_actions(themes.get_cursor(opts))
-end
-
 function M.buf_find()
   local opts = {
     previewer = false,

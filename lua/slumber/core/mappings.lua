@@ -13,16 +13,16 @@ end
 -- telescope settings
 nmap('<leader>f', [[:Telescope fd<CR>]])
 nmap('<leader>gr', [[:Telescope live_grep<CR>]])
-nmap('<leader>ca', require('slumber.plugins.finder.utils').code_action)
-nmap('<leader>ra', require('slumber.plugins.finder.utils').range_code_action)
 nmap('<leader>s', require('slumber.plugins.finder.utils').buf_find)
 
--- lsp formatting
-nmap('<leader><leader>', vim.lsp.buf.formatting_sync)
+-- lsp things
+nmap('<leader>fm', vim.lsp.buf.formatting_sync)
+nmap('<leader>ca', vim.lsp.buf.code_action)
+vmap('<leader>ca', vim.lsp.buf.range_code_action)
 
 nmap('<C-Q>', [[<Cmd>qall!<CR>]])
 nmap('<C-S>', [[:wall<CR>]])
-nmap(',w', [[:w<CR>]])
+nmap('<leader>w', [[:w<CR>]])
 
 nmap('K', vim.lsp.buf.hover)
 
