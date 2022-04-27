@@ -22,6 +22,7 @@ nmap('<leader>fb', require('slumber.plugins.finder.utils').buf_find)
 nmap('<leader>lf', vim.lsp.buf.formatting_sync)
 nmap('<leader>ca', vim.lsp.buf.code_action)
 vmap('<leader>ca', vim.lsp.buf.range_code_action)
+nmap('<leader>lr', vim.lsp.buf.rename)
 
 nmap('<C-Q>', [[<Cmd>qall!<CR>]])
 nmap('<C-S>', [[:wall<CR>]])
