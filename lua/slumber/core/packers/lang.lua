@@ -77,7 +77,12 @@ M['mfussenegger/nvim-dap'] = {
 M['Saecki/crates.nvim'] = {
   after = 'nvim-cmp',
   config = function()
-    require('crates').setup()
+    require('crates').setup({
+      null_ls = {
+        enabled = true,
+        name = "crates.io",
+    },
+    })
     local cmp = require('cmp')
     local config = cmp.get_config()
     table.insert(config.sources, { name = 'crates' })
