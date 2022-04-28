@@ -12,14 +12,6 @@ M['mrjones2014/dash.nvim'] = {
   run = 'make install',
 }
 
-M['ray-x/guihua.lua'] = {
-  event = 'BufRead',
-  run = 'cd lua/fzy && make',
-  config = function()
-    require('guihua').setup()
-  end,
-}
-
 M['nvim-telescope/telescope-file-browser.nvim'] = {
   opt = true,
   after = 'telescope.nvim',

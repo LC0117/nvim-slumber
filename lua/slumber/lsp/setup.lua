@@ -7,6 +7,7 @@ local clients = {
   'zls',
   'r_language_server',
   'ocamllsp',
+  'gopls'
 }
 
 for _, lsp in ipairs(clients) do
