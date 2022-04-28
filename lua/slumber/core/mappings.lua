@@ -34,7 +34,7 @@ nmap('K', vim.lsp.buf.hover)
 -- tree focus
 nmap('<leader>tf', [[:Neotree focus<CR>]])
 -- tree toggle
-nmap('<leader>tt', [[:Neotree<CR>]])
+nmap('<leader>tt', [[:Neotree toggle<CR>]])
 -- tree gitstatus
 nmap('<leader>tg', [[:Neotree git_status<CR>]])
 
