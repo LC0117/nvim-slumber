@@ -43,6 +43,10 @@ cmp.setup({
     ghost_text = true,
   },
 
+  view = {
+    entries = { name = 'custom', selection_order = 'near_cursor' },
+  },
+
   window = {
     documentation = {
       border = 'rounded',
