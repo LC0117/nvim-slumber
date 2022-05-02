@@ -8,12 +8,6 @@ local sources_users = {
   ba.shellcheck,
   bc.tags,
   bf.black,
-  -- formatter for c and cpp
-  bf.clang_format.with({
-    filetypes = { 'c', 'cpp' },
-  }),
-  -- haskell formatter
-  bf.fourmolu,
   -- cmake
   bf.cmake_format,
   -- java
@@ -43,6 +37,7 @@ local sources_users = {
   bf.prettierd.with({
     filetypes = { 'markdown' },
   }),
+  bf.qmlformat,
   bd.chktex,
   -- make file linter
   bd.checkmake,
@@ -52,8 +47,6 @@ local sources_users = {
   }),
   -- php internal linter
   bd.php,
-  -- cpp linter
-  bd.cppcheck,
   -- js, ts, jsx, ysx linter
   bd.eslint,
   -- go linter
@@ -63,6 +56,8 @@ local sources_users = {
   bd.fish,
   -- dockerfile helper
   bd.hadolint,
+  -- qt
+  bd.qmllint,
   -- shell script checker
   bd.shellcheck,
   -- kotlin linter
