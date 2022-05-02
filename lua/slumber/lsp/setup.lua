@@ -11,11 +11,14 @@ require('nvim-lsp-installer').setup({
 })
 
 local clients = {
-  'hls',
   'zls',
   'r_language_server',
   'ocamllsp',
   'gopls',
+  'lemminx',
+  'solargraph',
+  'cmake',
+  'taplo'
 }
 
 for _, lsp in ipairs(clients) do
@@ -29,6 +32,16 @@ nlsp.sourcekit.setup({
   filetypes = { 'swift' },
   on_attach = defaults.on_attach,
   capabilities = defaults.capabilities,
+})
+
+nlsp.hls.setup({
+  on_attach = defaults.on_attach,
+  capabilities = defaults.capabilities,
+  settings = {
+    haskell = {
+      formattingProvider = 'fourmolu'
+    }
+  }
 })
 
 nlsp.texlab.setup(require('slumber.lsp.servers.texlab'))
