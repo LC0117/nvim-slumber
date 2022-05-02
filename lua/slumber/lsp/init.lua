@@ -34,5 +34,4 @@ for type, icon in pairs(lsp_signs) do
   vim.fn.sign_define(hl, { text = icon, texthl = hl })
 end
 
-require('slumber.lsp.installer')
 require('slumber.lsp.setup')
