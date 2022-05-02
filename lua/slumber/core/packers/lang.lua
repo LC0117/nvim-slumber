@@ -14,7 +14,6 @@ M['nvim-treesitter/nvim-treesitter'] = {
         vim.cmd([[let g:matchup_matchparen_offscreen = {'method': 'popup'}]])
       end,
     },
-    { 'nvim-treesitter/nvim-treesitter-refactor', opt = true, after = 'nvim-treesitter' },
     {
       'lewis6991/nvim-treesitter-context',
       opt = true,
