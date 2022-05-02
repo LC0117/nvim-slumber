@@ -31,28 +31,6 @@ require('nvim-treesitter.configs').setup({
   matchup = {
     enable = true,
   },
-  refactor = {
-    highlight_definitions = {
-      enable = true,
-      clear_on_cursor_move = true,
-    },
-    smart_rename = {
-      enable = true,
-      keymaps = {
-        smart_rename = ',r',
-      },
-    },
-    navigation = {
-      enable = true,
-      keymaps = {
-        goto_definition = '<leader>gd',
-        list_definitions = '<leader>gl',
-        list_definitions_toc = '<leader>gt',
-        goto_next_usage = '<leader>n',
-        goto_previous_usage = '<leader>N',
-      },
-    },
-  },
   textobjects = {
     select = {
       enable = true,
