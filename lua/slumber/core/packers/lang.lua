@@ -78,8 +78,8 @@ M['Saecki/crates.nvim'] = {
     require('crates').setup({
       null_ls = {
         enabled = true,
-        name = "crates.io",
-    },
+        name = 'crates.io',
+      },
     })
     local cmp = require('cmp')
     local config = cmp.get_config()
@@ -103,11 +103,11 @@ M['akinsho/pubspec-assist.nvim'] = {
 }
 
 M['f3fora/nvim-texlabconfig'] = {
-  config = function ()
-    require("texlabconfig").setup()
+  config = function()
+    require('texlabconfig').setup()
   end,
-  ft = {'tex', 'plaintex', 'bib'},
-  cmd = 'TexlabInverseSearch'
+  ft = { 'tex', 'plaintex', 'bib' },
+  cmd = 'TexlabInverseSearch',
 }
 
 return M

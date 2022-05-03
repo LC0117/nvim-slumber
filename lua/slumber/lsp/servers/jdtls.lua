@@ -58,7 +58,7 @@ local java_settings = {
     runtimes = U.is_mac and {
       {
         name = 'JavaSE-17',
-        path = '/Library/Java/JavaVirtualMachines/jdk-17.0.2.jdk/Contents/Home/'
+        path = '/Library/Java/JavaVirtualMachines/jdk-17.0.2.jdk/Contents/Home/',
       },
       {
         name = 'JavaSE-18',
@@ -66,10 +66,10 @@ local java_settings = {
       },
       {
         name = 'JavaSE-11',
-        path = '/Library/Java/JavaVirtualMachines/openjdk-11.jdk/Contents/Home/'
-      }
-    }
-  }
+        path = '/Library/Java/JavaVirtualMachines/openjdk-11.jdk/Contents/Home/',
+      },
+    },
+  },
 }
 local bundle_path = {}
 for _, jar_pattern in ipairs(jar_patterns) do
@@ -90,7 +90,7 @@ jdtls.start_or_attach({
   },
   init_options = {
     bundles = bundle_path,
-    extendedClientCapabilities = extendedClientCapabilities
+    extendedClientCapabilities = extendedClientCapabilities,
   },
   root_dir = require('jdtls.setup').find_root({ '.git', 'mvnw', 'gradlew' }),
   on_attach = function(client, bufnr)
