@@ -18,7 +18,8 @@ local clients = {
   'lemminx',
   'solargraph',
   'cmake',
-  'taplo'
+  'taplo',
+  'volar'
 }
 
 for _, lsp in ipairs(clients) do
@@ -47,5 +48,4 @@ nlsp.hls.setup({
 nlsp.texlab.setup(require('slumber.lsp.servers.texlab'))
 nlsp.jsonls.setup(require('slumber.lsp.servers.jsonls'))
 nlsp.sumneko_lua.setup(require("slumber.lsp.servers.sumneko_lua"))
-nlsp.tailwindcss.setup(require('slumber.lsp.servers.tailwindcss'))
 nlsp.tsserver.setup(require('slumber.lsp.servers.tsserver'))
