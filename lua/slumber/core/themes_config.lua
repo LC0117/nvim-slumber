@@ -1,10 +1,6 @@
-local M = {}
-
--- colorscheme catppuccin
-function M.catppuccin()
+local catppuccin_ok, catppuccin = pcall(require, 'catppuccin')
+if catppuccin_ok then
   local options = {
-    transparent_background = false,
-    term_colors = false,
     styles = {
       comments = 'italic',
       functions = 'italic',
@@ -13,7 +9,6 @@ function M.catppuccin()
       variables = 'NONE',
     },
     integrations = {
-      treesitter = true,
       native_lsp = {
         enabled = true,
         virtual_text = {
@@ -29,39 +24,29 @@ function M.catppuccin()
           information = 'underline',
         },
       },
-      lsp_trouble = true,
-      lsp_saga = true,
-      gitgutter = false,
-      gitsigns = true,
-      telescope = true,
+      neotree = {
+        enabled = true,
+        show_root = true,
+        transparent_panel = true
+      },
       nvimtree = {
         enabled = false,
         show_root = false,
       },
-      which_key = false,
       indent_blankline = {
         enabled = true,
         colored_indent_levels = true,
       },
       dashboard = false,
-      neogit = false,
-      vim_sneak = false,
-      fern = false,
-      barbar = false,
-      bufferline = true,
-      markdown = true,
-      lightspeed = false,
       ts_rainbow = true,
-      hop = false,
-      cmp = true,
     },
   }
-  require('catppuccin').setup(options)
+  catppuccin.setup(options)
 end
 
--- colorscheme onedarkpro
-function M.onedarkpro()
-  require('onedarkpro').setup({
+local onedarkpro_ok, onedarkpro = pcall(require, 'onedarkpro')
+if onedarkpro_ok then
+  onedarkpro.setup({
     styles = {
       comments = 'italic',
       keywords = 'bold,italic',
@@ -80,22 +65,9 @@ function M.onedarkpro()
   })
 end
 
--- kanagawa
-function M.kanagawa()
-  require('kanagawa').setup({
-    undercurl = true,
-    commentStyle = 'italic',
-    functionStyle = 'italic',
-    keywordStyle = 'italic,bold',
-    specialException = true,
-    transparent = false,
-    dimInactive = false,
-  })
-end
-
--- nightfox
-function M.nightfox()
-  require('nightfox').setup({
+local nightfox_ok, nightfox = pcall(require, 'nightfox')
+if nightfox_ok then
+  nightfox.setup({
     options = {
       dim_inactive = false,
       styles = {
@@ -104,37 +76,21 @@ function M.nightfox()
         keywords = 'bold,italic',
       },
       inverse = {
-        match_paren = true,
-        visual = true,
-        search = false,
+        match_paren = false,
+        visual = false,
+        search = true,
       },
       transparent = false,
     },
   })
+  vim.cmd('colorscheme nightfox')
 end
 
--- rose-pine
-function M.rose_pine()
-  require('rose-pine').setup({
+local rose_pine_ok, rose_pine = pcall(require, 'rose-pine')
+if rose_pine_ok then
+  rose_pine.setup({
     dark_variant = 'moon',
     dim_nc_background = false,
     disable_background = false,
   })
-  vim.cmd('colorscheme rose-pine')
 end
-
--- material theme
-function M.material()
-  vim.g.material_style = 'oceanic'
-  require('material').setup({
-    italics = {
-      comments = true,
-      keywords = false,
-      functions = true,
-      strings = false,
-      variables = false,
-    },
-  })
-end
-
-return M
