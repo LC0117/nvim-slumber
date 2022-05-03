@@ -1,4 +1,4 @@
-local U = require("slumber.core.utils")
+local U = require('slumber.core.utils')
 local font
 if U.is_mac then
   font = 'OperatorMono Nerd Font:h13'
@@ -53,7 +53,7 @@ local options = {
   number = true,
   relativenumber = true,
   ignorecase = true,
-  guifont = font
+  guifont = font,
 }
 
 vim.cmd([[

@@ -110,12 +110,12 @@ require('neo-tree').setup({
       hide_by_name = {
         '.DS_Store',
         'thumbs.db',
-        '__pycache__'
+        '__pycache__',
       },
       never_show = {
         '.DS_Store',
         'thumbs.db',
-        '.git'
+        '.git',
       },
     },
     follow_current_file = true,

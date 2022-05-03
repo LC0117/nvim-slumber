@@ -4,7 +4,7 @@ local M = {}
 M.settings = {
   Lua = {
     runtime = {
-      version = 'LuaJIT'
+      version = 'LuaJIT',
     },
     diagnostics = {
       -- Get the language server to recognize the `vim` global

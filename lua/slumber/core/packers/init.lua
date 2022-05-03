@@ -23,8 +23,8 @@ packer.init({
     clone_timeout = 400,
   },
   luarocks = {
-    python_cmd = 'python3'
-  }
+    python_cmd = 'python3',
+  },
 })
 
 local function get_repos(m)

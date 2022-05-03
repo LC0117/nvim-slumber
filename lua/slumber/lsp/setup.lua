@@ -19,7 +19,7 @@ local clients = {
   'solargraph',
   'cmake',
   'taplo',
-  'volar'
+  'volar',
 }
 
 for _, lsp in ipairs(clients) do
@@ -40,12 +40,12 @@ nlsp.hls.setup({
   capabilities = defaults.capabilities,
   settings = {
     haskell = {
-      formattingProvider = 'fourmolu'
-    }
-  }
+      formattingProvider = 'fourmolu',
+    },
+  },
 })
 
 nlsp.texlab.setup(require('slumber.lsp.servers.texlab'))
 nlsp.jsonls.setup(require('slumber.lsp.servers.jsonls'))
-nlsp.sumneko_lua.setup(require("slumber.lsp.servers.sumneko_lua"))
+nlsp.sumneko_lua.setup(require('slumber.lsp.servers.sumneko_lua'))
 nlsp.tsserver.setup(require('slumber.lsp.servers.tsserver'))

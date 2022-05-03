@@ -103,7 +103,7 @@ local opts = {
     adapter = {
       type = 'executable',
       command = 'lldb-vscode',
-      name = 'Rust Debug'
+      name = 'Rust Debug',
     },
   },
 }

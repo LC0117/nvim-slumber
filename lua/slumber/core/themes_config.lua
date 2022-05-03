@@ -27,7 +27,7 @@ if catppuccin_ok then
       neotree = {
         enabled = true,
         show_root = true,
-        transparent_panel = true
+        transparent_panel = true,
       },
       nvimtree = {
         enabled = false,
