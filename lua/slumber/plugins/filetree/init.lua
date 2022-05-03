@@ -105,15 +105,17 @@ require('neo-tree').setup({
   filesystem = {
     filtered_items = {
       visible = false, -- when true, they will just be displayed differently than normal items
-      hide_dotfiles = true,
+      hide_dotfiles = false,
       hide_gitignored = true,
       hide_by_name = {
         '.DS_Store',
         'thumbs.db',
+        '__pycache__'
       },
       never_show = {
         '.DS_Store',
         'thumbs.db',
+        '.git'
       },
     },
     follow_current_file = true,
