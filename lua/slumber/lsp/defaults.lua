@@ -16,8 +16,25 @@ capabilities.offsetEncoding = { 'utf-16' }
 
 M.capabilities = capabilities
 
+local function lsp_highlight_document(client)
+  if client.resolved_capabilities.document_highlight then
+    vim.api.nvim_create_augroup("lsp_document_highlight", {})
+    vim.api.nvim_create_autocmd("CursorHold", {
+      group = "lsp_document_highlight",
+      pattern = "<buffer>",
+      callback = vim.lsp.buf.document_highlight,
+    })
+    vim.api.nvim_create_autocmd("CursorMoved", {
+      group = "lsp_document_highlight",
+      pattern = "<buffer>",
+      callback = vim.lsp.buf.clear_references,
+    })
+  end
+end
+
 function M.on_attach(client, bufnr)
   require('aerial').on_attach(client, bufnr)
+  lsp_highlight_document(client)
 end
 
 return M
