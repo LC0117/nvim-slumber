@@ -22,7 +22,7 @@ dap.adapters.lldb = {
 }
 dap.adapters.python = {
   type = 'executable',
-  command = vim.env.HOME .. '/.local/opt/virtualenvs/debugpyenv/bin/python',
+  command = path.concat({ dapers, 'debugpy', 'bin', 'python' }),
   args = { '-m', 'debugpy.adapter' },
 }
 dap.adapters.dlv = function(callback, config)
