@@ -33,5 +33,6 @@ function M.on_attach(client, bufnr)
 end
 
 M.capabilities = defaults.capabilities
+M.root_dir = require('lspconfig').util.root_pattern('package.json')
 
 return M
