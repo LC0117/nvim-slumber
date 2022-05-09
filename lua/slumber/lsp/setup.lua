@@ -20,6 +20,7 @@ local clients = {
   'cmake',
   'taplo',
   'volar',
+  'pyright'
 }
 
 for _, lsp in ipairs(clients) do
@@ -28,6 +29,15 @@ for _, lsp in ipairs(clients) do
     capabilities = defaults.capabilities,
   })
 end
+
+nlsp.denols.setup({
+  on_attach = defaults.on_attach,
+  capabilities = defaults.capabilities,
+  root_dir = nlsp.util.root_pattern('deno.json'),
+  init_options = {
+    lint = true
+  }
+})
 
 nlsp.sourcekit.setup({
   filetypes = { 'swift' },
@@ -40,7 +50,7 @@ nlsp.hls.setup({
   capabilities = defaults.capabilities,
   settings = {
     haskell = {
-      formattingProvider = 'fourmolu',
+      formattingProvider = 'stylish-haskell',
     },
   },
 })
