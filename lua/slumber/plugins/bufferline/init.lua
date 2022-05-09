@@ -34,9 +34,9 @@ require('bufferline').setup({
           icon = ' ',
           matcher = function(buf)
             return buf.name:match('%_test')
-              or buf.name:match('%_Test')
-              or buf.name:match('%_Tests')
+              or buf.name:match('%Test')
               or buf.name:match('%_spec')
+              or buf.name:match('%Spec')
           end,
         },
         {

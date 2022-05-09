@@ -4,7 +4,11 @@ local ba = require('null-ls').builtins.code_actions
 local bc = require('null-ls').builtins.completion
 -- a lot of builtin sources
 local sources_users = {
-  ba.eslint,
+  ba.eslint.with({
+    condition = function (utils)
+      return utils.root_has_file({'package.json'})
+    end
+  }),
   ba.shellcheck,
   bc.tags,
   bf.black,
@@ -43,15 +47,18 @@ local sources_users = {
   bd.checkmake,
   -- spellchecker
   bd.cspell.with({
-    filetypes = { 'java', 'python', 'py' },
+    filetypes = { 'java', 'python' },
   }),
   -- php internal linter
   bd.php,
   -- js, ts, jsx, ysx linter
-  bd.eslint,
+  bd.eslint.with({
+    condition = function (utils)
+      return utils.root_has_file({'package.json'})
+    end
+  }),
   -- go linter
   bd.golangci_lint,
-  bd.revive,
   -- add fish lint rules
   bd.fish,
   -- dockerfile helper
