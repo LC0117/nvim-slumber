@@ -1,6 +1,7 @@
 local catppuccin_ok, catppuccin = pcall(require, 'catppuccin')
 if catppuccin_ok then
   local options = {
+    transparent_background = true,
     styles = {
       comments = 'italic',
       functions = 'italic',
@@ -80,7 +81,7 @@ if nightfox_ok then
         visual = false,
         search = true,
       },
-      transparent = false,
+      transparent = true,
     },
   })
   vim.cmd('colorscheme nightfox')
@@ -91,6 +92,6 @@ if rose_pine_ok then
   rose_pine.setup({
     dark_variant = 'moon',
     dim_nc_background = false,
-    disable_background = false,
+    disable_background = true,
   })
 end
