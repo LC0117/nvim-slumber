@@ -89,7 +89,6 @@ cmp.setup({
         luasnip = '[Snip]',
         nvim_lsp = '[LSP]',
         path = '[PATH]',
-        emoji = '[emoji]',
         neorg = '[NORG]',
         cmdline = '[cmd]',
         crates = '[crates.io]',
@@ -133,7 +132,6 @@ cmp.setup({
     { name = 'nvim_lsp', max_item_count = 15 },
     { name = 'cmp_tabnine', keyword_length = 2 },
     { name = 'path' },
-    { name = 'emoji', max_item_count = 15 },
     { name = 'cmdline' },
   },
 
