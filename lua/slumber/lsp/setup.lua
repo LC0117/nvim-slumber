@@ -20,7 +20,8 @@ local clients = {
   'cmake',
   'taplo',
   'volar',
-  'pyright'
+  'pyright',
+  'kotlin_language_server'
 }
 
 for _, lsp in ipairs(clients) do
