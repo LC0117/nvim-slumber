@@ -15,7 +15,7 @@ M['nvim-treesitter/nvim-treesitter'] = {
       end,
     },
     {
-      'lewis6991/nvim-treesitter-context',
+      'nvim-treesitter/nvim-treesitter-context',
       opt = true,
       after = 'nvim-treesitter',
       config = [[require('slumber.plugins.treesitter.context')]],
