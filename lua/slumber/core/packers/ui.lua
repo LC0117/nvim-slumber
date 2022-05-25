@@ -5,6 +5,29 @@ M['nvim-lualine/lualine.nvim'] = {
   config = [[require('slumber.plugins.lualine')]],
 }
 
+M['catppuccin/nvim'] = {
+  as = 'catppuccin',
+}
+
+M['olimorris/onedarkpro.nvim'] = {}
+
+M['numToStr/Sakura.nvim'] = {}
+
+M['wfxr/minimap.vim'] = {
+  cmd = 'Minimap',
+  setup = function ()
+    vim.g.minimap_auto_start_win_enter = 1
+    vim.g.minimap_block_filetypes = {
+      'aerial',
+      'neo-tree',
+      'TelescopePrompt',
+      'startup',
+    }
+    vim.g.minimap_highlight_range = 1
+    vim.g.minimap_highlight_search = 1
+  end
+}
+
 M['lewis6991/gitsigns.nvim'] = {
   event = { 'BufRead', 'BufNewFile' },
   config = [[require('slumber.plugins.gitsigns')]],

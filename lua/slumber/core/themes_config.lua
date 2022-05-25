@@ -1,7 +1,6 @@
 local catppuccin_ok, catppuccin = pcall(require, 'catppuccin')
 if catppuccin_ok then
   local options = {
-    transparent_background = true,
     styles = {
       comments = 'italic',
       functions = 'italic',
@@ -60,38 +59,10 @@ if onedarkpro_ok then
       undercurl = true,
       cursorline = true,
       terminal_colors = true,
-      transparency = false,
+      transparency = true,
       window_unfocussed_color = false,
     },
   })
+  onedarkpro.load()
 end
 
-local nightfox_ok, nightfox = pcall(require, 'nightfox')
-if nightfox_ok then
-  nightfox.setup({
-    options = {
-      dim_inactive = false,
-      styles = {
-        comments = 'italic',
-        functions = 'italic',
-        keywords = 'bold,italic',
-      },
-      inverse = {
-        match_paren = false,
-        visual = false,
-        search = true,
-      },
-      transparent = true,
-    },
-  })
-  vim.cmd('colorscheme nightfox')
-end
-
-local rose_pine_ok, rose_pine = pcall(require, 'rose-pine')
-if rose_pine_ok then
-  rose_pine.setup({
-    dark_variant = 'moon',
-    dim_nc_background = false,
-    disable_background = true,
-  })
-end

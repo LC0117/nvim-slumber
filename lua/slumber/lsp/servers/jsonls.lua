@@ -8,6 +8,7 @@ M.capabilities = defaults.capabilities
 M.settings = {
   json = {
     schemas = require('schemastore').json.schemas(),
+    validate = { enable = true }
   },
 }
 

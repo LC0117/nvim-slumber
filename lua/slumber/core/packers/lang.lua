@@ -29,19 +29,23 @@ M['neovim/nvim-lspconfig'] = {
   event = 'BufRead',
   requires = {
     { 'jose-elias-alvarez/null-ls.nvim', after = 'nvim-lspconfig', config = [[require('slumber.lsp.null_ls')]] },
-    { 'williamboman/nvim-lsp-installer' },
+    { 'williamboman/nvim-lsp-installer', event = 'BufWinEnter' },
     { 'stevearc/aerial.nvim', after = 'nvim-treesitter', config = [[require('slumber.plugins.aerial')]] },
     { 'ray-x/lsp_signature.nvim', after = 'nvim-lspconfig', config = [[require('slumber.plugins.lsp_signature')]] },
-    { 'jose-elias-alvarez/nvim-lsp-ts-utils' },
-    { 'b0o/schemastore.nvim' },
+    { 'jose-elias-alvarez/nvim-lsp-ts-utils', event = 'BufWinEnter' },
+    { 'b0o/schemastore.nvim', event = 'BufWinEnter' },
     { 'p00f/clangd_extensions.nvim', after = 'nvim-lspconfig', config = [[require('slumber.lsp.servers.clangd')]] },
     { 'mfussenegger/nvim-jdtls', ft = 'java', config = [[require('slumber.lsp.servers.jdtls')]] },
     { 'scalameta/nvim-metals', ft = { 'scala', 'sbt' }, config = [[require('slumber.lsp.servers.metals')]] },
-    { 'princejoogie/tailwind-highlight.nvim' },
     {
       'simrat39/rust-tools.nvim',
       ft = 'rust',
       config = [[require('slumber.lsp.servers.rust_analyzer')]],
+    },
+    {
+      'someone-stole-my-name/yaml-companion.nvim',
+      ft = 'yaml',
+      config = [[require('slumber.lsp.servers.yaml')]],
     },
   },
   config = [[require('slumber.lsp')]],
@@ -94,7 +98,6 @@ M['akinsho/pubspec-assist.nvim'] = {
     {
       'lyaml',
       server = 'http://rocks.moonscript.org',
-      env = { YAML_DIR = '/opt/homebrew/Cellar/libyaml/0.2.5/' },
     },
   },
   config = function()

@@ -38,7 +38,6 @@ end
 local tools = get_repos(require('slumber.core.packers.tools'))
 local lang = get_repos(require('slumber.core.packers.lang'))
 local essentials = get_repos(require('slumber.core.packers.essentials'))
-local themes = get_repos(require('slumber.core.packers.themes'))
 local ui = get_repos(require('slumber.core.packers.ui'))
 
 local function concat_all(...)
@@ -53,7 +52,7 @@ local function concat_all(...)
 end
 
 local use = packer.use
-local plugin_lists = concat_all(essentials, themes, lang, ui, tools)
+local plugin_lists = concat_all(essentials, lang, ui, tools)
 for _, repo in ipairs(plugin_lists) do
   use(repo)
 end
