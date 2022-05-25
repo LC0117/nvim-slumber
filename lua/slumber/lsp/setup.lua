@@ -16,12 +16,14 @@ local clients = {
   'ocamllsp',
   'gopls',
   'lemminx',
-  'solargraph',
+  'sorbet',
   'cmake',
   'taplo',
   'volar',
   'pyright',
-  'kotlin_language_server'
+  'kotlin_language_server',
+  'omnisharp',
+  'vls'
 }
 
 for _, lsp in ipairs(clients) do
