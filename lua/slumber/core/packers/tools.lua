@@ -7,11 +7,6 @@ M['nvim-telescope/telescope.nvim'] = {
   end,
 }
 
-M['mrjones2014/dash.nvim'] = {
-  cmd = { 'Dash', 'DashWord' },
-  run = 'make install',
-}
-
 M['nvim-telescope/telescope-file-browser.nvim'] = {
   opt = true,
   after = 'telescope.nvim',
