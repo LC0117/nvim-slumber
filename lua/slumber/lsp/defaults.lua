@@ -17,7 +17,7 @@ capabilities.offsetEncoding = { 'utf-16' }
 M.capabilities = capabilities
 
 local function lsp_highlight_document(client)
-  if client.resolved_capabilities.document_highlight then
+  if client.server_capabilities.documentHighlightProvider then
     vim.api.nvim_create_augroup('lsp_document_highlight', {})
     vim.api.nvim_create_autocmd('CursorHold', {
       group = 'lsp_document_highlight',
