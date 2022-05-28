@@ -34,4 +34,36 @@ for type, icon in pairs(lsp_signs) do
   vim.fn.sign_define(hl, { text = icon, texthl = hl })
 end
 
+local kinds = vim.lsp.protocol.CompletionItemKind
+local icons = {
+  Text = '',
+  Method = ' ',
+  Function = '',
+  Constructor = ' ',
+  Field = ' ',
+  Variable = '',
+  Class = 'ﴯ',
+  Interface = ' ',
+  Module = ' ',
+  Property = 'ﰠ',
+  Unit = ' ',
+  Value = ' ',
+  Enum = ' ',
+  Keyword = ' ',
+  Snippet = ' ',
+  Color = ' ',
+  File = ' ',
+  Reference = ' ',
+  Folder = ' ',
+  EnumMember = ' ',
+  Constant = 'ﬦ',
+  Struct = ' ',
+  Event = '',
+  Operator = ' ',
+  TypeParameter = '',
+}
+for index, _ in pairs(kinds) do
+  kinds[index] = icons[index]
+end
+
 require('slumber.lsp.setup')
