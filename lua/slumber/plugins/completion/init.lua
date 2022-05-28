@@ -21,6 +21,8 @@ cmp.setup({
     local context = require('cmp.config.context')
     if vim.api.nvim_get_mode().mode == 'c' then
       return true
+    elseif vim.api.nvim_buf_get_option(0, 'filetype') == 'TelescopePrompt' then
+      return false
     else
       return not context.in_treesitter_capture('comment') and not context.in_syntax_group('Comment')
     end
