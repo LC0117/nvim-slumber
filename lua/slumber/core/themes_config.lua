@@ -59,7 +59,7 @@ if onedarkpro_ok then
       undercurl = true,
       cursorline = true,
       terminal_colors = true,
-      transparency = true,
+      transparency = false,
       window_unfocussed_color = false,
     },
   })
