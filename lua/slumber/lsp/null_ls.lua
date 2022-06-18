@@ -45,10 +45,6 @@ local sources_users = {
   bd.chktex,
   -- make file linter
   bd.checkmake,
-  -- spellchecker
-  bd.cspell.with({
-    filetypes = { 'java', 'python' },
-  }),
   -- php internal linter
   bd.php,
   -- js, ts, jsx, ysx linter
