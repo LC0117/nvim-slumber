@@ -56,9 +56,10 @@ cmp.config.compare.order,
   },
 
   formatting = {
+    fields = { "kind", "abbr", "menu" },
     format = function(entry, vim_item)
       local lspkind_icons = vim.lsp.protocol.CompletionItemKind
-      vim_item.kind = string.format('%s %s', lspkind_icons[vim_item.kind], vim_item.kind)
+      vim_item.kind = lspkind_icons[vim_item.kind]
 
       vim_item.menu = ({
         cmp_tabnine = '[TN]', -- tabnine is lazy-loaded
