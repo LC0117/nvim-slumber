@@ -23,7 +23,8 @@ local clients = {
   'pyright',
   'kotlin_language_server',
   'omnisharp',
-  'vls'
+  'vls',
+  'groovyls'
 }
 
 for _, lsp in ipairs(clients) do
