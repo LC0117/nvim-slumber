@@ -11,8 +11,6 @@ M['catppuccin/nvim'] = {
 
 M['olimorris/onedarkpro.nvim'] = {}
 
-M['numToStr/Sakura.nvim'] = {}
-
 M['wfxr/minimap.vim'] = {
   cmd = 'Minimap',
   setup = function ()
