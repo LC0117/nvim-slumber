@@ -37,7 +37,7 @@ if catppuccin_ok then
         enabled = true,
         colored_indent_levels = true,
       },
-      dashboard = false,
+      dashboard = true,
       ts_rainbow = true,
     },
   }
@@ -63,6 +63,12 @@ if onedarkpro_ok then
       window_unfocussed_color = false,
     },
   })
-  onedarkpro.load()
 end
 
+if vim.o.background == 'light' then
+  vim.g.catppuccin_flavour = 'latte'
+  vim.cmd('colorscheme catppuccin')
+elseif vim.o.background == 'dark' then
+  vim.g.catppuccin_flavour = 'mocha'
+  vim.cmd('colorscheme catppuccin')
+end
