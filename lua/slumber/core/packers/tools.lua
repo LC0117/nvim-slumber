@@ -84,10 +84,31 @@ M['hrsh7th/nvim-cmp'] = {
 M['windwp/nvim-autopairs'] = {
   after = 'nvim-cmp',
   config = function()
+    local cmp = require('cmp')
+    local handlers = require('nvim-autopairs.completion.handlers')
     local pairs = require('nvim-autopairs.completion.cmp')
-    require('cmp').event:on('confirm_done', pairs.on_confirm_done({ map_char = { tex = '', plaintex = '' } }))
-    pairs.lisp[#pairs.lisp + 1] = 'racket'
-    require('nvim-autopairs').setup({ map_cr = true })
+    require('nvim-autopairs').setup({
+      map_cr = true,
+      disable_filetype = { 'TelescopePrompt' }
+    })
+    require('cmp').event:on(
+      'confirm_done',
+      pairs.on_confirm_done({
+        filetypes = {
+          ['*'] = {
+            ['('] = {
+              kind = {
+                cmp.lsp.CompletionItemKind.Function,
+                cmp.lsp.CompletionItemKind.Method,
+              },
+              handler = handlers['*'],
+            },
+          },
+          tex = false,
+          plaintex = false,
+        },
+      })
+    )
   end,
 }
 
