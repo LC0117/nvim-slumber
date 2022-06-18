@@ -37,7 +37,7 @@ local command = {
   '-Declipse.product=org.eclipse.jdt.ls.core.product',
   '-Dlog.protocol=true',
   '-Dlog.level=ALL',
-  '-Xms1g',
+  '-Xms100M',
   '-Xmx2G',
   '-javaagent:' .. lombok,
   '--add-modules=ALL-SYSTEM',
