@@ -5,9 +5,9 @@ local bc = require('null-ls').builtins.completion
 -- a lot of builtin sources
 local sources_users = {
   ba.eslint.with({
-    condition = function (utils)
-      return utils.root_has_file({'package.json'})
-    end
+    condition = function(utils)
+      return utils.root_has_file({ 'package.json' })
+    end,
   }),
   ba.shellcheck,
   bc.tags,
@@ -49,9 +49,9 @@ local sources_users = {
   bd.php,
   -- js, ts, jsx, ysx linter
   bd.eslint.with({
-    condition = function (utils)
-      return utils.root_has_file({'package.json'})
-    end
+    condition = function(utils)
+      return utils.root_has_file({ 'package.json' })
+    end,
   }),
   -- go linter
   bd.golangci_lint,

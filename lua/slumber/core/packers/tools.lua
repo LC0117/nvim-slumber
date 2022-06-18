@@ -89,7 +89,7 @@ M['windwp/nvim-autopairs'] = {
     local pairs = require('nvim-autopairs.completion.cmp')
     require('nvim-autopairs').setup({
       map_cr = true,
-      disable_filetype = { 'TelescopePrompt' }
+      disable_filetype = { 'TelescopePrompt' },
     })
     require('cmp').event:on(
       'confirm_done',

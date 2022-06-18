@@ -62,6 +62,6 @@ if U.is_mac then
     'tami5/xbase',
     run = 'make install',
     ft = { 'swift', 'objc', 'objc++' },
-    config = [[require('xbase').setup({})]]
+    config = [[require('xbase').setup({})]],
   })
 end

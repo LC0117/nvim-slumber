@@ -37,7 +37,7 @@ cmp.setup({
       cmp.config.compare.kind,
       cmp.config.compare.sort_text,
       cmp.config.compare.length,
-cmp.config.compare.order,
+      cmp.config.compare.order,
     },
   },
 
@@ -56,7 +56,7 @@ cmp.config.compare.order,
   },
 
   formatting = {
-    fields = { "kind", "abbr", "menu" },
+    fields = { 'kind', 'abbr', 'menu' },
     format = function(entry, vim_item)
       local lspkind_icons = vim.lsp.protocol.CompletionItemKind
       vim_item.kind = lspkind_icons[vim_item.kind]

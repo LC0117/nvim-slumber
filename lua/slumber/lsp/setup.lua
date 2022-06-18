@@ -24,7 +24,7 @@ local clients = {
   'kotlin_language_server',
   'omnisharp',
   'vls',
-  'groovyls'
+  'groovyls',
 }
 
 for _, lsp in ipairs(clients) do
@@ -39,8 +39,8 @@ nlsp.denols.setup({
   capabilities = defaults.capabilities,
   root_dir = nlsp.util.root_pattern('deno.json'),
   init_options = {
-    lint = true
-  }
+    lint = true,
+  },
 })
 
 nlsp.sourcekit.setup({
