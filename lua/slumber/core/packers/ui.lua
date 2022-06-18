@@ -13,7 +13,7 @@ M['olimorris/onedarkpro.nvim'] = {}
 
 M['wfxr/minimap.vim'] = {
   cmd = 'Minimap',
-  setup = function ()
+  setup = function()
     vim.g.minimap_auto_start_win_enter = 1
     vim.g.minimap_block_filetypes = {
       'aerial',
@@ -23,7 +23,7 @@ M['wfxr/minimap.vim'] = {
     }
     vim.g.minimap_highlight_range = 1
     vim.g.minimap_highlight_search = 1
-  end
+  end,
 }
 
 M['lewis6991/gitsigns.nvim'] = {
