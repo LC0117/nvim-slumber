@@ -18,7 +18,7 @@ M['kyazdani42/nvim-web-devicons'] = {
   event = 'BufWinEnter',
 }
 
-M['startup-nvim/startup.nvim'] = {
+M['glepnir/dashboard-nvim'] = {
   config = [[require('slumber.plugins.startboard')]],
 }
 
