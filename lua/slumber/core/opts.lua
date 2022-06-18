@@ -1,9 +1,9 @@
 local U = require('slumber.core.utils')
 local font
 if U.is_mac then
-  font = 'OperatorMono Nerd Font:h13'
+  font = 'FantasqueSansMono Nerd Font:h13'
 else
-  font = 'OperatorMono Nerd Font:h12'
+  font = 'FantasqueSansMono Nerd Font:h12'
 end
 
 local g_options = {
@@ -17,6 +17,7 @@ local g_options = {
 
 local options = {
   termguicolors = true,
+  cmdheight = 0,
   mouse = 'a',
   errorbells = true,
   visualbell = true,
