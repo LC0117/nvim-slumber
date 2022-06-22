@@ -1,4 +1,5 @@
 local U = require('slumber.core.utils')
+local u = require('slumber.plugins.finder.utils')
 require('telescope').setup({
   defaults = {
     prompt_prefix = '🔭 ',
@@ -71,3 +72,4 @@ require('telescope').setup({
 })
 
 require('telescope').load_extension('notify')
+vim.keymap.set('n', '<leader>fb', u.buf_find)

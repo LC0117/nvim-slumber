@@ -65,10 +65,5 @@ if onedarkpro_ok then
   })
 end
 
-if vim.o.background == 'light' then
-  vim.g.catppuccin_flavour = 'latte'
-  vim.cmd('colorscheme catppuccin')
-elseif vim.o.background == 'dark' then
-  vim.g.catppuccin_flavour = 'mocha'
-  vim.cmd('colorscheme catppuccin')
-end
+vim.g.catppuccin_flavour = 'mocha'
+vim.cmd('colorscheme catppuccin')

@@ -19,23 +19,25 @@ require('dapui').setup({
     repl = 'r',
     toggle = 't',
   },
-  sidebar = {
-    elements = {
-      {
-        id = 'scopes',
-        size = 0.25,
+  layouts = {
+    {
+      elements = {
+        {
+          id = 'scopes',
+          size = 0.25,
+        },
+        { id = 'breakpoints', size = 0.25 },
+        { id = 'stacks', size = 0.25 },
+        { id = 'watches', size = 0.25 },
       },
-      { id = 'breakpoints', size = 0.25 },
-      { id = 'stacks', size = 0.25 },
-      { id = 'watches', size = 0.25 },
+      size = 40,
+      position = 'left',
     },
-    size = 40,
-    position = 'left',
-  },
-  tray = {
-    elements = { 'repl' },
-    size = 10,
-    position = 'bottom',
+    {
+      elements = { 'repl', 'console' },
+      size = 10,
+      position = 'bottom',
+    },
   },
   floating = {
     max_height = nil,

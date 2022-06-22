@@ -10,6 +10,10 @@ vim.fn.sign_define('DapBreakpointRejected', { text = [[]], texthl = 'Diagnost
 vim.fn.sign_define('DapStopped', { text = [[]], texthl = 'String' })
 vim.fn.sign_define('DapLogponit', { text = [[]], texthl = 'String' })
 
+-- nvim-dap mappings
+vim.keymap.set({ 'n', 'i' }, '<F2>', dap.toggle_breakpoint)
+vim.keymap.set({ 'n', 'i' }, '<F5>', dap.continue)
+
 dap.adapters.node2 = {
   type = 'executable',
   command = 'node',
