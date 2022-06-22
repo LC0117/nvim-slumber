@@ -15,8 +15,6 @@ end
 nmap('<leader>ff', [[:Telescope fd<CR>]])
 -- find word
 nmap('<leader>fw', [[:Telescope live_grep<CR>]])
--- find current buffer
-nmap('<leader>fb', require('slumber.plugins.finder.utils').buf_find)
 
 -- lsp things
 nmap('<leader>lf', vim.lsp.buf.format)
@@ -47,6 +45,4 @@ nmap('b]', [[:BufferLineCycleNext<CR>]])
 nmap('b[', [[:BufferLineCyclePrev<CR>]])
 nmap('bp', [[:BufferLineTogglePin<CR>]])
 
--- nvim-dap mappings
-nimap('<F2>', require('dap').toggle_breakpoint)
-nimap('<F5>', require('dap').continue)
+

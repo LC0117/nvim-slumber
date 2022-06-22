@@ -25,6 +25,7 @@ local clients = {
   'omnisharp',
   'vls',
   'groovyls',
+  'clojure_lsp',
 }
 
 for _, lsp in ipairs(clients) do
