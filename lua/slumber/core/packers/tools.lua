@@ -1,7 +1,7 @@
 local M = {}
 
 M['nvim-telescope/telescope.nvim'] = {
-  event = 'BufWinEnter',
+  cmd = 'Telescope',
   config = function()
     require('slumber.plugins.finder')
   end,
@@ -27,11 +27,6 @@ M['nvim-telescope/telescope-fzf-native.nvim'] = {
 M['stevearc/dressing.nvim'] = {
   after = 'telescope.nvim',
   config = [[require('slumber.plugins.dressing')]],
-}
-
-M['kevinhwang91/nvim-hlslens'] = {
-  event = 'BufRead',
-  config = [[require('slumber.plugins.hlslens')]],
 }
 
 M['folke/todo-comments.nvim'] = {
