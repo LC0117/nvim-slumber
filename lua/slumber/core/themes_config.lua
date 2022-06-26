@@ -1,6 +1,7 @@
 local catppuccin_ok, catppuccin = pcall(require, 'catppuccin')
 if catppuccin_ok then
   local options = {
+    term_colors = true,
     styles = {
       comments = 'italic',
       functions = 'italic',
@@ -63,7 +64,5 @@ if onedarkpro_ok then
       window_unfocussed_color = false,
     },
   })
+  require('onedarkpro').load()
 end
-
-vim.g.catppuccin_flavour = 'mocha'
-vim.cmd('colorscheme catppuccin')
