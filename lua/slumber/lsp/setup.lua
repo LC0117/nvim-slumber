@@ -26,6 +26,7 @@ local clients = {
   'vls',
   'groovyls',
   'clojure_lsp',
+  'phpactor'
 }
 
 for _, lsp in ipairs(clients) do

@@ -59,9 +59,11 @@ for _, repo in ipairs(plugin_lists) do
 end
 if U.is_mac then
   use({
-    'tami5/xbase',
+    'xbase-lab/xbase',
     run = 'make install',
-    config = [[require('xbase').setup({})]],
-    after = 'telescope.nvim'
+    config = function ()
+      require('xbase').setup({})
+    end,
+    after = { 'telescope.nvim', 'nvim-lspconfig' },
   })
 end
