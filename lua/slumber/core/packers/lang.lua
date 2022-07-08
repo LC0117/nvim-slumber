@@ -33,8 +33,8 @@ M['someone-stole-my-name/yaml-companion.nvim'] = {
   ft = 'yaml',
   config = [[require('slumber.lsp.servers.yaml')]],
 }
-
-M['mfussenegger/nvim-jdtls'] = { ft = 'java', config = [[require('slumber.lsp.servers.jdtls')]] }
+M['mfussenegger/nvim-jdtls'] = {}
+-- M['mfussenegger/nvim-jdtls'] = { ft = 'java', config = [[require('slumber.lsp.servers.jdtls')]] }
 
 M['scalameta/nvim-metals'] = {
   ft = { 'scala', 'sbt' },
