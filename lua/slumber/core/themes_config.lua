@@ -3,26 +3,27 @@ if catppuccin_ok then
   local options = {
     term_colors = true,
     styles = {
-      comments = 'italic',
-      functions = 'italic',
-      keywords = 'italic,bold',
-      strings = 'NONE',
-      variables = 'NONE',
+      comments = { 'italic' },
+      functions = { 'italic' },
+      keywords = { 'bold', 'italic' },
+    },
+    compile = {
+      enabled = true,
     },
     integrations = {
       native_lsp = {
         enabled = true,
         virtual_text = {
-          errors = 'italic,bold',
-          hints = 'NONE',
-          warnings = 'italic',
-          information = 'NONE',
+          errors = { 'bold', 'italic' },
+          hints = { 'italic' },
+          warnings = { 'bold' },
+          information = {},
         },
         underlines = {
-          errors = 'undercurl',
-          hints = 'underline',
-          warnings = 'undercurl',
-          information = 'underline',
+          errors = { 'undercurl' },
+          hints = { 'underline' },
+          warnings = { 'undercurl' },
+          information = { 'underline' },
         },
       },
       neotree = {
@@ -40,6 +41,10 @@ if catppuccin_ok then
       },
       dashboard = true,
       ts_rainbow = true,
+      dap = {
+        enabled = true,
+        enable_ui = true,
+      },
     },
   }
   catppuccin.setup(options)
@@ -48,6 +53,7 @@ end
 local onedarkpro_ok, onedarkpro = pcall(require, 'onedarkpro')
 if onedarkpro_ok then
   onedarkpro.setup({
+    dark_theme = 'onedark_vivid',
     styles = {
       comments = 'italic',
       keywords = 'bold,italic',
@@ -64,5 +70,11 @@ if onedarkpro_ok then
       window_unfocussed_color = false,
     },
   })
-  require('onedarkpro').load()
 end
+
+vim.api.nvim_create_autocmd('OptionSet', {
+  pattern = 'background',
+  callback = function()
+    vim.cmd('Catppuccin ' .. (vim.v.option_new == 'light' and 'latte' or 'mocha'))
+  end,
+})

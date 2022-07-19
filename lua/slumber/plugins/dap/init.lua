@@ -4,11 +4,11 @@ local dapers = path.concat({ vim.fn.stdpath('data'), 'dapers' })
 local dap = require('dap')
 
 -- define the breakpoints
-vim.fn.sign_define('DapBreakpoint', { text = [[ﱣ]], texthl = 'DiagnosticError' })
-vim.fn.sign_define('DapBreakPointCondition', { text = [[]], texthl = 'DiagnosticInfo' })
+vim.fn.sign_define('DapBreakpoint', { text = [[ﱣ]], texthl = 'DapBreakpoint' })
+vim.fn.sign_define('DapBreakPointCondition', { text = [[]], texthl = 'DapBreakpointCondition' })
 vim.fn.sign_define('DapBreakpointRejected', { text = [[]], texthl = 'DiagnosticError' })
 vim.fn.sign_define('DapStopped', { text = [[]], texthl = 'String' })
-vim.fn.sign_define('DapLogponit', { text = [[]], texthl = 'String' })
+vim.fn.sign_define('DapLogponit', { text = [[]], texthl = 'DapLogPoint' })
 
 -- nvim-dap mappings
 vim.keymap.set({ 'n', 'i' }, '<F2>', dap.toggle_breakpoint)

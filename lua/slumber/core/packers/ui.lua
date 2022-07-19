@@ -9,6 +9,8 @@ M['catppuccin/nvim'] = {
   as = 'catppuccin',
 }
 
+M['projekt0n/github-nvim-theme'] = {}
+
 M['olimorris/onedarkpro.nvim'] = {}
 
 M['lewis6991/gitsigns.nvim'] = {
