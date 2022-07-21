@@ -72,6 +72,8 @@ if onedarkpro_ok then
   })
 end
 
+vim.g.catppuccin_flavour = 'mocha'
+vim.cmd('colorscheme catppuccin')
 vim.api.nvim_create_autocmd('OptionSet', {
   pattern = 'background',
   callback = function()
