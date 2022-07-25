@@ -72,11 +72,10 @@ if onedarkpro_ok then
   })
 end
 
-vim.g.catppuccin_flavour = 'mocha'
-vim.cmd('colorscheme catppuccin')
 vim.api.nvim_create_autocmd('OptionSet', {
   pattern = 'background',
   callback = function()
-    vim.cmd('Catppuccin ' .. (vim.v.option_new == 'light' and 'latte' or 'mocha'))
+    local flavour = vim.v.option_new == 'light' and 'latte' or 'mocha'
+    vim.cmd({ cmd = 'Catppuccin', args = { flavour } })
   end,
 })
