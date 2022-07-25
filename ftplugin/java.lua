@@ -1,6 +1,6 @@
 local U = require('slumber.core.utils')
 local path = U.path
-local server_root = path.concat({ vim.fn.stdpath('data'), 'lsp_servers', 'jdtls' })
+local server_root = path.concat({ vim.fn.stdpath('data'), 'mason', 'packages', 'jdtls' })
 local fn = vim.fn
 local jar = fn.expand(path.concat({ server_root, 'plugins', 'org.eclipse.equinox.launcher_*.jar' }))
 local lombok = fn.expand(path.concat({ server_root, 'lombok.jar' }))

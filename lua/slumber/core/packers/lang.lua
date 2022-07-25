@@ -15,13 +15,21 @@ M['neovim/nvim-lspconfig'] = {
   event = 'BufRead',
   requires = {
     { 'jose-elias-alvarez/null-ls.nvim', after = 'nvim-lspconfig', config = [[require('slumber.lsp.null_ls')]] },
-    { 'williamboman/nvim-lsp-installer', event = 'BufWinEnter' },
+    { 'williamboman/mason.nvim', event = 'BufWinEnter' },
+    { 'williamboman/mason-lspconfig.nvim', after = 'mason.nvim' },
     { 'stevearc/aerial.nvim', after = 'nvim-treesitter', config = [[require('slumber.plugins.aerial')]] },
     { 'jose-elias-alvarez/nvim-lsp-ts-utils', event = 'BufWinEnter' },
     { 'b0o/schemastore.nvim', event = 'BufWinEnter' },
     { 'p00f/clangd_extensions.nvim', after = 'nvim-lspconfig', config = [[require('slumber.lsp.servers.clangd')]] },
   },
   config = [[require('slumber.lsp')]],
+}
+
+M['glepnir/lspsaga.nvim'] = {
+  after = 'nvim-lspconfig',
+  config = function()
+    require('lspsaga').init_lsp_saga()
+  end,
 }
 
 M['simrat39/rust-tools.nvim'] = {

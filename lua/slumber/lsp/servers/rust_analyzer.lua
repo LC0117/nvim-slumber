@@ -1,4 +1,9 @@
 local defaults = require('slumber.lsp.defaults')
+local U = require('slumber.core.utils')
+local mason_home = U.path.concat({ vim.fn.stdpath('data'), 'mason', 'packages' })
+local codelldb_path = U.path.concat({ mason_home, 'codelldb', 'extension', 'adapter', 'codelldb' })
+local liblldb_name = U.is_linux and 'liblldb.so' or U.is_mac and 'liblldb.dylib' or U.is_windows and 'liblldb.dll'
+local liblldb_path = U.path.concat({ mason_home, 'codelldb', 'extension', 'lldb', 'lib', liblldb_name })
 
 local opts = {
   tools = {
@@ -100,11 +105,7 @@ local opts = {
     standalone = true,
   },
   dap = {
-    adapter = {
-      type = 'executable',
-      command = 'lldb-vscode',
-      name = 'Rust Debug',
-    },
+    adapter = require('rust-tools.dap').get_codelldb_adapter(codelldb_path, liblldb_path),
   },
 }
 

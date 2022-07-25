@@ -1,14 +1,17 @@
 local nlsp = require('lspconfig')
 local defaults = require('slumber.lsp.defaults')
-require('nvim-lsp-installer').setup({
+
+require('mason').setup({
   ui = {
     icons = {
-      server_installed = '',
-      server_pending = '',
-      server_uninstalled = '',
+      package_installed = ' ',
+      package_pending = ' ',
+      package_uninstalled = ' ',
     },
   },
 })
+
+require("mason-lspconfig").setup()
 
 local clients = {
   'zls',
