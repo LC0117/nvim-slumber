@@ -6,6 +6,16 @@ M['nvim-treesitter/nvim-treesitter'] = {
     { 'JoosepAlviste/nvim-ts-context-commentstring', opt = true, after = 'nvim-treesitter' },
     { 'p00f/nvim-ts-rainbow', opt = true, after = 'nvim-treesitter' },
     { 'windwp/nvim-ts-autotag', opt = true, after = 'nvim-treesitter' },
+    {
+      'nvim-treesitter/nvim-treesitter-context',
+      opt = true,
+      after = 'nvim-treesitter',
+      config = function()
+        require('treesitter-context').setup({
+          enable = true,
+        })
+      end,
+    },
   },
   event = 'BufRead',
   config = [[require('slumber.plugins.treesitter')]],
@@ -25,13 +35,6 @@ M['neovim/nvim-lspconfig'] = {
   config = [[require('slumber.lsp')]],
 }
 
-M['glepnir/lspsaga.nvim'] = {
-  after = 'nvim-lspconfig',
-  config = function()
-    require('lspsaga').init_lsp_saga()
-  end,
-}
-
 M['simrat39/rust-tools.nvim'] = {
   ft = 'rust',
   config = [[require('slumber.lsp.servers.rust_analyzer')]],
@@ -42,7 +45,6 @@ M['someone-stole-my-name/yaml-companion.nvim'] = {
   config = [[require('slumber.lsp.servers.yaml')]],
 }
 M['mfussenegger/nvim-jdtls'] = {}
--- M['mfussenegger/nvim-jdtls'] = { ft = 'java', config = [[require('slumber.lsp.servers.jdtls')]] }
 
 M['scalameta/nvim-metals'] = {
   ft = { 'scala', 'sbt' },
