@@ -101,9 +101,20 @@ M['windwp/nvim-autopairs'] = {
           },
           tex = false,
           plaintex = false,
+          haskell = false,
         },
       })
     )
+  end,
+}
+
+M['brenoprata10/nvim-highlight-colors'] = {
+  event = { 'BufRead', 'BufNewFile' },
+  config = function()
+    require('nvim-highlight-colors').setup({
+      render = 'background',
+      enable_tailwind = true,
+    })
   end,
 }
 
@@ -115,13 +126,6 @@ M['declancm/cinnamon.nvim'] = {
       extra_keymaps = true,
       extended_keymaps = true,
     })
-  end,
-}
-
-M['NvChad/nvim-colorizer.lua'] = {
-  cmd = 'ColorizerToggle',
-  config = function()
-    require('colorizer').setup()
   end,
 }
 

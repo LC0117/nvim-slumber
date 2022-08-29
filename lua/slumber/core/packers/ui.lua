@@ -9,7 +9,11 @@ M['catppuccin/nvim'] = {
   as = 'catppuccin',
 }
 
-M['projekt0n/github-nvim-theme'] = {}
+M['EdenEast/nightfox.nvim'] = {}
+
+M['rebelot/kanagawa.nvim'] = {}
+
+M['kaiuri/nvim-juliana'] = {}
 
 M['olimorris/onedarkpro.nvim'] = {}
 
@@ -58,6 +62,7 @@ M['lukas-reineke/indent-blankline.nvim'] = {
       'dap-repl',
       '',
     }
+    vim.g.indent_blankline_show_first_indent_level = false
     vim.g.indent_blankline_buftype_exclude = {
       'terminal',
       'nofile',

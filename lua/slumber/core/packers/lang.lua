@@ -81,4 +81,11 @@ M['Saecki/crates.nvim'] = {
   end,
 }
 
+M['Julian/lean.nvim'] = {
+  lsp = {
+    on_attach = require('slumber.lsp.defaults').on_attach,
+  },
+  event = { 'BufRead *.lean', 'BufNewFile *.lean' },
+}
+
 return M

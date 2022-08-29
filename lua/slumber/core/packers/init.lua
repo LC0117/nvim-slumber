@@ -61,9 +61,10 @@ if U.is_mac then
   use({
     'xbase-lab/xbase',
     run = 'make install',
-    config = function ()
+    config = function()
       require('xbase').setup({})
     end,
     after = { 'telescope.nvim', 'nvim-lspconfig' },
   })
 end
+use({'/Users/lichao/source/repos/github.com/LC0117/modus.nvim'})
