@@ -57,17 +57,21 @@ local java_settings = {
   configuration = {
     runtimes = U.is_mac and {
       {
-        name = 'JavaSE-17',
-        path = '/Library/Java/JavaVirtualMachines/jdk-17.0.2.jdk/Contents/Home/',
+        name = 'JavaSE-18',
+        path = '/Library/Java/JavaVirtualMachines/liberica-jdk-18-full.jdk/Contents/Home/',
       },
       {
-        name = 'JavaSE-18',
-        path = '/Library/Java/JavaVirtualMachines/openjdk.jdk/Contents/Home/',
+        name = 'JavaSE-17',
+        path = '/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home/',
       },
       {
         name = 'JavaSE-11',
-        path = '/Library/Java/JavaVirtualMachines/openjdk-11.jdk/Contents/Home/',
+        path = '/Library/Java/JavaVirtualMachines/zulu-11.jdk/Contents/Home/',
       },
+      {
+        name = 'JavaSE-1.8',
+        path = '/Library/Java/JavaVirtualMachines/zulu-8.jdk/Contents/Home/'
+      }
     },
   },
 }
