@@ -2,6 +2,7 @@ local defaults = require('slumber.lsp.defaults')
 
 require('clangd_extensions').setup({
   server = {
+    cmd = { 'clangd', '--background-index', '-j=12', '--clang-tidy', '--completion-style=detailed' },
     on_attach = defaults.on_attach,
     capabilities = defaults.capabilities,
   },
@@ -12,7 +13,7 @@ require('clangd_extensions').setup({
       only_current_line = false,
       only_current_line_autocmd = 'CursorHold',
       show_parameter_hints = true,
-      parameter_hints_prefix = ' 💁🏻',
+      parameter_hints_prefix = ' 💁',
       other_hints_prefix = ' ',
       max_len_align = false,
       max_len_align_padding = 1,
