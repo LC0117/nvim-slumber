@@ -80,3 +80,13 @@ require('nvim-treesitter.configs').setup({
     },
   },
 })
+
+local parser = require('nvim-treesitter.parsers').get_parser_configs()
+parser.lean = {
+  install_info = {
+    url = 'https://github.com/Julian/tree-sitter-lean',
+    files = { 'src/parser.c', 'src/scanner.cc' },
+    branch = 'main',
+  },
+  filetype = 'lean',
+}

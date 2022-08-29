@@ -26,7 +26,7 @@ dap.adapters.lldb = {
 }
 dap.adapters.python = {
   type = 'executable',
-  command = path.concat({ dapers, 'debugpy', 'bin', 'python' }),
+  command = path.concat({ U.mason_package, 'debugpy', 'venv', 'bin', 'python' }),
   args = { '-m', 'debugpy.adapter' },
 }
 dap.adapters.dlv = function(callback, config)

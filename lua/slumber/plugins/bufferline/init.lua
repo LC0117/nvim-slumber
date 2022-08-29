@@ -12,6 +12,9 @@ require('bufferline').setup({
     show_buffer_close_icons = true,
     show_buffer_icons = true,
     show_tab_indicators = true,
+    indicator = {
+      style = 'underline',
+    },
     diagnostics = 'nvim_lsp',
     always_show_bufferline = true,
     separator_style = 'thin',

@@ -78,7 +78,10 @@ cmp.setup({
   },
 
   mapping = {
-    ['<CR>'] = cmp.mapping.confirm({ select = true }),
+    ['<CR>'] = cmp.mapping.confirm({
+      behavior = cmp.ConfirmBehavior.Replace,
+      select = false,
+    }),
     ['<Up>'] = cmp.mapping.scroll_docs(-4),
     ['<Down>'] = cmp.mapping.scroll_docs(4),
     ['<C-c>'] = cmp.mapping.close(),

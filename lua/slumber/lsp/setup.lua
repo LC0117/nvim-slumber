@@ -11,7 +11,7 @@ require('mason').setup({
   },
 })
 
-require("mason-lspconfig").setup()
+require('mason-lspconfig').setup()
 
 local clients = {
   'zls',
@@ -29,7 +29,9 @@ local clients = {
   'vls',
   'groovyls',
   'clojure_lsp',
-  'phpactor'
+  'phpactor',
+  'erlangls',
+  'leanls'
 }
 
 for _, lsp in ipairs(clients) do
@@ -54,6 +56,23 @@ nlsp.sourcekit.setup({
   capabilities = defaults.capabilities,
 })
 
+nlsp.gopls.setup({
+  on_attach = defaults.on_attach,
+  capabilities = defaults.capabilities,
+  settings = {
+    gopls = {
+      hints = {
+        assignVariableTypes = true,
+        compositeLiteralFields = true,
+        constantValues = true,
+        functionTypeParameters = true,
+        parameterNames = true,
+        rangeVariableTypes = true,
+      },
+    },
+  },
+})
+
 nlsp.hls.setup({
   on_attach = defaults.on_attach,
   capabilities = defaults.capabilities,
@@ -66,5 +85,4 @@ nlsp.hls.setup({
 
 nlsp.texlab.setup(require('slumber.lsp.servers.texlab'))
 nlsp.jsonls.setup(require('slumber.lsp.servers.jsonls'))
-nlsp.sumneko_lua.setup(require('slumber.lsp.servers.sumneko_lua'))
 nlsp.tsserver.setup(require('slumber.lsp.servers.tsserver'))

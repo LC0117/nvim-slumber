@@ -1,6 +1,9 @@
 local catppuccin_ok, catppuccin = pcall(require, 'catppuccin')
 if catppuccin_ok then
   local options = {
+    dim_inactive = {
+      enabled = false,
+    },
     term_colors = true,
     styles = {
       comments = { 'italic' },
@@ -22,7 +25,7 @@ if catppuccin_ok then
         underlines = {
           errors = { 'undercurl' },
           hints = { 'underline' },
-          warnings = { 'undercurl' },
+          warnings = { 'underdouble' },
           information = { 'underline' },
         },
       },
@@ -45,37 +48,57 @@ if catppuccin_ok then
         enabled = true,
         enable_ui = true,
       },
+      aerial = true,
+      lsp_saga = true,
     },
   }
   catppuccin.setup(options)
 end
 
-local onedarkpro_ok, onedarkpro = pcall(require, 'onedarkpro')
-if onedarkpro_ok then
-  onedarkpro.setup({
-    dark_theme = 'onedark_vivid',
+local fox_ok, fox = pcall(require, 'nightfox')
+if fox_ok then
+  fox.setup({
+    options = {
+      styles = {
+        comments = 'italic',
+        functions = 'italic',
+        keywords = 'bold,italic',
+      },
+    },
+  })
+end
+
+local odp_ok, odp = pcall(require, 'onedarkpro')
+if odp_ok then
+  odp.setup({
     styles = {
       comments = 'italic',
       keywords = 'bold,italic',
       functions = 'italic',
     },
     options = {
-      bold = true,
-      italic = true,
+      terminal_colors = true,
+      cursorline = true,
       underline = true,
       undercurl = true,
-      cursorline = true,
-      terminal_colors = true,
-      transparency = false,
-      window_unfocussed_color = false,
     },
   })
 end
 
-vim.api.nvim_create_autocmd('OptionSet', {
-  pattern = 'background',
-  callback = function()
-    local flavour = vim.v.option_new == 'light' and 'latte' or 'mocha'
-    vim.cmd({ cmd = 'Catppuccin', args = { flavour } })
-  end,
+local kngw_ok, kngw = pcall(require, 'kanagawa')
+if kngw_ok then
+  kngw.setup({
+    undercurl = true,
+    globalStatus = true,
+    theme = 'default'
+  })
+end
+
+vim.g.catppuccin_flavour = 'mocha'
+vim.cmd('colo catppuccin')
+vim.api.nvim_create_autocmd("OptionSet", {
+	pattern = "background",
+	callback = function()
+		vim.cmd("Catppuccin " .. (vim.v.option_new == "light" and "latte" or "mocha"))
+	end,
 })

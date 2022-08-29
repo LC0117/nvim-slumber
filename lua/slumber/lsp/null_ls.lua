@@ -24,7 +24,6 @@ local sources_users = {
   bf.perltidy,
   -- sql
   bf.sqlfluff,
-  bf.remark,
   bf.scalafmt,
   bf.shfmt,
   bf.stylua.with({
@@ -35,24 +34,10 @@ local sources_users = {
   bf.stylelint,
   bf.swiftformat,
   bf.taplo,
-  bf.uncrustify.with({
-    filetypes = { 'cs', 'csharp' },
-  }),
-  bf.prettierd.with({
-    filetypes = { 'markdown' },
-  }),
   bf.qmlformat,
   bd.chktex,
   -- make file linter
   bd.checkmake,
-  -- php internal linter
-  bd.php,
-  -- js, ts, jsx, ysx linter
-  bd.eslint.with({
-    condition = function(utils)
-      return utils.root_has_file({ 'package.json' })
-    end,
-  }),
   -- go linter
   bd.golangci_lint,
   -- add fish lint rules
