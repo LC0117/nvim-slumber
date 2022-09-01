@@ -1,3 +1,4 @@
+local defaults = require('slumber.lsp.defaults')
 local M = {}
 
 M['nvim-treesitter/nvim-treesitter'] = {
@@ -79,13 +80,6 @@ M['Saecki/crates.nvim'] = {
     table.insert(config.sources, { name = 'crates' })
     cmp.setup(config)
   end,
-}
-
-M['Julian/lean.nvim'] = {
-  lsp = {
-    on_attach = require('slumber.lsp.defaults').on_attach,
-  },
-  event = { 'BufRead *.lean', 'BufNewFile *.lean' },
 }
 
 return M
