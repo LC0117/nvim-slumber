@@ -32,7 +32,7 @@ M['neovim/nvim-lspconfig'] = {
     { 'jose-elias-alvarez/nvim-lsp-ts-utils', event = 'BufWinEnter' },
     { 'b0o/schemastore.nvim', event = 'BufWinEnter' },
   },
-  config = [[require('slumber.lsp.setup')]],
+  config = [[require('slumber.lsp')]],
 }
 
 M['simrat39/rust-tools.nvim'] = {
