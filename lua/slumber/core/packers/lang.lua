@@ -31,9 +31,8 @@ M['neovim/nvim-lspconfig'] = {
     { 'stevearc/aerial.nvim', after = 'nvim-treesitter', config = [[require('slumber.plugins.aerial')]] },
     { 'jose-elias-alvarez/nvim-lsp-ts-utils', event = 'BufWinEnter' },
     { 'b0o/schemastore.nvim', event = 'BufWinEnter' },
-    { 'p00f/clangd_extensions.nvim', after = 'nvim-lspconfig', config = [[require('slumber.lsp.servers.clangd')]] },
   },
-  config = [[require('slumber.lsp')]],
+  config = [[require('slumber.lsp.setup')]],
 }
 
 M['simrat39/rust-tools.nvim'] = {

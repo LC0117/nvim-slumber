@@ -3,7 +3,7 @@ local opt = vim.opt
 opt.shiftwidth = 2
 opt.tabstop = 2
 
-local path = vim.fs.find({ 'stylua.toml', '.git' })
+local path = vim.fs.find({ 'stylua.toml', '.git', '.stylua.toml' }, { upward = true })
 local root_dir = next(path) and vim.fs.dirname(path[1]) or vim.fn.getcwd()
 vim.lsp.start({
   name = 'lua-language-server',
@@ -28,3 +28,4 @@ vim.lsp.start({
     },
   },
 })
+

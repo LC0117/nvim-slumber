@@ -6,7 +6,7 @@ local bc = require('null-ls').builtins.completion
 local sources_users = {
   ba.eslint.with({
     condition = function(utils)
-      return utils.root_has_file({ 'package.json' })
+      return utils.root_has_file({ 'package.json', '.eslintrc.json', '.eslintrc.js' })
     end,
   }),
   ba.shellcheck,
@@ -14,14 +14,10 @@ local sources_users = {
   bf.black,
   -- cmake
   bf.cmake_format,
-  -- java
-  bf.google_java_format,
   -- kotlin
   bf.ktlint,
   -- latex
   bf.latexindent,
-  -- perl
-  bf.perltidy,
   -- sql
   bf.sqlfluff,
   bf.scalafmt,
@@ -33,7 +29,6 @@ local sources_users = {
   }),
   bf.stylelint,
   bf.swiftformat,
-  bf.taplo,
   bf.qmlformat,
   bd.chktex,
   -- make file linter

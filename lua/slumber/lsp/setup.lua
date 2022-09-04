@@ -84,5 +84,4 @@ nlsp.hls.setup({
 })
 
 nlsp.texlab.setup(require('slumber.lsp.servers.texlab'))
-nlsp.jsonls.setup(require('slumber.lsp.servers.jsonls'))
 nlsp.tsserver.setup(require('slumber.lsp.servers.tsserver'))
