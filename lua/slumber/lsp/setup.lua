@@ -17,7 +17,6 @@ local clients = {
   'zls',
   'r_language_server',
   'ocamllsp',
-  'gopls',
   'lemminx',
   'sorbet',
   'cmake',
@@ -54,23 +53,6 @@ nlsp.sourcekit.setup({
   filetypes = { 'swift' },
   on_attach = defaults.on_attach,
   capabilities = defaults.capabilities,
-})
-
-nlsp.gopls.setup({
-  on_attach = defaults.on_attach,
-  capabilities = defaults.capabilities,
-  settings = {
-    gopls = {
-      hints = {
-        assignVariableTypes = true,
-        compositeLiteralFields = true,
-        constantValues = true,
-        functionTypeParameters = true,
-        parameterNames = true,
-        rangeVariableTypes = true,
-      },
-    },
-  },
 })
 
 nlsp.hls.setup({
