@@ -1,6 +1,6 @@
 local U = require('slumber.core.utils')
 local path = U.path
-local dapers = path.concat({ vim.fn.stdpath('data'), 'dapers' })
+local dapers = path.concat(vim.fn.stdpath('data'), 'dapers')
 local dap = require('dap')
 
 -- define the breakpoints
@@ -26,7 +26,7 @@ dap.adapters.lldb = {
 }
 dap.adapters.python = {
   type = 'executable',
-  command = path.concat({ U.mason_package, 'debugpy', 'venv', 'bin', 'python' }),
+  command = path.concat(U.mason_package, 'debugpy', 'venv', 'bin', 'python'),
   args = { '-m', 'debugpy.adapter' },
 }
 dap.adapters.dlv = function(callback, config)
