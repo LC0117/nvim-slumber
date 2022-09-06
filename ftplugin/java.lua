@@ -1,32 +1,32 @@
 local U = require('slumber.core.utils')
 local path = U.path
-local server_root = path.concat({ vim.fn.stdpath('data'), 'mason', 'packages', 'jdtls' })
+local server_root = path.concat(vim.fn.stdpath('data'), 'mason', 'packages', 'jdtls')
 local fn = vim.fn
-local jar = fn.expand(path.concat({ server_root, 'plugins', 'org.eclipse.equinox.launcher_*.jar' }))
-local lombok = fn.expand(path.concat({ server_root, 'lombok.jar' }))
-local workspace_root = fn.expand(path.concat({ fn.stdpath('cache'), 'jdtls-workspace' }))
-local workspace_dir = path.concat({ workspace_root, fn.fnamemodify(fn.getcwd(), ':p:h:t') })
-local dapers_path = path.concat({ fn.stdpath('data'), 'dapers' })
+local jar = fn.expand(path.concat(server_root, 'plugins', 'org.eclipse.equinox.launcher_*.jar'))
+local lombok = fn.expand(path.concat(server_root, 'lombok.jar'))
+local workspace_root = fn.expand(path.concat(fn.stdpath('cache'), 'jdtls-workspace'))
+local workspace_dir = path.concat(workspace_root, fn.fnamemodify(fn.getcwd(), ':p:h:t'))
+local dapers_path = path.concat(fn.stdpath('data'), 'dapers')
 local defaults = require('slumber.lsp.defaults')
-local java_debug_path = path.concat({
+local java_debug_path = path.concat(
   dapers_path,
   'java-debug',
   'com.microsoft.java.debug.plugin',
   'target',
-  'com.microsoft.java.debug.plugin-*.jar',
-})
-local java_test_path = path.concat({ dapers_path, 'vscode-java-test', 'server', '*.jar' })
+  'com.microsoft.java.debug.plugin-*.jar'
+)
+local java_test_path = path.concat(dapers_path, 'vscode-java-test', 'server', '*.jar')
 local jar_patterns = {
   java_debug_path,
   java_test_path,
 }
 local config_option = (function()
   if U.is_mac then
-    return path.concat({ server_root, 'config_mac' })
+    return path.concat(server_root, 'config_mac')
   elseif U.is_linux then
-    return path.concat({ server_root, 'config_linux' })
+    return path.concat(server_root, 'config_linux')
   elseif U.is_windows then
-    return path.concat({ server_root, 'config_win' })
+    return path.concat(server_root, 'config_win')
   end
 end)()
 
@@ -70,8 +70,8 @@ local java_settings = {
       },
       {
         name = 'JavaSE-1.8',
-        path = '/Library/Java/JavaVirtualMachines/zulu-8.jdk/Contents/Home/'
-      }
+        path = '/Library/Java/JavaVirtualMachines/zulu-8.jdk/Contents/Home/',
+      },
     },
   },
 }
