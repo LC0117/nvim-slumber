@@ -90,15 +90,15 @@ if kngw_ok then
   kngw.setup({
     undercurl = true,
     globalStatus = true,
-    theme = 'default'
+    theme = 'default',
   })
 end
 
 vim.g.catppuccin_flavour = 'mocha'
 vim.cmd('colo catppuccin')
-vim.api.nvim_create_autocmd("OptionSet", {
-	pattern = "background",
-	callback = function()
-		vim.cmd("Catppuccin " .. (vim.v.option_new == "light" and "latte" or "mocha"))
-	end,
+vim.api.nvim_create_autocmd('OptionSet', {
+  pattern = 'background',
+  callback = function()
+    vim.cmd('Catppuccin ' .. (vim.v.option_new == 'light' and 'latte' or 'mocha'))
+  end,
 })

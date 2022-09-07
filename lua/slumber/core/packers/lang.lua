@@ -1,4 +1,3 @@
-local defaults = require('slumber.lsp.defaults')
 local M = {}
 
 M['nvim-treesitter/nvim-treesitter'] = {
@@ -23,15 +22,15 @@ M['nvim-treesitter/nvim-treesitter'] = {
 }
 
 M['neovim/nvim-lspconfig'] = {
-  event = 'BufRead',
   requires = {
+    { 'lvimuser/lsp-inlayhints.nvim', event = 'BufWinEnter' },
     { 'jose-elias-alvarez/null-ls.nvim', after = 'nvim-lspconfig', config = [[require('slumber.lsp.null_ls')]] },
     { 'williamboman/mason.nvim', event = 'BufWinEnter' },
     { 'williamboman/mason-lspconfig.nvim', after = 'mason.nvim' },
     { 'stevearc/aerial.nvim', after = 'nvim-treesitter', config = [[require('slumber.plugins.aerial')]] },
-    { 'jose-elias-alvarez/nvim-lsp-ts-utils', event = 'BufWinEnter' },
     { 'b0o/schemastore.nvim', event = 'BufWinEnter' },
   },
+  event = 'BufRead',
   config = [[require('slumber.lsp')]],
 }
 

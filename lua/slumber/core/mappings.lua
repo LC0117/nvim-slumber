@@ -1,14 +1,7 @@
-local function nmap(key, fun)
-  vim.keymap.set('n', key, fun)
-end
-
-local function vmap(key, fun)
-  vim.keymap.set('v', key, fun)
-end
-
-local function nimap(key, fun)
-  vim.keymap.set({ 'n', 'i' }, key, fun)
-end
+local map = require('slumber.core.utils').map
+local nmap = map.n
+local vmap = map.v
+local nimap = map.ni
 
 -- telescope settings
 -- find file

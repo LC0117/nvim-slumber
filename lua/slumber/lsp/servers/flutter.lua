@@ -1,6 +1,4 @@
 local defaults = require('slumber.lsp.defaults')
-local debugger_dir = vim.fn.stdpath('cache') .. '/dart-code'
-local debugger_path = debugger_dir .. '/out/dist/debug.js'
 
 require('flutter-tools').setup({
   ui = {
@@ -16,14 +14,6 @@ require('flutter-tools').setup({
   debugger = {
     enabled = true,
     run_via_dap = false,
-    register_configurations = function()
-      local dap = require('dap')
-      dap.adapters.dart = {
-        type = 'executable',
-        command = 'node',
-        args = { debugger_path, 'flutter' },
-      }
-    end,
   },
   widget_guides = {
     enabled = true,

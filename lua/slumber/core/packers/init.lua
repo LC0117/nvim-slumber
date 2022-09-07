@@ -56,4 +56,3 @@ local plugin_lists = concat_all(essentials, lang, ui, tools)
 for _, repo in ipairs(plugin_lists) do
   use(repo)
 end
-

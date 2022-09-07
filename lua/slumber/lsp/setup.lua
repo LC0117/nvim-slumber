@@ -1,18 +1,6 @@
 local nlsp = require('lspconfig')
 local defaults = require('slumber.lsp.defaults')
 
-require('mason').setup({
-  ui = {
-    icons = {
-      package_installed = ' ',
-      package_pending = ' ',
-      package_uninstalled = ' ',
-    },
-  },
-})
-
-require('mason-lspconfig').setup()
-
 local clients = {
   'zls',
   'r_language_server',
@@ -30,18 +18,16 @@ local clients = {
   'clojure_lsp',
   'phpactor',
   'erlangls',
-  'leanls'
+  'leanls',
 }
 
 for _, lsp in ipairs(clients) do
   nlsp[lsp].setup({
-    on_attach = defaults.on_attach,
     capabilities = defaults.capabilities,
   })
 end
 
 nlsp.denols.setup({
-  on_attach = defaults.on_attach,
   capabilities = defaults.capabilities,
   root_dir = nlsp.util.root_pattern('deno.json'),
   init_options = {
@@ -49,14 +35,44 @@ nlsp.denols.setup({
   },
 })
 
+nlsp.sumneko_lua.setup({
+  capabilities = defaults.capabilities,
+  settings = {
+    Lua = {
+      runtime = { version = 'LuaJIT' },
+      diagnostics = { globals = { 'vim', 'packer_plugins' } },
+      workspace = {
+        library = {
+          [vim.fn.expand('$VIMRUNTIME/lua')] = true,
+          [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true,
+        },
+        maxPreload = 100000,
+        preloadFileSize = 10000,
+      },
+      telemetry = { enable = false },
+    },
+  },
+})
+
 nlsp.sourcekit.setup({
   filetypes = { 'swift' },
-  on_attach = defaults.on_attach,
+  capabilities = defaults.capabilities,
+})
+
+nlsp.clangd.setup({
+  cmd = {
+    'clangd',
+    '--background-index',
+    '-j=12',
+    '--clang-tidy',
+    '--completion-style=detailed',
+    '--inlay-hints',
+    '--enable-config',
+  },
   capabilities = defaults.capabilities,
 })
 
 nlsp.hls.setup({
-  on_attach = defaults.on_attach,
   capabilities = defaults.capabilities,
   settings = {
     haskell = {
@@ -66,4 +82,3 @@ nlsp.hls.setup({
 })
 
 nlsp.texlab.setup(require('slumber.lsp.servers.texlab'))
-nlsp.tsserver.setup(require('slumber.lsp.servers.tsserver'))
