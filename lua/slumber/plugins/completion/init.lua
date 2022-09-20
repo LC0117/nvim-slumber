@@ -112,7 +112,7 @@ cmp.setup({
     { name = 'nvim_lsp', max_item_count = 15 },
     { name = 'cmp_tabnine', keyword_length = 2 },
     { name = 'path' },
-    { name = 'cmdline' },
+    --[[ { name = 'cmdline' }, ]]
   },
 
   snippet = {

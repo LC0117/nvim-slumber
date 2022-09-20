@@ -1,6 +1,6 @@
 require('aerial').setup({
   backends = { 'lsp', 'treesitter', 'markdown' },
-  close_behavior = 'auto',
+  close_automatic_events = { 'unsupported' },
   highlight_on_hover = true,
   highlight_on_jump = 300,
   max_width = { 40, 0.2 },

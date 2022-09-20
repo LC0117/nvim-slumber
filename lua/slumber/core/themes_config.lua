@@ -43,6 +43,9 @@ if catppuccin_ok then
         colored_indent_levels = true,
       },
       dashboard = true,
+      treesitter = true,
+      treesitter_context = true,
+      fidget = true,
       ts_rainbow = true,
       dap = {
         enabled = true,
@@ -91,6 +94,17 @@ if kngw_ok then
     undercurl = true,
     globalStatus = true,
     theme = 'default',
+  })
+end
+
+local tky_ok, tky = pcall(require, 'tokyonight')
+if tky_ok then
+  tky.setup({
+    style = 'moon',
+    styles = {
+      keywords = { italic = true, bold = true },
+      functions = { italic = true },
+    },
   })
 end
 

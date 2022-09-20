@@ -17,7 +17,7 @@ local g_options = {
 
 local options = {
   termguicolors = true,
-  cmdheight = 0,
+  --cmdheight = 0,
   mouse = 'a',
   errorbells = true,
   visualbell = true,

@@ -129,4 +129,24 @@ M['declancm/cinnamon.nvim'] = {
   end,
 }
 
+M['nvim-neotest/neotest'] = {
+  event = 'BufRead',
+  requires = {
+    { 'haydenmeade/neotest-jest' },
+    { 'nvim-neotest/neotest-python' },
+    {'rouge8/neotest-rust'},
+    {'nvim-neotest/neotest-go'}
+  },
+  config = function()
+    require('neotest').setup({
+      adapters = {
+        require('neotest-python')({ dap = { justMyCode = false } }),
+        require('neotest-jest')({ jestCommand = 'npm test --' }),
+        require('neotest-rust'),
+        require('neotest-go')
+      },
+    })
+  end,
+}
+
 return M

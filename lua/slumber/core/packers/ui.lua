@@ -17,6 +17,8 @@ M['kaiuri/nvim-juliana'] = {}
 
 M['olimorris/onedarkpro.nvim'] = {}
 
+M['folke/tokyonight.nvim'] = {}
+
 M['lewis6991/gitsigns.nvim'] = {
   event = { 'BufRead', 'BufNewFile' },
   config = [[require('slumber.plugins.gitsigns')]],

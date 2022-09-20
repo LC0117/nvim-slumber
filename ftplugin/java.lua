@@ -74,6 +74,11 @@ local java_settings = {
       },
     },
   },
+  inlayHints = {
+    parameterNames = {
+      enabled = 'all'
+    }
+  }
 }
 local bundle_path = {}
 for _, jar_pattern in ipairs(jar_patterns) do

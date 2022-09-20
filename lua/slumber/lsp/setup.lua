@@ -81,4 +81,57 @@ nlsp.hls.setup({
   },
 })
 
+nlsp.gopls.setup({
+  capabilities = defaults.capabilities,
+  settings = {
+    gopls = {
+      hints = {
+        assignVariableTypes = true,
+        compositeLiteralFields = true,
+        constantValues = true,
+        functionTypeParameters = true,
+        parameterNames = true,
+        rangeVariableTypes = true,
+      },
+    },
+  },
+})
+
+nlsp.tsserver.setup({
+  root_dir = nlsp.util.root_pattern('package.json'),
+  settings = {
+     typescript = {
+      inlayHints = {
+        includeInlayParameterNameHints = 'all',
+        includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+        includeInlayFunctionParameterTypeHints = true,
+        includeInlayVariableTypeHints = true,
+        includeInlayPropertyDeclarationTypeHints = true,
+        includeInlayFunctionLikeReturnTypeHints = true,
+        includeInlayEnumMemberValueHints = true,
+      }
+    },
+    javascript = {
+      inlayHints = {
+        includeInlayParameterNameHints = 'all',
+        includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+        includeInlayFunctionParameterTypeHints = true,
+        includeInlayVariableTypeHints = true,
+        includeInlayPropertyDeclarationTypeHints = true,
+        includeInlayFunctionLikeReturnTypeHints = true,
+        includeInlayEnumMemberValueHints = true,
+      }
+    }
+  }
+})
+
+nlsp.jsonls.setup({
+  capabilities = defaults.capabilities,
+  settings = {
+    json = {
+      schemas = require('schemastore').json.schemas()
+    }
+  }
+})
+
 nlsp.texlab.setup(require('slumber.lsp.servers.texlab'))
