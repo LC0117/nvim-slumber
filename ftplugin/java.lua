@@ -2,7 +2,6 @@ local U = require('slumber.core.utils')
 local path = U.path
 local server_root = path.concat(vim.fn.stdpath('data'), 'mason', 'packages', 'jdtls')
 local fn = vim.fn
-local jar = fn.expand(path.concat(server_root, 'plugins', 'org.eclipse.equinox.launcher_*.jar'))
 local lombok = fn.expand(path.concat(server_root, 'lombok.jar'))
 local workspace_root = fn.expand(path.concat(fn.stdpath('cache'), 'jdtls-workspace'))
 local workspace_dir = path.concat(workspace_root, fn.fnamemodify(fn.getcwd(), ':p:h:t'))
@@ -19,38 +18,6 @@ local java_test_path = path.concat(dapers_path, 'vscode-java-test', 'server', '*
 local jar_patterns = {
   java_debug_path,
   java_test_path,
-}
-local config_option = (function()
-  if U.is_mac then
-    return path.concat(server_root, 'config_mac')
-  elseif U.is_linux then
-    return path.concat(server_root, 'config_linux')
-  elseif U.is_windows then
-    return path.concat(server_root, 'config_win')
-  end
-end)()
-
-local command = {
-  'java',
-  '-Declipse.application=org.eclipse.jdt.ls.core.id1',
-  '-Dosgi.bundles.defaultStartLevel=4',
-  '-Declipse.product=org.eclipse.jdt.ls.core.product',
-  '-Dlog.protocol=true',
-  '-Dlog.level=ALL',
-  '-Xms100M',
-  '-Xmx2G',
-  '-javaagent:' .. lombok,
-  '--add-modules=ALL-SYSTEM',
-  '--add-opens',
-  'java.base/java.util=ALL-UNNAMED',
-  '--add-opens',
-  'java.base/java.lang=ALL-UNNAMED',
-  '-jar',
-  jar,
-  '-configuration',
-  config_option,
-  '-data',
-  workspace_dir,
 }
 
 local java_settings = {
@@ -93,7 +60,7 @@ local jdtls = require('jdtls')
 local extendedClientCapabilities = jdtls.extendedClientCapabilities
 extendedClientCapabilities.resolveAdditionalTextEditsSupport = true
 jdtls.start_or_attach({
-  cmd = command,
+  cmd = { 'jdtls', '-javaagent', lombok, '-data', workspace_dir },
   settings = {
     java = java_settings,
   },
