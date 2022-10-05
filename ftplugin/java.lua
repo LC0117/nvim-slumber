@@ -24,8 +24,8 @@ local java_settings = {
   configuration = {
     runtimes = U.is_mac and {
       {
-        name = 'JavaSE-18',
-        path = '/Library/Java/JavaVirtualMachines/liberica-jdk-18-full.jdk/Contents/Home/',
+        name = 'JavaSE-19',
+        path = '/Library/Java/JavaVirtualMachines/liberica-jdk-19-full.jdk/Contents/Home/',
       },
       {
         name = 'JavaSE-17',
