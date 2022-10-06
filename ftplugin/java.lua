@@ -5,16 +5,15 @@ local fn = vim.fn
 local lombok = fn.expand(path.concat(server_root, 'lombok.jar'))
 local workspace_root = fn.expand(path.concat(fn.stdpath('cache'), 'jdtls-workspace'))
 local workspace_dir = path.concat(workspace_root, fn.fnamemodify(fn.getcwd(), ':p:h:t'))
-local dapers_path = path.concat(fn.stdpath('data'), 'dapers')
 local defaults = require('slumber.lsp.defaults')
 local java_debug_path = path.concat(
-  dapers_path,
-  'java-debug',
-  'com.microsoft.java.debug.plugin',
-  'target',
+  U.mason_package,
+  'java-debug-adapter',
+  'extension',
+  'server',
   'com.microsoft.java.debug.plugin-*.jar'
 )
-local java_test_path = path.concat(dapers_path, 'vscode-java-test', 'server', '*.jar')
+local java_test_path = path.concat(U.mason_package, 'java-test', 'extension', 'server','*.jar')
 local jar_patterns = {
   java_debug_path,
   java_test_path,
