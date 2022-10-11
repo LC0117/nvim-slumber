@@ -47,12 +47,14 @@ if catppuccin_ok then
       treesitter_context = true,
       fidget = true,
       ts_rainbow = true,
+      notify = true,
       dap = {
         enabled = true,
         enable_ui = true,
       },
       aerial = true,
       lsp_saga = true,
+      vimwiki = true,
     },
   }
   catppuccin.setup(options)
