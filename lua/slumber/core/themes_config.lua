@@ -55,6 +55,7 @@ if catppuccin_ok then
       aerial = true,
       lsp_saga = true,
       vimwiki = true,
+      mason = true
     },
   }
   catppuccin.setup(options)

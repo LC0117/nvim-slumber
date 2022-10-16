@@ -19,6 +19,7 @@ local clients = {
   'phpactor',
   'erlangls',
   'leanls',
+  'qmlls'
 }
 
 for _, lsp in ipairs(clients) do
