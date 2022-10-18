@@ -1,5 +1,7 @@
 local M = {}
 
+M['tpope/vim-sleuth'] = {}
+
 M['nvim-telescope/telescope.nvim'] = {
   cmd = 'Telescope',
   config = function()
