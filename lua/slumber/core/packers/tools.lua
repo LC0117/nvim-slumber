@@ -2,6 +2,16 @@ local M = {}
 
 M['tpope/vim-sleuth'] = {}
 
+M['toppair/peek.nvim'] = {
+  ft = 'markdown',
+  run = 'deno task --quiet build:fast',
+  config = function()
+    require('peek').setup({
+      theme = 'dark'
+    })
+  end
+}
+
 M['nvim-telescope/telescope.nvim'] = {
   cmd = 'Telescope',
   config = function()
@@ -136,8 +146,8 @@ M['nvim-neotest/neotest'] = {
   requires = {
     { 'haydenmeade/neotest-jest' },
     { 'nvim-neotest/neotest-python' },
-    {'rouge8/neotest-rust'},
-    {'nvim-neotest/neotest-go'}
+    { 'rouge8/neotest-rust' },
+    { 'nvim-neotest/neotest-go' },
   },
   config = function()
     require('neotest').setup({
@@ -145,7 +155,7 @@ M['nvim-neotest/neotest'] = {
         require('neotest-python')({ dap = { justMyCode = false } }),
         require('neotest-jest')({ jestCommand = 'npm test --' }),
         require('neotest-rust'),
-        require('neotest-go')
+        require('neotest-go'),
       },
     })
   end,
