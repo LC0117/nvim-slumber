@@ -26,7 +26,7 @@ local lsp_signs = {
   Error = ' ',
   Warn = ' ',
   Info = ' ',
-  Hint = '',
+  Hint = ' ',
 }
 
 for type, icon in pairs(lsp_signs) do
@@ -36,20 +36,20 @@ end
 
 local kinds = vim.lsp.protocol.CompletionItemKind
 local icons = {
-  Text = '',
+  Text = ' ',
   Method = ' ',
   Function = '',
   Constructor = ' ',
   Field = ' ',
   Variable = '',
-  Class = 'ﴯ',
+  Class = ' ',
   Interface = ' ',
   Module = ' ',
   Property = 'ﰠ',
   Unit = ' ',
   Value = ' ',
   Enum = ' ',
-  Keyword = ' ',
+  Keyword = ' ',
   Snippet = ' ',
   Color = ' ',
   File = ' ',
@@ -60,10 +60,24 @@ local icons = {
   Struct = ' ',
   Event = '',
   Operator = ' ',
-  TypeParameter = '',
+  TypeParameter = ' ',
 }
 for index, _ in pairs(kinds) do
   kinds[index] = icons[index]
 end
 
+require('mason').setup({
+  ui = {
+    icons = {
+      package_installed = ' ',
+      package_pending = ' ',
+      package_uninstalled = ' ',
+    },
+  },
+})
+
+require('mason-lspconfig').setup()
+require('lsp-inlayhints').setup()
 require('slumber.lsp.setup')
+require('slumber.lsp.events')
+

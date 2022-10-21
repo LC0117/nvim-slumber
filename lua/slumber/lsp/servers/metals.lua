@@ -14,7 +14,6 @@ dap.configurations.scala = {
     name = 'RunOrTest',
     metals = {
       runType = 'runOrTestFile',
-      --args = { "firstArg", "secondArg", "thirdArg" }, -- here just as an example
     },
   },
   {

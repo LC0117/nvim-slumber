@@ -1,7 +1,19 @@
 local M = {}
 
+M['tpope/vim-sleuth'] = {}
+
+M['toppair/peek.nvim'] = {
+  ft = 'markdown',
+  run = 'deno task --quiet build:fast',
+  config = function()
+    require('peek').setup({
+      theme = 'dark'
+    })
+  end
+}
+
 M['nvim-telescope/telescope.nvim'] = {
-  event = 'BufWinEnter',
+  cmd = 'Telescope',
   config = function()
     require('slumber.plugins.finder')
   end,
@@ -27,11 +39,6 @@ M['nvim-telescope/telescope-fzf-native.nvim'] = {
 M['stevearc/dressing.nvim'] = {
   after = 'telescope.nvim',
   config = [[require('slumber.plugins.dressing')]],
-}
-
-M['kevinhwang91/nvim-hlslens'] = {
-  event = 'BufRead',
-  config = [[require('slumber.plugins.hlslens')]],
 }
 
 M['folke/todo-comments.nvim'] = {
@@ -106,9 +113,20 @@ M['windwp/nvim-autopairs'] = {
           },
           tex = false,
           plaintex = false,
+          haskell = false,
         },
       })
     )
+  end,
+}
+
+M['brenoprata10/nvim-highlight-colors'] = {
+  event = { 'BufRead', 'BufNewFile' },
+  config = function()
+    require('nvim-highlight-colors').setup({
+      render = 'background',
+      enable_tailwind = true,
+    })
   end,
 }
 
@@ -123,10 +141,23 @@ M['declancm/cinnamon.nvim'] = {
   end,
 }
 
-M['NvChad/nvim-colorizer.lua'] = {
-  cmd = 'ColorizerToggle',
+M['nvim-neotest/neotest'] = {
+  event = 'BufRead',
+  requires = {
+    { 'haydenmeade/neotest-jest' },
+    { 'nvim-neotest/neotest-python' },
+    { 'rouge8/neotest-rust' },
+    { 'nvim-neotest/neotest-go' },
+  },
   config = function()
-    require('colorizer').setup()
+    require('neotest').setup({
+      adapters = {
+        require('neotest-python')({ dap = { justMyCode = false } }),
+        require('neotest-jest')({ jestCommand = 'npm test --' }),
+        require('neotest-rust'),
+        require('neotest-go'),
+      },
+    })
   end,
 }
 

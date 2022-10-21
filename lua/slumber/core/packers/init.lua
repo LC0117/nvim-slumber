@@ -1,5 +1,4 @@
 local fn = vim.fn
-local U = require('slumber.core.utils')
 local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
 if fn.empty(fn.glob(install_path)) > 0 then
   packer_bootstrap = fn.system({
@@ -56,12 +55,4 @@ local use = packer.use
 local plugin_lists = concat_all(essentials, lang, ui, tools)
 for _, repo in ipairs(plugin_lists) do
   use(repo)
-end
-if U.is_mac then
-  use({
-    'tami5/xbase',
-    run = 'make install',
-    config = [[require('xbase').setup({})]],
-    after = 'telescope.nvim'
-  })
 end
