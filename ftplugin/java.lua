@@ -28,11 +28,11 @@ local java_settings = {
       },
       {
         name = 'JavaSE-17',
-        path = '/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home/',
+        path = '/Library/Java/JavaVirtualMachines/openjdk-17.jdk/Contents/Home/',
       },
       {
         name = 'JavaSE-11',
-        path = '/Library/Java/JavaVirtualMachines/zulu-11.jdk/Contents/Home/',
+        path = '/Library/Java/JavaVirtualMachines/openjdk-11.jdk/Contents/Home/',
       },
       {
         name = 'JavaSE-1.8',
