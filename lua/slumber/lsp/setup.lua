@@ -19,7 +19,8 @@ local clients = {
   'phpactor',
   'erlangls',
   'leanls',
-  'qmlls'
+  'qmlls',
+  'neocmake'
 }
 
 for _, lsp in ipairs(clients) do
