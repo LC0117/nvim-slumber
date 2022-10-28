@@ -24,16 +24,10 @@ M['lewis6991/gitsigns.nvim'] = {
   config = [[require('slumber.plugins.gitsigns')]],
 }
 
-M['j-hui/fidget.nvim'] = {
+M['folke/noice.nvim'] = {
+  event = 'VimEnter',
   config = function()
-    require('fidget').setup({
-      text = {
-        spinner = 'moon',
-      },
-      window = {
-        blend = 0,
-      },
-    })
+    require('noice').setup()
   end,
 }
 
