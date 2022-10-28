@@ -29,15 +29,8 @@ if catppuccin_ok then
           information = { 'underline' },
         },
       },
-      neotree = {
-        enabled = true,
-        show_root = true,
-        transparent_panel = true,
-      },
-      nvimtree = {
-        enabled = false,
-        show_root = false,
-      },
+      neotree = true,
+      nvimtree = false,
       indent_blankline = {
         enabled = true,
         colored_indent_levels = true,
@@ -55,7 +48,8 @@ if catppuccin_ok then
       aerial = true,
       lsp_saga = true,
       vimwiki = true,
-      mason = true
+      mason = true,
+      noice = true
     },
   }
   catppuccin.setup(options)
