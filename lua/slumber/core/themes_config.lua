@@ -49,7 +49,8 @@ if catppuccin_ok then
       lsp_saga = true,
       vimwiki = true,
       mason = true,
-      noice = true
+      noice = true,
+      neotest = true
     },
   }
   catppuccin.setup(options)
