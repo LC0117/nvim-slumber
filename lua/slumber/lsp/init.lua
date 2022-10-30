@@ -73,4 +73,3 @@ require('mason-lspconfig').setup()
 require('lsp-inlayhints').setup()
 require('slumber.lsp.setup')
 require('slumber.lsp.events')
-

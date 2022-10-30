@@ -6,14 +6,9 @@ local lombok = fn.expand(path.concat(server_root, 'lombok.jar'))
 local workspace_root = fn.expand(path.concat(fn.stdpath('cache'), 'jdtls-workspace'))
 local workspace_dir = path.concat(workspace_root, fn.fnamemodify(fn.getcwd(), ':p:h:t'))
 local defaults = require('slumber.lsp.defaults')
-local java_debug_path = path.concat(
-  U.mason_package,
-  'java-debug-adapter',
-  'extension',
-  'server',
-  'com.microsoft.java.debug.plugin-*.jar'
-)
-local java_test_path = path.concat(U.mason_package, 'java-test', 'extension', 'server','*.jar')
+local java_debug_path =
+  path.concat(U.mason_package, 'java-debug-adapter', 'extension', 'server', 'com.microsoft.java.debug.plugin-*.jar')
+local java_test_path = path.concat(U.mason_package, 'java-test', 'extension', 'server', '*.jar')
 local jar_patterns = {
   java_debug_path,
   java_test_path,
@@ -41,7 +36,7 @@ local java_settings = {
     } or U.is_linux and {
       {
         name = 'JavaSE-19',
-        path = '/usr/lib/jvm/java-19-openjdk/'
+        path = '/usr/lib/jvm/java-19-openjdk/',
       },
       {
         name = 'JavaSE-17',
@@ -49,19 +44,19 @@ local java_settings = {
       },
       {
         name = 'JavaSE-11',
-        path = '/usr/lib/jvm/java-11-openjdk/'
+        path = '/usr/lib/jvm/java-11-openjdk/',
       },
       {
         name = 'JavaSE-1.8',
-        path = '/usr/lib/jvm/java-8-openjdk/'
-      }
+        path = '/usr/lib/jvm/java-8-openjdk/',
+      },
     },
   },
   inlayHints = {
     parameterNames = {
-      enabled = 'all'
-    }
-  }
+      enabled = 'all',
+    },
+  },
 }
 local bundle_path = {}
 for _, jar_pattern in ipairs(jar_patterns) do

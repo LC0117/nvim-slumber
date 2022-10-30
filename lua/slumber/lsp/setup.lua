@@ -20,7 +20,7 @@ local clients = {
   'erlangls',
   'leanls',
   'qmlls',
-  'neocmake'
+  'neocmake',
 }
 
 for _, lsp in ipairs(clients) do
@@ -102,7 +102,7 @@ nlsp.gopls.setup({
 nlsp.tsserver.setup({
   root_dir = nlsp.util.root_pattern('package.json'),
   settings = {
-     typescript = {
+    typescript = {
       inlayHints = {
         includeInlayParameterNameHints = 'all',
         includeInlayParameterNameHintsWhenArgumentMatchesName = false,
@@ -111,7 +111,7 @@ nlsp.tsserver.setup({
         includeInlayPropertyDeclarationTypeHints = true,
         includeInlayFunctionLikeReturnTypeHints = true,
         includeInlayEnumMemberValueHints = true,
-      }
+      },
     },
     javascript = {
       inlayHints = {
@@ -122,18 +122,18 @@ nlsp.tsserver.setup({
         includeInlayPropertyDeclarationTypeHints = true,
         includeInlayFunctionLikeReturnTypeHints = true,
         includeInlayEnumMemberValueHints = true,
-      }
-    }
-  }
+      },
+    },
+  },
 })
 
 nlsp.jsonls.setup({
   capabilities = defaults.capabilities,
   settings = {
     json = {
-      schemas = require('schemastore').json.schemas()
-    }
-  }
+      schemas = require('schemastore').json.schemas(),
+    },
+  },
 })
 
 nlsp.texlab.setup(require('slumber.lsp.servers.texlab'))

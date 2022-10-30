@@ -7,9 +7,9 @@ M['toppair/peek.nvim'] = {
   run = 'deno task --quiet build:fast',
   config = function()
     require('peek').setup({
-      theme = 'dark'
+      theme = 'dark',
     })
-  end
+  end,
 }
 
 M['nvim-telescope/telescope.nvim'] = {

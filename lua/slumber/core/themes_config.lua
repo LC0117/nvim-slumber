@@ -50,7 +50,7 @@ if catppuccin_ok then
       vimwiki = true,
       mason = true,
       noice = true,
-      neotest = true
+      neotest = true,
     },
   }
   catppuccin.setup(options)
