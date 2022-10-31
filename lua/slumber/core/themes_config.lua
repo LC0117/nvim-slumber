@@ -4,6 +4,8 @@ if catppuccin_ok then
     dim_inactive = {
       enabled = false,
     },
+    flavour = vim.env.TERM_THEME == 'light' and 'latte' or 'mocha',
+    background = { light = 'latte', dark = 'mocha' },
     term_colors = true,
     styles = {
       comments = { 'italic' },
@@ -106,11 +108,5 @@ if tky_ok then
   })
 end
 
-vim.g.catppuccin_flavour = 'mocha'
-vim.cmd('colo catppuccin')
-vim.api.nvim_create_autocmd('OptionSet', {
-  pattern = 'background',
-  callback = function()
-    vim.cmd('Catppuccin ' .. (vim.v.option_new == 'light' and 'latte' or 'mocha'))
-  end,
-})
+vim.api.nvim_command('colo catppuccin')
+
