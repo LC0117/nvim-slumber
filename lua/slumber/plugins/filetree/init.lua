@@ -108,9 +108,9 @@ require('neo-tree').setup({
       },
     },
   },
-  git_status = {
-    window = {
-      position = 'float',
-    },
-  },
+  --[[ git_status = { ]]
+  --[[   window = { ]]
+  --[[     position = 'float', ]]
+  --[[   }, ]]
+  --[[ }, ]]
 })
