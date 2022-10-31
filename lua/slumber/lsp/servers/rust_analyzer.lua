@@ -35,6 +35,28 @@ local opts = {
     capabilities = defaults.capabilities,
     on_attach = defaults.on_attach,
     standalone = true,
+    settings = {
+      ['rust-analyzer'] = {
+        imports = {
+          granularity = {
+            group = 'module',
+          },
+          prefix = 'self',
+        },
+        cargo = {
+          buildScripts = {
+            enable = true,
+          },
+        },
+        procMacro = {
+          enable = true,
+        },
+        checkOnSave = {
+          command = 'clippy',
+          features = 'all'
+        }
+      },
+    },
   },
   dap = {
     adapter = require('rust-tools.dap').get_codelldb_adapter(codelldb_path, liblldb_path),
