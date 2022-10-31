@@ -1,6 +1,5 @@
 local U = require('slumber.core.utils')
 local path = U.path
-local dapers = path.concat(vim.fn.stdpath('data'), 'dapers')
 local dap = require('dap')
 
 -- define the breakpoints
@@ -14,11 +13,6 @@ vim.fn.sign_define('DapLogponit', { text = [[]], texthl = 'DapLogPoint' })
 vim.keymap.set({ 'n', 'i' }, '<F2>', dap.toggle_breakpoint)
 vim.keymap.set({ 'n', 'i' }, '<F5>', dap.continue)
 
-dap.adapters.node2 = {
-  type = 'executable',
-  command = 'node',
-  args = dapers .. '/vscode-node-debug2/out/src/nodeDebug.js',
-}
 dap.adapters.lldb = {
   type = 'executable',
   command = 'lldb-vscode',
@@ -59,25 +53,6 @@ dap.adapters.dlv = function(callback, config)
     callback({ type = 'server', host = '127.0.0.1', port = port })
   end, 100)
 end
-
-dap.configurations.javascript = {
-  {
-    name = 'Launch',
-    type = 'node2',
-    request = 'launch',
-    program = '${file}',
-    cwd = vim.fn.getcwd(),
-    sourceMaps = true,
-    protocol = 'inspector',
-    console = 'integratedTerminal',
-  },
-  {
-    name = 'Attach to process',
-    type = 'node2',
-    request = 'attach',
-    processId = require('dap.utils').pick_process,
-  },
-}
 
 dap.configurations.cpp = {
   {
