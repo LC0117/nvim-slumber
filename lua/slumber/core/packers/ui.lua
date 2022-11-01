@@ -27,7 +27,11 @@ M['lewis6991/gitsigns.nvim'] = {
 M['folke/noice.nvim'] = {
   event = 'VimEnter',
   config = function()
-    require('noice').setup()
+    require('noice').setup({
+      presets = {
+        lsp_doc_border = 'rounded'
+      }
+    })
   end,
 }
 
