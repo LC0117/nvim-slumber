@@ -29,10 +29,15 @@ M['neovim/nvim-lspconfig'] = {
     { 'williamboman/mason-lspconfig.nvim', after = 'mason.nvim' },
     {
       'stevearc/aerial.nvim',
-      after = 'nvim-treesitter',
+      after = {'nvim-treesitter', 'nvim-lspconfig'},
       config = function()
         require('aerial').setup({
           filter_kind = false,
+          backends = {
+            ['_'] = {'treesitter', 'lsp', 'markdown', 'man'},
+            lua = {'lsp'}
+          },
+          icons = vim.lsp.protocol.CompletionItemKind
         })
       end,
     },
