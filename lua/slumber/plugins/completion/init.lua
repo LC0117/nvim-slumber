@@ -82,10 +82,10 @@ cmp.setup({
       behavior = cmp.ConfirmBehavior.Replace,
       select = false,
     }),
-    ['<Up>'] = cmp.mapping.scroll_docs(-4),
-    ['<Down>'] = cmp.mapping.scroll_docs(4),
+    ['<C-u>'] = cmp.mapping.scroll_docs(-4),
+    ['<C-d>'] = cmp.mapping.scroll_docs(4),
     ['<C-c>'] = cmp.mapping.close(),
-    ['<S-Tab>'] = cmp.mapping(function(fallback)
+    ['<Up>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_prev_item()
       elseif luasnip.jumpable(-1) then
@@ -94,7 +94,7 @@ cmp.setup({
         fallback()
       end
     end, { 'i', 's' }),
-    ['<Tab>'] = cmp.mapping(function(fallback)
+    ['<Down>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
       elseif luasnip.expand_or_jumpable() then
