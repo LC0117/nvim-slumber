@@ -21,7 +21,11 @@ local clients = {
   'leanls',
   'qmlls',
   'neocmake',
-  'vala_ls'
+  'vala_ls',
+  'perlnavigator',
+  'elixirls',
+  'html',
+  'cssls'
 }
 
 for _, lsp in ipairs(clients) do
