@@ -29,15 +29,15 @@ M['neovim/nvim-lspconfig'] = {
     { 'williamboman/mason-lspconfig.nvim', after = 'mason.nvim' },
     {
       'stevearc/aerial.nvim',
-      after = {'nvim-treesitter', 'nvim-lspconfig'},
+      after = { 'nvim-treesitter', 'nvim-lspconfig' },
       config = function()
         require('aerial').setup({
           filter_kind = false,
           backends = {
-            ['_'] = {'treesitter', 'lsp', 'markdown', 'man'},
-            lua = {'lsp'}
+            ['_'] = { 'treesitter', 'lsp', 'markdown', 'man' },
+            lua = { 'lsp' },
           },
-          icons = vim.lsp.protocol.CompletionItemKind
+          icons = vim.lsp.protocol.CompletionItemKind,
         })
       end,
     },
@@ -58,10 +58,7 @@ M['someone-stole-my-name/yaml-companion.nvim'] = {
 }
 M['mfussenegger/nvim-jdtls'] = {}
 
-M['scalameta/nvim-metals'] = {
-  ft = { 'scala', 'sbt' },
-  config = [[require('slumber.lsp.servers.metals')]],
-}
+M['scalameta/nvim-metals'] = {}
 
 M['akinsho/flutter-tools.nvim'] = {
   ft = 'dart',
