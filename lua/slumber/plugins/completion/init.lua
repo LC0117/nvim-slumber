@@ -69,6 +69,7 @@ cmp.setup({
         neorg = '[NORG]',
         cmdline = '[cmd]',
         crates = '[crates.io]',
+        buffer = '[BUF]'
       })[entry.source.name]
 
       vim_item.abbr = string.sub(vim_item.abbr, 1, 50)
@@ -85,7 +86,7 @@ cmp.setup({
     ['<C-u>'] = cmp.mapping.scroll_docs(-4),
     ['<C-d>'] = cmp.mapping.scroll_docs(4),
     ['<C-c>'] = cmp.mapping.close(),
-    ['<Up>'] = cmp.mapping(function(fallback)
+    ['<S-Tab>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_prev_item()
       elseif luasnip.jumpable(-1) then
@@ -94,7 +95,7 @@ cmp.setup({
         fallback()
       end
     end, { 'i', 's' }),
-    ['<Down>'] = cmp.mapping(function(fallback)
+    ['<Tab>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
       elseif luasnip.expand_or_jumpable() then
@@ -105,13 +106,24 @@ cmp.setup({
         fallback()
       end
     end, { 'i', 's' }),
+    ['<Down>'] = cmp.mapping(cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }), { 'i' }),
+    ['<Up>'] = cmp.mapping(cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }), { 'i' }),
   },
 
   sources = {
     { name = 'luasnip', max_item_count = 5 },
     { name = 'nvim_lsp', max_item_count = 15 },
     { name = 'cmp_tabnine', keyword_length = 2 },
-    { name = 'path' },
+    { name = 'path', max_item_count = 10 },
+    { name = 'buffer', max_item_count = 5, option = {
+      get_bufnrs = function ()
+        local bufs = {}
+        for _, win in ipairs(vim.api.nvim_list_wins()) do
+          bufs[vim.api.nvim_win_get_buf(win)] = true
+        end
+        return vim.tbl_keys(bufs)
+      end
+    }}
   },
 
   snippet = {
