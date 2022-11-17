@@ -67,6 +67,7 @@ M['hrsh7th/nvim-cmp'] = {
     { 'hrsh7th/cmp-nvim-lsp', after = 'nvim-cmp' },
     { 'hrsh7th/cmp-path', after = 'nvim-cmp' },
     { 'hrsh7th/cmp-cmdline', after = 'nvim-cmp' },
+    { 'hrsh7th/cmp-buffer', after = 'nvim-cmp' },
     {
       'tzachar/cmp-tabnine',
       run = './install.sh',
