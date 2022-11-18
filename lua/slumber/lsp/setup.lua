@@ -25,7 +25,7 @@ local clients = {
   'perlnavigator',
   'elixirls',
   'html',
-  'cssls'
+  'cssls',
 }
 
 for _, lsp in ipairs(clients) do
@@ -100,6 +100,7 @@ nlsp.gopls.setup({
         parameterNames = true,
         rangeVariableTypes = true,
       },
+      staticcheck = true,
     },
   },
 })
