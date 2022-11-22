@@ -23,11 +23,11 @@ local java_settings = {
       },
       {
         name = 'JavaSE-17',
-        path = '/Library/Java/JavaVirtualMachines/openjdk-17.jdk/Contents/Home/',
+        path = path.concat(vim.env.HOME, 'Library/Java/JavaVirtualMachines/graalvm/Contents/Home'),
       },
       {
         name = 'JavaSE-11',
-        path = '/Library/Java/JavaVirtualMachines/openjdk-11.jdk/Contents/Home/',
+        path = '/Library/Java/JavaVirtualMachines/zulu-11.jdk/Contents/Home/',
       },
       {
         name = 'JavaSE-1.8',
