@@ -60,6 +60,16 @@ M['mfussenegger/nvim-jdtls'] = {}
 
 M['scalameta/nvim-metals'] = {}
 
+M['Julian/lean.nvim'] = {
+  config = function()
+    require('lean').setup({
+      abbreviations = { builtin = true },
+      mappings = false,
+      infoview = { autoopen = false },
+    })
+  end,
+}
+
 M['akinsho/flutter-tools.nvim'] = {
   ft = 'dart',
   config = [[require('slumber.lsp.servers.flutter')]],

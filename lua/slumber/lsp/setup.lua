@@ -18,7 +18,6 @@ local clients = {
   'clojure_lsp',
   'phpactor',
   'erlangls',
-  'leanls',
   'qmlls',
   'neocmake',
   'vala_ls',
