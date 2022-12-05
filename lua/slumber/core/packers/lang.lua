@@ -36,6 +36,7 @@ M['neovim/nvim-lspconfig'] = {
           backends = {
             ['_'] = { 'treesitter', 'lsp', 'markdown', 'man' },
             lua = { 'lsp' },
+            julia = { 'lsp' },
           },
           icons = vim.lsp.protocol.CompletionItemKind,
         })
