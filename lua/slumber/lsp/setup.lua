@@ -25,6 +25,7 @@ local clients = {
   'elixirls',
   'html',
   'cssls',
+  'julials'
 }
 
 for _, lsp in ipairs(clients) do
