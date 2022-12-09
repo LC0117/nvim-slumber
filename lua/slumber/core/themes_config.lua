@@ -4,7 +4,7 @@ if catppuccin_ok then
     dim_inactive = {
       enabled = false,
     },
-    flavour = vim.env.TERM_THEME == 'light' and 'latte' or 'mocha',
+    flavour = vim.env.TERM_THEME == 'light' and 'latte' or 'frappe',
     background = { light = 'latte', dark = 'mocha' },
     term_colors = true,
     styles = {
