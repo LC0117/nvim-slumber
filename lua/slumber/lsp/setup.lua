@@ -22,10 +22,9 @@ local clients = {
   'neocmake',
   'vala_ls',
   'perlnavigator',
-  'elixirls',
   'html',
   'cssls',
-  'julials'
+  'julials',
 }
 
 for _, lsp in ipairs(clients) do
@@ -33,6 +32,11 @@ for _, lsp in ipairs(clients) do
     capabilities = defaults.capabilities,
   })
 end
+
+nlsp.elixirls.setup({
+  cmd = { 'elixir-ls' },
+  capabilities = defaults.capabilities,
+})
 
 nlsp.denols.setup({
   capabilities = defaults.capabilities,
