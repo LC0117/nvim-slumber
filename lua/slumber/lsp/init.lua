@@ -13,6 +13,15 @@ vim.diagnostic.config({
       return diagnostic.message
     end,
   },
+  float = {
+    border = 'rounded',
+  },
+})
+
+vim.api.nvim_create_augroup('diagnostic_hover', {})
+vim.api.nvim_create_autocmd('CursorHold', {
+  group = 'diagnostic_hover',
+  callback = vim.diagnostic.open_float,
 })
 
 local lsp_signs = {
