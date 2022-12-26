@@ -7,7 +7,7 @@ M['toppair/peek.nvim'] = {
   run = 'deno task --quiet build:fast',
   config = function()
     require('peek').setup({
-      theme = 'dark',
+      theme = vim.env.TERM_THEME,
     })
   end,
 }
