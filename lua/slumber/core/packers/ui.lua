@@ -1,5 +1,7 @@
 local M = {}
 
+M['nyoom-engineering/oxocarbon.nvim'] = {}
+
 M['nvim-lualine/lualine.nvim'] = {
   after = 'aerial.nvim',
   config = [[require('slumber.plugins.lualine')]],
