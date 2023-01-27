@@ -37,37 +37,43 @@ local neovim = {
 }
 
 local db = require('dashboard')
-db.hide_statusline = true
-db.hide_tabline = true
-db.custom_header = avatar
-db.custom_footer = function()
-  local clock = ' ' .. os.date('%H:%M')
-  local date = ' ' .. os.date('%d-%m-%y')
-  return { clock, date }
-end
-db.custom_center = {
-  {
-    icon = ' ',
-    desc = 'Find Files          ',
-    action = [[Telescope find_files]],
-    shortcut = 'SPC f f',
+db.setup({
+  theme = 'doom',
+  hide = {
+    statusline = true,
+    tabline = true,
+    winbar = true,
   },
-  {
-    icon = ' ',
-    desc = 'Find Word           ',
-    action = [[Telescope live_grep]],
-    shortcut = 'SPC l g',
+  config = {
+    header = neovim,
+    center = {
+      {
+        icon = ' ',
+        desc = 'Find Files          ',
+        action = [[Telescope find_files]],
+        key = 'SPC f f',
+      },
+      {
+        icon = ' ',
+        desc = 'Find Word           ',
+        action = [[Telescope live_grep]],
+        key = 'SPC l g',
+      },
+      {
+        icon = ' ',
+        desc = 'File Browser        ',
+        action = [[Telescope file_browser]],
+        key = 'SPC f b',
+      },
+      {
+        icon = ' ',
+        desc = 'Recent Files        ',
+        action = [[DashboardFindHistory]],
+        key = 'SPC f h',
+      },
+    },
+    footer = {
+      "I don't like breaking change!"
+    }
   },
-  {
-    icon = ' ',
-    desc = 'File Browser        ',
-    action = [[Telescope file_browser]],
-    shortcut = 'SPC f b',
-  },
-  {
-    icon = ' ',
-    desc = 'Recent Files        ',
-    action = [[DashboardFindHistory]],
-    shortcut = 'SPC f h',
-  },
-}
+})
