@@ -25,7 +25,7 @@ local clients = {
   'html',
   'cssls',
   'julials',
-  'ruff_lsp'
+  'ruff_lsp',
 }
 
 for _, lsp in ipairs(clients) do
@@ -138,13 +138,13 @@ nlsp.tsserver.setup({
   },
 })
 
-nlsp.jsonls.setup({
-  capabilities = defaults.capabilities,
-  settings = {
-    json = {
-      schemas = require('schemastore').json.schemas(),
-    },
-  },
-})
+-- nlsp.jsonls.setup({
+--   capabilities = defaults.capabilities,
+--   settings = {
+--     json = {
+--       schemas = require('schemastore').json.schemas(),
+--     },
+--   },
+-- })
 
 nlsp.texlab.setup(require('slumber.lsp.servers.texlab'))
