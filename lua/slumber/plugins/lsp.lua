@@ -154,10 +154,14 @@ return {
   },
   ['glepnir/lspsaga.nvim'] = {
     event = 'BufRead',
-    opts = {
-      ui = {
-        theme = 'round',
+    opts = function()
+      return {
+        ui = {
+          theme = 'round',
+          colors = require('catppuccin.groups.integrations.lsp_saga').custom_colors(),
+          kind = require('catppuccin.groups.integrations.lsp_saga').custom_kind(),
+        },
       }
-    }
-  }
+    end,
+  },
 }

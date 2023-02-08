@@ -9,7 +9,7 @@ return {
   ['nvim-telescope/telescope.nvim'] = {
     cmd = 'Telescope',
     dependencies = {
-      {'nvim-telescope/telescope-fzf-native.nvim', build = 'make'},
+      { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
       'nvim-telescope/telescope-file-browser.nvim',
     },
     config = function()

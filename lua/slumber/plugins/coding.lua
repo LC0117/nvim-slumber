@@ -21,7 +21,7 @@ return {
       'hrsh7th/cmp-cmdline',
       'hrsh7th/cmp-buffer',
       'nvim-lspconfig',
-      'nvim-treesitter'
+      'nvim-treesitter',
     },
     config = function()
       local has_words_before = function()
