@@ -20,6 +20,8 @@ return {
       'hrsh7th/cmp-path',
       'hrsh7th/cmp-cmdline',
       'hrsh7th/cmp-buffer',
+      'nvim-lspconfig',
+      'nvim-treesitter'
     },
     config = function()
       local has_words_before = function()
@@ -276,9 +278,8 @@ return {
     end,
   },
   ['nvim-treesitter/nvim-treesitter-context'] = {
+    event = 'BufRead',
     dependencies = { 'nvim-treesitter' },
-    config = function()
-      require('treesitter-context').setup({ enable = true })
-    end,
+    config = true,
   },
 }

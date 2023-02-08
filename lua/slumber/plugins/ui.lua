@@ -254,6 +254,7 @@ return {
     end,
   },
   ['nvim-lualine/lualine.nvim'] = {
+    event = 'BufRead',
     opts = {
       options = {
         icons_enabled = true,

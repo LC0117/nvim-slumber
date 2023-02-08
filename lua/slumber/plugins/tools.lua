@@ -78,14 +78,12 @@ return {
     end,
   },
   ['rcarriga/nvim-dap-ui'] = {
-    event = 'BufWinEnter',
     dependencies = { 'nvim-dap' },
     config = function()
       require('slumber.dap.ui')
     end,
   },
   ['theHamsta/nvim-dap-virtual-text'] = {
-    event = 'BufWinEnter',
     dependencies = { 'nvim-dap' },
     config = function()
       require('slumber.dap.virtual')
