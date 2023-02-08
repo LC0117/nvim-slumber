@@ -152,4 +152,12 @@ return {
       require('rust-tools').setup(opts)
     end,
   },
+  ['glepnir/lspsaga.nvim'] = {
+    event = 'BufRead',
+    opts = {
+      ui = {
+        theme = 'round',
+      }
+    }
+  }
 }
