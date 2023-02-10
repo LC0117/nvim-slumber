@@ -1,3 +1,4 @@
 plugin/
 .DS_Store
 .vscode
+lazy-lock.json
