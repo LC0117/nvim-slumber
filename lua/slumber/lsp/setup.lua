@@ -47,7 +47,7 @@ nlsp.denols.setup({
   },
 })
 
-nlsp.sumneko_lua.setup({
+nlsp.lua_ls.setup({
   capabilities = defaults.capabilities,
   settings = {
     Lua = {
