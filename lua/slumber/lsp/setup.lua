@@ -7,7 +7,6 @@ local clients = {
   'ocamllsp',
   'lemminx',
   'sorbet',
-  'cmake',
   'taplo',
   'volar',
   'pyright',
