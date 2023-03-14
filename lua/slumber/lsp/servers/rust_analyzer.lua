@@ -53,8 +53,8 @@ local opts = {
         },
         checkOnSave = {
           command = 'clippy',
-          features = 'all'
-        }
+          features = 'all',
+        },
       },
     },
   },

@@ -31,8 +31,8 @@ M['folke/noice.nvim'] = {
   config = function()
     require('noice').setup({
       presets = {
-        lsp_doc_border = 'rounded'
-      }
+        lsp_doc_border = 'rounded',
+      },
     })
   end,
 }

@@ -18,12 +18,6 @@ vim.diagnostic.config({
   },
 })
 
-vim.api.nvim_create_augroup('diagnostic_hover', {})
-vim.api.nvim_create_autocmd('CursorHold', {
-  group = 'diagnostic_hover',
-  callback = vim.diagnostic.open_float,
-})
-
 local lsp_signs = {
   Error = ' ',
   Warn = ' ',
@@ -68,17 +62,5 @@ for index, _ in pairs(kinds) do
   kinds[index] = icons[index]
 end
 
-require('mason').setup({
-  ui = {
-    icons = {
-      package_installed = ' ',
-      package_pending = ' ',
-      package_uninstalled = ' ',
-    },
-  },
-})
-
-require('mason-lspconfig').setup()
-require('lsp-inlayhints').setup()
 require('slumber.lsp.setup')
 require('slumber.lsp.events')
