@@ -12,7 +12,7 @@ nmap('<leader>fw', [[:Telescope live_grep<CR>]])
 -- lsp things
 nmap('<leader>lf', vim.lsp.buf.format)
 nmap('<leader>ca', vim.lsp.buf.code_action)
-vmap('<leader>ca', vim.lsp.buf.range_code_action)
+--vmap('<leader>ca', vim.lsp.buf.range_code_action, {buffer=true})
 nmap('<leader>lr', vim.lsp.buf.rename)
 
 nmap('<C-Q>', [[<Cmd>qall!<CR>]])
