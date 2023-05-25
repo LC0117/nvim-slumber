@@ -109,6 +109,32 @@ nlsp.gopls.setup({
   },
 })
 
+nlsp.rust_analyzer.setup({
+  capabilities = defaults.capabilities,
+  settings = {
+    ['rust-analyzer'] = {
+      imports = {
+        granularity = {
+          group = 'module',
+        },
+        prefix = 'self',
+      },
+      cargo = {
+        buildScripts = {
+          enable = true,
+        },
+      },
+      procMacro = {
+        enable = true,
+      },
+      checkOnSave = {
+        command = 'clippy',
+        features = 'all',
+      },
+    },
+  },
+})
+
 nlsp.tsserver.setup({
   root_dir = nlsp.util.root_pattern('package.json'),
   settings = {
@@ -137,13 +163,13 @@ nlsp.tsserver.setup({
   },
 })
 
--- nlsp.jsonls.setup({
---   capabilities = defaults.capabilities,
---   settings = {
---     json = {
---       schemas = require('schemastore').json.schemas(),
---     },
---   },
--- })
+nlsp.jsonls.setup({
+  capabilities = defaults.capabilities,
+  settings = {
+    json = {
+      schemas = require('schemastore').json.schemas(),
+    },
+  },
+})
 
 nlsp.texlab.setup(require('slumber.lsp.servers.texlab'))

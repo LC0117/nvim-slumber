@@ -14,7 +14,7 @@ return {
     cmd = 'Mason',
     opts = {
       github = {
-        download_url_template = "https://hub.yzuu.cf/%s/releases/download/%s/%s",
+        download_url_template = 'https://hub.yzuu.cf/%s/releases/download/%s/%s',
       },
       ui = {
         icons = {
@@ -86,75 +86,6 @@ return {
   },
   ['mfussenegger/nvim-jdtls'] = { lazy = false },
   ['scalameta/nvim-metals'] = { lazy = false },
-  ['simrat39/rust-tools.nvim'] = {
-    ft = 'rust',
-    config = function()
-      local defaults = require('slumber.lsp.defaults')
-      local U = require('slumber.core.utils')
-      local mason_home = U.path.concat(vim.fn.stdpath('data'), 'mason', 'packages')
-      local codelldb_path = U.path.concat(mason_home, 'codelldb', 'extension', 'adapter', 'codelldb')
-      local liblldb_name = U.is_linux and 'liblldb.so' or U.is_mac and 'liblldb.dylib' or U.is_windows and 'liblldb.dll'
-      local liblldb_path = U.path.concat(mason_home, 'codelldb', 'extension', 'lldb', 'lib', liblldb_name)
-      local opts = {
-        tools = {
-          executor = require('rust-tools/executors').termopen,
-          on_initialized = nil,
-          inlay_hints = {
-            auto = false,
-          },
-          hover_actions = {
-            border = {
-              { '╭', 'FloatBorder' },
-              { '─', 'FloatBorder' },
-              { '╮', 'FloatBorder' },
-              { '│', 'FloatBorder' },
-              { '╯', 'FloatBorder' },
-              { '─', 'FloatBorder' },
-              { '╰', 'FloatBorder' },
-              { '│', 'FloatBorder' },
-            },
-            auto_focus = true,
-          },
-          crate_graph = {
-            backend = 'svg',
-            output = nil,
-            full = true,
-          },
-        },
-        server = {
-          capabilities = defaults.capabilities,
-          on_attach = defaults.on_attach,
-          standalone = true,
-          settings = {
-            ['rust-analyzer'] = {
-              imports = {
-                granularity = {
-                  group = 'module',
-                },
-                prefix = 'self',
-              },
-              cargo = {
-                buildScripts = {
-                  enable = true,
-                },
-              },
-              procMacro = {
-                enable = true,
-              },
-              checkOnSave = {
-                command = 'clippy',
-                features = 'all',
-              },
-            },
-          },
-        },
-        dap = {
-          adapter = require('rust-tools.dap').get_codelldb_adapter(codelldb_path, liblldb_path),
-        },
-      }
-      require('rust-tools').setup(opts)
-    end,
-  },
   ['glepnir/lspsaga.nvim'] = {
     event = 'BufRead',
     opts = function()
@@ -167,4 +98,5 @@ return {
       }
     end,
   },
+  ['b0o/schemastore.nvim'] = {},
 }
