@@ -4,7 +4,6 @@ return {
     dependencies = {
       'mason.nvim',
       { 'williamboman/mason-lspconfig.nvim', config = true },
-      { 'lvimuser/lsp-inlayhints.nvim', config = true },
     },
     config = function()
       require('slumber.lsp')

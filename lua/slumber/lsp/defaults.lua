@@ -34,7 +34,6 @@ end
 
 function M.on_attach(client, bufnr)
   lsp_highlight_document(client)
-  require('lsp-inlayhints').on_attach(client, bufnr)
 end
 
 return M
