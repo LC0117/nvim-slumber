@@ -14,27 +14,14 @@ local jar_patterns = {
   java_test_path,
 }
 
+local runtimes, ok = require('slumber.platform.java-runtimes')
+if not ok then
+  runtimes = {}
+end
+
 local java_settings = {
   configuration = {
-    runtimes = U.is_mac and {
-      {
-        name = 'JavaSE-19',
-        path = '/Library/Java/JavaVirtualMachines/openjdk.jdk/Contents/Home/',
-      },
-      {
-        name = 'JavaSE-17',
-        path = path.concat(vim.env.HOME, 'Library/Java/JavaVirtualMachines/graalvm/Contents/Home'),
-      },
-    } or U.is_linux and {
-      {
-        name = 'JavaSE-19',
-        path = '/usr/lib/jvm/java-19-openjdk/',
-      },
-      {
-        name = 'JavaSE-17',
-        path = '/usr/lib/jvm/java-17-openjdk/',
-      },
-    },
+    runtimes = runtimes,
   },
   inlayHints = {
     parameterNames = {
