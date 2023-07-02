@@ -14,7 +14,7 @@ local jar_patterns = {
   java_test_path,
 }
 
-local runtimes, ok = require('slumber.platform.java-runtimes')
+local ok, runtimes = pcall(require ,'slumber.platform.java-runtimes')
 if not ok then
   runtimes = {}
 end
