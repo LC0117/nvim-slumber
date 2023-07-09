@@ -12,9 +12,6 @@ return {
   ['williamboman/mason.nvim'] = {
     cmd = 'Mason',
     opts = {
-      github = {
-        download_url_template = 'https://hub.yzuu.cf/%s/releases/download/%s/%s',
-      },
       ui = {
         icons = {
           package_installed = ' ',

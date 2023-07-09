@@ -53,7 +53,6 @@ local options = {
   redrawtime = 1500,
   number = true,
   relativenumber = true,
-  ignorecase = true,
   guifont = font,
   signcolumn = 'yes',
 }
