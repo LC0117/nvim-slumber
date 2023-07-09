@@ -55,6 +55,7 @@ local options = {
   relativenumber = true,
   ignorecase = true,
   guifont = font,
+  signcolumn = 'yes',
 }
 
 vim.cmd([[
