@@ -3,13 +3,13 @@ local font
 if U.is_mac then
   font = 'FantasqueSansMono Nerd Font:h13'
 else
-  font = 'FantasqueSansMono Nerd Font:h12'
+  font = 'Sarasa Mono SC:h11'
 end
 
 local g_options = {
   mapleader = ' ',
   neovide_transparency = 0.9,
-  --neovide_remember_window_size = true,
+  neovide_remember_window_size = true,
   neovide_input_use_logo = true,
   neovide_cursor_vfx_mode = 'torpedo',
   neovide_cursor_unfocused_outline_width = 0.125,
