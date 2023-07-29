@@ -34,6 +34,9 @@ end
 
 function M.on_attach(client, bufnr)
   lsp_highlight_document(client)
+  if client.server_capabilities.inlayHintProvider then
+    vim.lsp.inlay_hint(bufnr)
+  end
 end
 
 return M

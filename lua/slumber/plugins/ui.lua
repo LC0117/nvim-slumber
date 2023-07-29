@@ -78,7 +78,7 @@ return {
     },
   },
   ['nvim-neo-tree/neo-tree.nvim'] = {
-    branch = 'v2.x',
+    branch = 'v3.x',
     cmd = 'Neotree',
     init = function()
       vim.g.neo_tree_remove_legacy_commands = 1
@@ -117,7 +117,10 @@ return {
             '.git',
           },
         },
-        follow_current_file = true,
+        follow_current_file = {
+          enabled = true,
+          leave_dirs_open = true,
+        },
         hijack_netrw_behavior = 'open_default',
         use_libuv_file_watcher = true,
       },

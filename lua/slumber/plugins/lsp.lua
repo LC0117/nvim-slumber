@@ -23,13 +23,12 @@ return {
   },
   ['mfussenegger/nvim-jdtls'] = { lazy = false },
   ['scalameta/nvim-metals'] = { lazy = false },
-  ['glepnir/lspsaga.nvim'] = {
+  ['nvimdev/lspsaga.nvim'] = {
     event = 'BufRead',
     opts = function()
       return {
         ui = {
-          theme = 'round',
-          colors = require('catppuccin.groups.integrations.lsp_saga').custom_colors(),
+          border = 'round',
           kind = require('catppuccin.groups.integrations.lsp_saga').custom_kind(),
         },
       }
