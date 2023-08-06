@@ -13,7 +13,7 @@ return {
       term_colors = true,
       styles = {
         comments = { 'italic' },
-        functions = { 'italic' },
+        functions = { 'bold' },
         keywords = { 'bold', 'italic' },
       },
       compile = {

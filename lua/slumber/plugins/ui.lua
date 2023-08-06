@@ -30,7 +30,7 @@ return {
             key = 'SPC f f',
           },
           {
-            icon = ' ',
+            icon = ' ',
             desc = 'Find Word           ',
             action = [[Telescope live_grep]],
             key = 'SPC l g',
@@ -168,8 +168,8 @@ return {
       require('bufferline').setup({
         options = {
           number = 'none',
-          modified_icon = '✥',
-          buffer_close_icon = '',
+          modified_icon = '✥ ',
+          buffer_close_icon = '󰖭 ',
           left_trunc_marker = '',
           right_trunc_marker = '',
           max_name_length = 14,
