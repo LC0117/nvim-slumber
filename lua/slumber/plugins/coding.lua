@@ -127,10 +127,10 @@ return {
           ['<Up>'] = cmp.mapping(cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }), { 'i' }),
         },
         sources = {
-          { name = 'luasnip', max_item_count = 5 },
-          { name = 'nvim_lsp', max_item_count = 15 },
+          { name = 'luasnip',     max_item_count = 5 },
+          { name = 'nvim_lsp',    max_item_count = 15 },
           { name = 'cmp_tabnine', keyword_length = 2 },
-          { name = 'path', max_item_count = 10 },
+          { name = 'path',        max_item_count = 10 },
           {
             name = 'buffer',
             max_item_count = 5,
@@ -187,11 +187,11 @@ return {
     end,
   },
   ['tpope/vim-sleuth'] = { lazy = false },
+  ['JoosepAlviste/nvim-ts-context-commentstring'] = { lazy = false },
   ['nvim-treesitter/nvim-treesitter'] = {
     event = 'BufRead',
     dependencies = {
       'nvim-treesitter/nvim-treesitter-textobjects',
-      'JoosepAlviste/nvim-ts-context-commentstring',
       'HiPhish/nvim-ts-rainbow2',
       'windwp/nvim-ts-autotag',
     },
@@ -211,10 +211,6 @@ return {
       },
       autotag = {
         enable = true,
-      },
-      context_commentstring = {
-        enable = true,
-        enable_autocmd = false,
       },
       rainbow = {
         enable = true,
