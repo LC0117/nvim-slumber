@@ -127,39 +127,23 @@ return {
     },
   },
   ['lukas-reineke/indent-blankline.nvim'] = {
+    main = 'ibl',
     event = 'BufReadPost',
     opts = {
-      file_type_exclude = {
-        'lspinfo',
-        'packer',
-        'checkhealth',
-        'help',
-        'man',
-        'aerial',
-        'neo-tree',
-        'nvim-lsp-installer',
-        'dap-repl',
-        'lazy',
-        '',
-      },
-      buf_type_exclude = {
-        'terminal',
-        'nofile',
-        'quickfix',
-        'Scrach',
-      },
-      show_current_context = true,
-      show_current_context_start = true,
-      show_first_indent_level = false,
-      space_char_blankline = ' ',
-      char_highlight_list = {
-        'IndentBlanklineIndent1',
-        'IndentBlanklineIndent2',
-        'IndentBlanklineIndent3',
-        'IndentBlanklineIndent4',
-        'IndentBlanklineIndent5',
-        'IndentBlanklineIndent6',
-      },
+      --show_current_context = true,
+      --show_current_context_start = true,
+      --show_first_indent_level = false,
+      indent = {
+        highlight = {
+          'RainbowRed',
+          'RainbowYellow',
+          'RainbowBlue',
+          'RainbowOrange',
+          'RainbowGreen',
+          'RainbowViolet',
+          'RainbowCyan',
+        }
+      }
     },
   },
   ['akinsho/bufferline.nvim'] = {
@@ -203,9 +187,9 @@ return {
                 icon = ' ',
                 matcher = function(buf)
                   return buf.name:match('%_test')
-                    or buf.name:match('%Test')
-                    or buf.name:match('%_spec')
-                    or buf.name:match('%Spec')
+                      or buf.name:match('%Test')
+                      or buf.name:match('%_spec')
+                      or buf.name:match('%Spec')
                 end,
               },
               {
