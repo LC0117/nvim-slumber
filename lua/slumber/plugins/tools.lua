@@ -78,7 +78,7 @@ return {
     end,
   },
   ['rcarriga/nvim-dap-ui'] = {
-    dependencies = { 'nvim-dap' },
+    dependencies = { 'nvim-dap', 'nvim-neotest/nvim-nio' },
     config = function()
       require('slumber.dap.ui')
     end,

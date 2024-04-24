@@ -1,7 +1,7 @@
 local U = require('slumber.core.utils')
 local font
 if U.is_mac then
-  font = 'Sarasa Mono SC:h13'
+  font = 'CaskaydiaCove Nerd Font:h12'
 else
   font = 'Sarasa Mono SC:h11'
 end

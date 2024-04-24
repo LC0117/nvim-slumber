@@ -187,12 +187,11 @@ return {
     end,
   },
   ['tpope/vim-sleuth'] = { lazy = false },
-  ['JoosepAlviste/nvim-ts-context-commentstring'] = { lazy = false },
+  ['JoosepAlviste/nvim-ts-context-commentstring'] = { lazy = false, config = true },
   ['nvim-treesitter/nvim-treesitter'] = {
     event = 'BufRead',
     dependencies = {
       'nvim-treesitter/nvim-treesitter-textobjects',
-      'HiPhish/nvim-ts-rainbow2',
       'windwp/nvim-ts-autotag',
     },
     opts = {
@@ -211,11 +210,6 @@ return {
       },
       autotag = {
         enable = true,
-      },
-      rainbow = {
-        enable = true,
-        extended_mode = true,
-        max_file_lines = 3000,
       },
       matchup = {
         enable = true,
@@ -279,4 +273,22 @@ return {
     dependencies = { 'nvim-treesitter' },
     config = true,
   },
+  ['HiPhish/rainbow-delimiters.nvim'] = {
+    --event = 'BufRead',
+    dependencies = { 'nvim-treesitter' },
+    config = function ()
+      require('rainbow-delimiters.setup').setup({
+        highlight = {
+        'RainbowDelimiterRed',
+        'RainbowDelimiterYellow',
+        'RainbowDelimiterBlue',
+        'RainbowDelimiterOrange',
+        'RainbowDelimiterGreen',
+        'RainbowDelimiterViolet',
+        'RainbowDelimiterCyan',
+        },
+      })
+    end,
+    submodules = false,
+  }
 }

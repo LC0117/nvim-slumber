@@ -45,8 +45,8 @@ return {
         treesitter = true,
         treesitter_context = true,
         fidget = true,
-        ts_rainbow = true,
         notify = true,
+        rainbow_delimiters = true,
         dap = {
           enabled = true,
           enable_ui = true,
