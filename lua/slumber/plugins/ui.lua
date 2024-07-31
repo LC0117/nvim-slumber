@@ -58,9 +58,9 @@ return {
     event = { 'BufRead', 'BufNewFile' },
     opts = {
       signs = {
-        delete = { hl = 'GitSignsDelete', text = '' },
-        topdelete = { hl = 'GitSignsDelete', text = '' },
-        changedelete = { hl = 'GitSignsChange', text = '' },
+        delete = { text = '' },
+        topdelete = { text = '' },
+        changedelete = { text = '' },
       },
       linehl = false,
       numhl = true,

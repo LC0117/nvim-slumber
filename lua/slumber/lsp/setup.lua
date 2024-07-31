@@ -25,7 +25,8 @@ local clients = {
   'cssls',
   'julials',
   'ruff_lsp',
-  'fsautocomplete'
+  'fsautocomplete',
+  'mesonlsp'
 }
 
 for _, lsp in ipairs(clients) do
