@@ -15,7 +15,7 @@ vim.keymap.set({ 'n', 'i' }, '<F5>', dap.continue)
 
 dap.adapters.lldb = {
   type = 'executable',
-  command = 'lldb-vscode',
+  command = 'lldb-dap',
   name = 'lldb',
 }
 dap.adapters.python = {
