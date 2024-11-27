@@ -24,7 +24,7 @@ local clients = {
   'html',
   'cssls',
   'julials',
-  'ruff_lsp',
+  'ruff',
   'fsautocomplete',
   'mesonlsp'
 }
@@ -137,7 +137,7 @@ nlsp.rust_analyzer.setup({
   },
 })
 
-nlsp.tsserver.setup({
+nlsp.ts_ls.setup({
   root_dir = nlsp.util.root_pattern('package.json'),
   settings = {
     typescript = {

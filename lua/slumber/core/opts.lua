@@ -13,6 +13,7 @@ local g_options = {
   neovide_input_use_logo = true,
   neovide_cursor_vfx_mode = 'torpedo',
   neovide_cursor_unfocused_outline_width = 0.125,
+  zig_fmt_autosave = 0
 }
 
 local options = {
