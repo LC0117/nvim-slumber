@@ -13,22 +13,21 @@ vim.diagnostic.config({
       return diagnostic.message
     end,
   },
+  virtual_lines = {
+    current_line = true,
+  },
   float = {
     border = 'rounded',
   },
+  signs = {
+    text = {
+      [severity.ERROR] = ' ',
+      [severity.WARN] = ' ',
+      [severity.INFO] = ' ',
+      [severity.HINT] = ' ',
+    },
+  },
 })
-
-local lsp_signs = {
-  Error = ' ',
-  Warn = ' ',
-  Info = ' ',
-  Hint = ' ',
-}
-
-for type, icon in pairs(lsp_signs) do
-  local hl = 'DiagnosticSign' .. type
-  vim.fn.sign_define(hl, { text = icon, texthl = hl })
-end
 
 local kinds = vim.lsp.protocol.CompletionItemKind
 local icons = {
@@ -62,5 +61,5 @@ for index, _ in pairs(kinds) do
   kinds[index] = icons[index]
 end
 
-require('slumber.lsp.setup')
 require('slumber.lsp.events')
+require('slumber.lsp.setup')

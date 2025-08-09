@@ -1,10 +1,7 @@
 return {
   ['neovim/nvim-lspconfig'] = {
     event = 'BufReadPre',
-    dependencies = {
-      'mason.nvim',
-      { 'williamboman/mason-lspconfig.nvim', config = true },
-    },
+    dependencies = { 'b0o/schemastore.nvim' },
     config = function()
       require('slumber.lsp')
     end,
@@ -19,20 +16,39 @@ return {
           package_uninstalled = ' ',
         },
       },
+      registries = {
+        'github:mason-org/mason-registry',
+        'github:Crashdummyy/mason-registry',
+      },
     },
   },
-  ['mfussenegger/nvim-jdtls'] = { lazy = false },
-  ['scalameta/nvim-metals'] = { lazy = false },
+  ['mfussenegger/nvim-jdtls'] = {
+      ft = { 'java' }
+  },
   ['nvimdev/lspsaga.nvim'] = {
     event = 'BufRead',
     opts = function()
       return {
         ui = {
-          border = 'round',
+          border = 'rounded',
           kind = require('catppuccin.groups.integrations.lsp_saga').custom_kind(),
+        },
+        lightbulb = {
+          sign = false,
         },
       }
     end,
   },
-  ['b0o/schemastore.nvim'] = {},
+  ['nvimtools/none-ls.nvim'] = {
+    event = 'BufRead',
+    config = function()
+      local null_ls = require('null-ls')
+      local formatters = null_ls.builtins.formatting
+      null_ls.setup({
+        sources = {
+          formatters.stylua,
+        },
+      })
+    end,
+  },
 }

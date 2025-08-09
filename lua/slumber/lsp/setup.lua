@@ -1,177 +1,104 @@
-local nlsp = require('lspconfig')
 local defaults = require('slumber.lsp.defaults')
-
 local clients = {
   'zls',
-  'r_language_server',
-  'ocamllsp',
   'lemminx',
   'sorbet',
   'taplo',
-  'volar',
+  'vue_ls',
   'pyright',
-  'kotlin_language_server',
-  'omnisharp',
-  'vls',
   'groovyls',
   'clojure_lsp',
-  'phpactor',
-  'erlangls',
   'qmlls',
   'neocmake',
-  'vala_ls',
-  'perlnavigator',
   'html',
   'cssls',
-  'julials',
   'ruff',
-  'fsautocomplete',
-  'mesonlsp'
+  'mesonlsp',
+  'ruby_lsp',
+  'clangd',
+  'sourcekit',
+  'ts_ls',
+  'gopls',
+  'rust_analyzer',
+  'kotlin_lsp',
 }
 
 for _, lsp in ipairs(clients) do
-  nlsp[lsp].setup({
-    capabilities = defaults.capabilities,
-  })
+  vim.lsp.config(lsp, { capabilities = defaults.capabilities })
+  vim.lsp.enable(lsp)
 end
 
-nlsp.elixirls.setup({
-  cmd = { 'elixir-ls' },
-  capabilities = defaults.capabilities,
-})
-
-nlsp.denols.setup({
-  capabilities = defaults.capabilities,
-  root_dir = nlsp.util.root_pattern('deno.json'),
-  init_options = {
-    lint = true,
-  },
-})
-
-nlsp.lua_ls.setup({
+vim.lsp.config('lua_ls', {
   capabilities = defaults.capabilities,
   settings = {
     Lua = {
       runtime = { version = 'LuaJIT' },
-      diagnostics = { globals = { 'vim', 'packer_plugins' } },
+      diagnostics = {
+        globals = { 'vim' },
+        disable = { 'different-requires', 'undefined-field' },
+      },
       workspace = {
         library = {
-          [vim.fn.expand('$VIMRUNTIME/lua')] = true,
-          [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true,
+          vim.fn.expand('$VIMRUNTIME/lua'),
+          vim.fn.expand('$VIMRUNTIME/lua/vim/lsp'),
         },
         maxPreload = 100000,
         preloadFileSize = 10000,
       },
+      hint = { enable = true, setType = true },
+      format = { enable = false },
       telemetry = { enable = false },
+      semantic = { enable = false },
     },
   },
 })
+vim.lsp.enable('lua_ls')
 
-nlsp.sourcekit.setup({
-  filetypes = { 'swift' },
+local uv = vim.uv
+local fs = vim.fs
+local U = require('slumber.core.utils')
+
+local function roslyn_cmd()
+  local roslyn_path = fs.joinpath(vim.fn.stdpath('data'), 'mason', 'bin', 'roslyn')
+  local mason_cmd = U.is_windows and string.format('%s.cmd', roslyn_path) or roslyn_path
+  local rzls_path = fs.joinpath(vim.fn.stdpath('data'), 'mason', 'packages', 'rzls', 'libexec')
+  return {
+    mason_cmd,
+    '--stdio',
+    '--logLevel=Information',
+    '--extensionLogDirectory=' .. fs.joinpath(uv.os_tmpdir(), 'roslyn_ls/logs'),
+    '--razorSourceGenerator=' .. fs.joinpath(rzls_path, 'Microsoft.CodeAnalysis.Razor.Compiler.dll'),
+    '--razorDesignTimePath=' .. fs.joinpath(rzls_path, 'Targets', 'Microsoft.NET.Sdk.Razor.DesignTime.targets'),
+    '--extension',
+    fs.joinpath(rzls_path, 'RazorExtension', 'Microsoft.VisualStudioCode.RazorExtension.dll'),
+  }
+end
+vim.lsp.config('roslyn_ls', {
+  cmd = roslyn_cmd(),
   capabilities = defaults.capabilities,
 })
+vim.lsp.enable('roslyn_ls')
 
-nlsp.clangd.setup({
-  cmd = {
-    'clangd',
-    '--background-index',
-    '-j=12',
-    '--clang-tidy',
-    '--completion-style=detailed',
-    '--inlay-hints',
-    '--enable-config',
-  },
-  capabilities = defaults.capabilities,
-})
-
-nlsp.hls.setup({
-  capabilities = defaults.capabilities,
-  settings = {
-    haskell = {
-      formattingProvider = 'stylish-haskell',
-    },
-  },
-})
-
-nlsp.gopls.setup({
-  capabilities = defaults.capabilities,
-  settings = {
-    gopls = {
-      hints = {
-        assignVariableTypes = true,
-        compositeLiteralFields = true,
-        constantValues = true,
-        functionTypeParameters = true,
-        parameterNames = true,
-        rangeVariableTypes = true,
-      },
-      staticcheck = true,
-    },
-  },
-})
-
-nlsp.rust_analyzer.setup({
-  capabilities = defaults.capabilities,
-  settings = {
-    ['rust-analyzer'] = {
-      imports = {
-        granularity = {
-          group = 'module',
-        },
-        prefix = 'self',
-      },
-      cargo = {
-        buildScripts = {
-          enable = true,
-        },
-      },
-      procMacro = {
-        enable = true,
-      },
-      checkOnSave = {
-        command = 'clippy',
-        features = 'all',
-      },
-    },
-  },
-})
-
-nlsp.ts_ls.setup({
-  root_dir = nlsp.util.root_pattern('package.json'),
-  settings = {
-    typescript = {
-      inlayHints = {
-        includeInlayParameterNameHints = 'all',
-        includeInlayParameterNameHintsWhenArgumentMatchesName = false,
-        includeInlayFunctionParameterTypeHints = true,
-        includeInlayVariableTypeHints = true,
-        includeInlayPropertyDeclarationTypeHints = true,
-        includeInlayFunctionLikeReturnTypeHints = true,
-        includeInlayEnumMemberValueHints = true,
-      },
-    },
-    javascript = {
-      inlayHints = {
-        includeInlayParameterNameHints = 'all',
-        includeInlayParameterNameHintsWhenArgumentMatchesName = false,
-        includeInlayFunctionParameterTypeHints = true,
-        includeInlayVariableTypeHints = true,
-        includeInlayPropertyDeclarationTypeHints = true,
-        includeInlayFunctionLikeReturnTypeHints = true,
-        includeInlayEnumMemberValueHints = true,
-      },
-    },
-  },
-})
-
-nlsp.jsonls.setup({
+vim.lsp.config('jsonls', {
   capabilities = defaults.capabilities,
   settings = {
     json = {
       schemas = require('schemastore').json.schemas(),
+      validate = { enable = true },
     },
   },
 })
+vim.lsp.enable('jsonls')
 
-nlsp.texlab.setup(require('slumber.lsp.servers.texlab'))
+vim.lsp.config('yamlls', {
+  capabilities = defaults.capabilities,
+  settings = {
+    yaml = {
+      schemaStore = {
+        enable = false,
+        url = '',
+      },
+      schemas = require('schemastore').yaml.schemas(),
+    },
+  },
+})

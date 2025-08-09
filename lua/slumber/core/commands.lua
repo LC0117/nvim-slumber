@@ -21,3 +21,17 @@ end, {
     return { 'hub.fgit.ml' }
   end,
 })
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = '*',
+  callback = function(args)
+    local bufnr = args.buf
+    local ft = vim.bo[bufnr].filetype
+    if vim.tbl_contains({'', 'tex', 'latex'}, ft) or vim.b[bufnr].treesitter_highlighted then
+      return
+    end
+    local success = pcall(vim.treesitter.start)
+    if success then
+      vim.b[bufnr].treesitter_highlighted = true
+    end
+  end,
+})

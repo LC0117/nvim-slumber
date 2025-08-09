@@ -1,271 +1,147 @@
 return {
-  ['L3MON4D3/LuaSnip'] = {
-    lazy = false,
-    dependencies = {
-      'rafamadriz/friendly-snippets',
-      config = function()
-        require('luasnip.loaders.from_vscode').lazy_load()
-      end,
-    },
-    build = 'make install_jsregexp',
-    opts = {
-      history = true,
-      delete_check_events = 'TextChanged',
-    },
-  },
-  ['hrsh7th/nvim-cmp'] = {
+  -- ['L3MON4D3/LuaSnip'] = {
+  --   lazy = false,
+  --   dependencies = {
+  --     'rafamadriz/friendly-snippets',
+  --     config = function()
+  --       require('luasnip.loaders.from_vscode').lazy_load()
+  --     end,
+  --   },
+  --   build = 'make install_jsregexp',
+  --   opts = {
+  --     history = true,
+  --     delete_check_events = 'TextChanged',
+  --   },
+  -- },
+  ['saghen/blink.cmp'] = {
     event = 'InsertEnter',
     dependencies = {
-      'saadparwaiz1/cmp_luasnip',
-      'hrsh7th/cmp-nvim-lsp',
-      'hrsh7th/cmp-path',
-      'hrsh7th/cmp-cmdline',
-      'hrsh7th/cmp-buffer',
-      'nvim-lspconfig',
-      'nvim-treesitter',
+      'rafamadriz/friendly-snippets',
+      'xzbdmw/colorful-menu.nvim',
     },
-    config = function()
-      local has_words_before = function()
-        local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-        return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match('%s') == nil
-      end
-      local cmp = require('cmp')
-      local luasnip = require('luasnip')
-      cmp.setup.cmdline(':', {
-        mapping = cmp.mapping.preset.cmdline(),
-        sources = {
-          { name = 'cmdline', max_item_count = 15 },
-        },
-      })
-      cmp.setup.cmdline('/', {
-        mapping = cmp.mapping.preset.cmdline(),
-        sources = {
-          { name = 'buffer', max_item_count = 10 },
-        },
-      })
-      cmp.setup({
-        enabled = function()
-          local context = require('cmp.config.context')
-          if vim.api.nvim_get_mode().mode == 'c' then
-            return true
-          elseif vim.api.nvim_buf_get_option(0, 'filetype') == 'TelescopePrompt' then
-            return false
-          else
-            return not context.in_treesitter_capture('comment') and not context.in_syntax_group('Comment')
-          end
-        end,
-        sorting = {
-          comparators = {
-            cmp.config.compare.offset,
-            cmp.config.compare.exact,
-            cmp.config.compare.score,
-            cmp.config.compare.recently_used,
-            cmp.config.compare.kind,
-            cmp.config.compare.sort_text,
-            cmp.config.compare.length,
-            cmp.config.compare.order,
-          },
-        },
-        experimental = {
-          ghost_text = true,
-        },
-        view = {
-          entries = { name = 'custom', selection_order = 'near_cursor' },
-        },
-        window = {
-          documentation = {
+    version = 'v1.*',
+    opts = {
+      keymap = {
+        preset = 'default',
+        ['<CR>'] = { 'accept', 'fallback' },
+        ['<Tab>'] = { 'select_next', 'snippet_forward', 'fallback' },
+        ['<S-Tab>'] = { 'select_prev', 'snippet_backward', 'fallback' },
+        ['<ESC>'] = { 'hide', 'fallback' },
+      },
+      appearance = {
+        nerd_font_variant = 'normal',
+      },
+      completion = {
+        documentation = {
+          auto_show = true,
+          auto_show_delay_ms = 10,
+          window = {
             border = 'rounded',
           },
         },
-        formatting = {
-          fields = { 'kind', 'abbr', 'menu' },
-          format = function(entry, vim_item)
-            local lspkind_icons = vim.lsp.protocol.CompletionItemKind
-            vim_item.kind = lspkind_icons[vim_item.kind]
-            vim_item.menu = ({
-              luasnip = '[Snip]',
-              nvim_lsp = '[LSP]',
-              path = '[PATH]',
-              neorg = '[NORG]',
-              cmdline = '[cmd]',
-              crates = '[crates.io]',
-              buffer = '[BUF]',
-            })[entry.source.name]
-            vim_item.abbr = string.sub(vim_item.abbr, 1, 50)
-            return vim_item
-          end,
+        ghost_text = {
+          enabled = true,
+          show_with_menu = true,
         },
-        mapping = {
-          ['<CR>'] = cmp.mapping.confirm({
-            behavior = cmp.ConfirmBehavior.Replace,
-            select = false,
-          }),
-          ['<C-u>'] = cmp.mapping.scroll_docs(-4),
-          ['<C-d>'] = cmp.mapping.scroll_docs(4),
-          ['<C-c>'] = cmp.mapping.close(),
-          ['<S-Tab>'] = cmp.mapping(function(fallback)
-            if cmp.visible() then
-              cmp.select_prev_item()
-            elseif luasnip.jumpable(-1) then
-              luasnip.jump(-1)
-            else
-              fallback()
-            end
-          end, { 'i', 's' }),
-          ['<Tab>'] = cmp.mapping(function(fallback)
-            if cmp.visible() then
-              cmp.select_next_item()
-            elseif luasnip.expand_or_jumpable() then
-              luasnip.expand_or_jump()
-            elseif has_words_before() then
-              cmp.complete()
-            else
-              fallback()
-            end
-          end, { 'i', 's' }),
-          ['<Down>'] = cmp.mapping(cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }), { 'i' }),
-          ['<Up>'] = cmp.mapping(cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }), { 'i' }),
-        },
-        sources = {
-          { name = 'luasnip',     max_item_count = 5 },
-          { name = 'nvim_lsp',    max_item_count = 15 },
-          { name = 'cmp_tabnine', keyword_length = 2 },
-          { name = 'path',        max_item_count = 10 },
-          {
-            name = 'buffer',
-            max_item_count = 5,
-            option = {
-              get_bufnrs = function()
-                local bufs = {}
-                for _, win in ipairs(vim.api.nvim_list_wins()) do
-                  bufs[vim.api.nvim_win_get_buf(win)] = true
-                end
-                return vim.tbl_keys(bufs)
-              end,
-            },
+        list = {
+          selection = {
+            preselect = true,
+            auto_insert = false,
           },
         },
-        snippet = {
-          expand = function(args)
-            require('luasnip').lsp_expand(args.body)
-          end,
-        },
-      })
-    end,
-  },
-  ['windwp/nvim-autopairs'] = {
-    dependencies = {
-      'nvim-cmp',
-    },
-    config = function()
-      local cmp = require('cmp')
-      local handlers = require('nvim-autopairs.completion.handlers')
-      local pairs = require('nvim-autopairs.completion.cmp')
-      require('nvim-autopairs').setup({
-        map_cr = true,
-        disable_filetype = { 'TelescopePrompt' },
-      })
-      require('cmp').event:on(
-        'confirm_done',
-        pairs.on_confirm_done({
-          filetypes = {
-            ['*'] = {
-              ['('] = {
-                kind = {
-                  cmp.lsp.CompletionItemKind.Function,
-                  cmp.lsp.CompletionItemKind.Method,
-                },
-                handler = handlers['*'],
+        menu = {
+          draw = {
+            columns = { { 'label', gap = 1 }, { 'kind_icon', 'kind' }, { 'source_name' } },
+            components = {
+              label = {
+                text = function(ctx)
+                  return require('colorful-menu').blink_components_text(ctx)
+                end,
+                highlight = function(ctx)
+                  return require('colorful-menu').blink_components_highlight(ctx)
+                end,
               },
             },
-            tex = false,
-            plaintex = false,
-            haskell = false,
           },
-        })
-      )
-    end,
+        },
+      },
+      cmdline = {
+        completion = {
+          menu = { auto_show = true },
+          list = {
+            selection = {
+              preselect = false,
+              auto_insert = true,
+            },
+          },
+        },
+        sources = { 'buffer', 'cmdline' },
+        keymap = {
+          preset = 'cmdline',
+        },
+      },
+      sources = {
+        default = { 'lsp', 'buffer', 'snippets', 'path' },
+        providers = {
+          lsp = {
+            name = '[LSP]',
+          },
+          buffer = {
+            name = '[BUF]',
+          },
+          snippets = {
+            name = '[Snip]',
+          },
+          path = {
+            name = '[PATH]',
+          },
+        },
+      },
+    },
   },
-  ['tpope/vim-sleuth'] = { lazy = false },
-  ['JoosepAlviste/nvim-ts-context-commentstring'] = { lazy = false, config = true },
+  ['windwp/nvim-autopairs'] = { config = true },
+  ['JoosepAlviste/nvim-ts-context-commentstring'] = {
+    dependencies = { 'nvim-treesitter/nvim-treesitter' },
+    config = function ()
+      require('ts_context_commentstring').setup({
+        enable_autocmd = false,
+      })
+      local get_option = vim.filetype.get_option
+      vim.filetype.get_option = function (filetype, option)
+        return option == 'commentstring'
+          and require('ts_context_commentstring.internal').calculate_commentstring()
+          or get_option(filetype, option)
+      end
+    end
+  },
+  ['windwp/nvim-ts-autotag'] = {
+    dependencies = { 'nvim-treesitter/nvim-treesitter', },
+    config = true
+  },
   ['nvim-treesitter/nvim-treesitter'] = {
     event = 'BufRead',
-    dependencies = {
-      'nvim-treesitter/nvim-treesitter-textobjects',
-      'windwp/nvim-ts-autotag',
-    },
+    branch = 'main',
+    opts = {},
+    config = function(_, opts)
+      require('nvim-treesitter').setup(opts)
+      vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+      vim.bo.indentexpr = 'v:lua.require\'nvim-treesitter\'.indentexpr()'
+    end,
+  },
+  ['nvim-treesitter/nvim-treesitter-textobjects'] = {
+    branch = 'main',
+    dependencies = { 'nvim-treesitter' },
+    event = 'BufRead',
     opts = {
-      highlight = {
-        enable = true,
-        additional_vim_regex_highlighting = false,
+      select = {
+        lookahead = true,
       },
-      incremental_selection = {
-        enable = true,
-        keymaps = {
-          init_selection = '[[',
-          node_incremental = ']n',
-          scope_incremental = ']]',
-          node_decremental = '[n',
-        },
-      },
-      autotag = {
-        enable = true,
-      },
-      matchup = {
-        enable = true,
-      },
-      textobjects = {
-        select = {
-          enable = true,
-          lookahead = true,
-          keymaps = {
-            ['f]'] = '@function.outer',
-            ['f['] = '@function.inner',
-            ['c]'] = '@class.outer',
-            ['c['] = '@class.inner',
-          },
-        },
-        swap = {
-          enable = true,
-          swap_next = {
-            ['[]'] = '@parameter.inner',
-          },
-          swap_previous = {
-            [']['] = '@parameter.inner',
-          },
-        },
-        move = {
-          enable = true,
-          set_jumps = true,
-          goto_next_start = {
-            [']f'] = '@function.outer',
-            [']c'] = '@class.outer',
-          },
-          goto_next_end = {
-            [']F'] = '@function.outer',
-            [']C'] = '@class.outer',
-          },
-          goto_previous_start = {
-            ['[f'] = '@function.outer',
-            ['[c'] = '@class.outer',
-          },
-          goto_previous_end = {
-            ['[F'] = '@function.outer',
-            ['[C'] = '@class.outer',
-          },
-        },
-        lsp_interop = {
-          enable = true,
-          border = 'rounded',
-          peek_definition_code = {
-            ['<leader>df'] = '@function.outer',
-            ['<leader>cf'] = '@class.outer',
-          },
-        },
+      move = {
+        set_jumps = true,
       },
     },
     config = function(_, opts)
-      require('nvim-treesitter.configs').setup(opts)
+      require('nvim-treesitter-textobjects').setup(opts)
     end,
   },
   ['nvim-treesitter/nvim-treesitter-context'] = {
@@ -274,21 +150,20 @@ return {
     config = true,
   },
   ['HiPhish/rainbow-delimiters.nvim'] = {
-    --event = 'BufRead',
     dependencies = { 'nvim-treesitter' },
-    config = function ()
+    config = function()
       require('rainbow-delimiters.setup').setup({
         highlight = {
-        'RainbowDelimiterRed',
-        'RainbowDelimiterYellow',
-        'RainbowDelimiterBlue',
-        'RainbowDelimiterOrange',
-        'RainbowDelimiterGreen',
-        'RainbowDelimiterViolet',
-        'RainbowDelimiterCyan',
+          'RainbowDelimiterRed',
+          'RainbowDelimiterYellow',
+          'RainbowDelimiterBlue',
+          'RainbowDelimiterOrange',
+          'RainbowDelimiterGreen',
+          'RainbowDelimiterViolet',
+          'RainbowDelimiterCyan',
         },
       })
     end,
     submodules = false,
-  }
+  },
 }

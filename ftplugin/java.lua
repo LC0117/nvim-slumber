@@ -14,7 +14,7 @@ local jar_patterns = {
   java_test_path,
 }
 
-local ok, runtimes = pcall(require ,'slumber.platform.java-runtimes')
+local ok, runtimes = pcall(require, 'slumber.platform.java-runtimes')
 if not ok then
   runtimes = {}
 end
@@ -42,7 +42,12 @@ local jdtls = require('jdtls')
 local extendedClientCapabilities = jdtls.extendedClientCapabilities
 extendedClientCapabilities.resolveAdditionalTextEditsSupport = true
 jdtls.start_or_attach({
-  cmd = { 'jdtls', '-javaagent', lombok, '-data', workspace_dir },
+  cmd = {
+    server_root .. '/bin/jdtls',
+    '-javaagent',
+    lombok,
+    '-data',
+    workspace_dir },
   settings = {
     java = java_settings,
   },

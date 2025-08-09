@@ -1,19 +1,14 @@
-local U = require('slumber.core.utils')
-local font
-if U.is_mac then
-  font = 'CaskaydiaCove Nerd Font Propo:h12'
-else
-  font = 'Sarasa Mono SC:h11'
-end
+local font = 'Maple Mono NF CN:h12'
 
 local g_options = {
   mapleader = ' ',
-  neovide_transparency = 0.9,
+  neovide_opacity = 0.9,
   neovide_remember_window_size = true,
   neovide_input_use_logo = true,
   neovide_cursor_vfx_mode = 'torpedo',
   neovide_cursor_unfocused_outline_width = 0.125,
-  zig_fmt_autosave = 0
+  neovide_underline_stroke_scale = 1.5,
+  zig_fmt_autosave = 0,
 }
 
 local options = {
@@ -56,6 +51,7 @@ local options = {
   relativenumber = true,
   guifont = font,
   signcolumn = 'yes',
+  -- winborder = 'rounded',
 }
 
 vim.cmd([[

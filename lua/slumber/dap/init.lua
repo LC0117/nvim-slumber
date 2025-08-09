@@ -3,11 +3,11 @@ local path = U.path
 local dap = require('dap')
 
 -- define the breakpoints
-vim.fn.sign_define('DapBreakpoint', { text = [[ﱣ]], texthl = 'DapBreakpoint' })
-vim.fn.sign_define('DapBreakPointCondition', { text = [[]], texthl = 'DapBreakpointCondition' })
-vim.fn.sign_define('DapBreakpointRejected', { text = [[]], texthl = 'DiagnosticError' })
-vim.fn.sign_define('DapStopped', { text = [[]], texthl = 'String' })
-vim.fn.sign_define('DapLogponit', { text = [[]], texthl = 'DapLogPoint' })
+vim.fn.sign_define('DapBreakpoint', { text = [[ ]], texthl = 'DapBreakpoint' })
+vim.fn.sign_define('DapBreakPointCondition', { text = [[ ]], texthl = 'DapBreakpointCondition' })
+vim.fn.sign_define('DapBreakpointRejected', { text = [[ ]], texthl = 'DiagnosticError' })
+vim.fn.sign_define('DapStopped', { text = [[ ]], texthl = 'String' })
+vim.fn.sign_define('DapLogponit', { text = [[ ]], texthl = 'DapLogPoint' })
 
 -- nvim-dap mappings
 vim.keymap.set({ 'n', 'i' }, '<F2>', dap.toggle_breakpoint)
@@ -15,7 +15,7 @@ vim.keymap.set({ 'n', 'i' }, '<F5>', dap.continue)
 
 dap.adapters.lldb = {
   type = 'executable',
-  command = 'lldb-dap',
+  command = 'xcrun -r lldb-dap' and U.is_mac or 'lldb-dap',
   name = 'lldb',
 }
 dap.adapters.python = {
@@ -86,6 +86,23 @@ dap.configurations.python = {
       else
         return '/opt/homebrew/bin/python3'
       end
+    end,
+  },
+}
+
+dap.configurations.rust = {
+  {
+    name = 'Launch',
+    type = 'lldb',
+    initCommands = function()
+      local rustc_sysroot = vim.fn.trim(vim.fn.system('rustc --print sysroot'))
+      assert(vim.v.shell_error == 0, 'failed to get rust sysroot using `rustc --print sysroot`: ' .. rustc_sysroot)
+      local script_file = rustc_sysroot .. '/lib/rustlib/etc/lldb_lookup.py'
+      local commands_file = rustc_sysroot .. '/lib/rustlib/etc/lldb_commands'
+      return {
+        ([[!command script import '%s']]):format(script_file),
+        ([[command source '%s']]):format(commands_file),
+      }
     end,
   },
 }

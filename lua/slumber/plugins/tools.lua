@@ -1,3 +1,5 @@
+local U = require('slumber.core.utils')
+
 return {
   ['toppair/peek.nvim'] = {
     ft = 'markdown',
@@ -16,8 +18,8 @@ return {
       local load_extension = require('telescope').load_extension
       require('telescope').setup({
         defaults = {
-          prompt_prefix = '🔭 ',
-          selection_caret = ' ',
+          prompt_prefix = ' ',
+          selection_caret = '󰁕 ',
           layout_strategy = 'horizontal',
           entry_prefix = '  ',
           initial_mode = 'insert',
@@ -89,4 +91,13 @@ return {
       require('slumber.dap.virtual')
     end,
   },
+  ['lervag/vimtex'] = {
+    lazy = false,
+    init = function ()
+      vim.g.vimtex_view_method = U.is_mac and 'skim'
+    end
+  },
+  ['tpope/vim-sleuth'] = {
+    event = 'BufReadPost'
+  }
 }

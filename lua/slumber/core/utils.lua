@@ -20,15 +20,23 @@ M.mason_package = M.path.concat(M.mason_home, 'packages')
 M.map = {}
 
 M.map.n = function(k, opt)
-  key.set('n', k, opt)
+  key.set('n', k, opt, { silent = true })
 end
 
 M.map.v = function(k, opt)
-  key.set('v', k, opt)
+  key.set('v', k, opt, { silent = true })
 end
 
 M.map.ni = function(k, opt)
-  key.set({ 'n', 'i' }, k, opt)
+  key.set({ 'n', 'i' }, k, opt, { silent = true })
+end
+
+M.map.nxo = function(k, opt)
+  key.set({ 'n', 'x', 'o' }, k, opt, { silent = true })
+end
+
+M.map.xo = function(k, opt)
+  key.set({ 'x', 'o' }, k, opt, { silent = true })
 end
 
 return M

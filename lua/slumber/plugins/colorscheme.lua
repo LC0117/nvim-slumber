@@ -34,6 +34,11 @@ return {
             warnings = { 'underdouble' },
             information = { 'underline' },
           },
+          inlay_hints = { background = true },
+        },
+        blink_cmp = {
+          enabled = true,
+          style = 'rounded',
         },
         neotree = true,
         nvimtree = false,
@@ -44,6 +49,10 @@ return {
         dashboard = true,
         treesitter = true,
         treesitter_context = true,
+        telescope = {
+          enabled = true,
+          style = 'nvchad',
+        },
         fidget = true,
         notify = true,
         rainbow_delimiters = true,

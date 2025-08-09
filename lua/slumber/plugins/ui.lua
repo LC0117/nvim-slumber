@@ -1,6 +1,6 @@
 return {
   ['glepnir/dashboard-nvim'] = {
-    lazy = false,
+    event = 'VimEnter',
     priority = 100,
     opts = {
       theme = 'doom',
@@ -58,9 +58,9 @@ return {
     event = { 'BufRead', 'BufNewFile' },
     opts = {
       signs = {
-        delete = { text = '' },
-        topdelete = { text = '' },
-        changedelete = { text = '' },
+        delete = { text = ' ' },
+        topdelete = { text = '󰑃 ' },
+        changedelete = { text = '󰑃 ' },
       },
       linehl = false,
       numhl = true,
@@ -142,8 +142,9 @@ return {
           'RainbowGreen',
           'RainbowViolet',
           'RainbowCyan',
-        }
-      }
+        },
+        char = '▏'
+      },
     },
   },
   ['akinsho/bufferline.nvim'] = {
@@ -154,8 +155,8 @@ return {
           number = 'none',
           modified_icon = '✥ ',
           buffer_close_icon = '󰖭 ',
-          left_trunc_marker = '',
-          right_trunc_marker = '',
+          left_trunc_marker = ' ',
+          right_trunc_marker = ' ',
           max_name_length = 14,
           max_prefix_length = 13,
           tab_size = 20,
@@ -187,14 +188,14 @@ return {
                 icon = ' ',
                 matcher = function(buf)
                   return buf.name:match('%_test')
-                      or buf.name:match('%Test')
-                      or buf.name:match('%_spec')
-                      or buf.name:match('%Spec')
+                    or buf.name:match('%Test')
+                    or buf.name:match('%_spec')
+                    or buf.name:match('%Spec')
                 end,
               },
               {
                 name = 'Docs',
-                icon = '',
+                icon = ' ',
                 matcher = function(buf)
                   return buf.name:match('%.md') or buf.name:match('%.tex')
                 end,
@@ -276,7 +277,7 @@ return {
     },
   },
   ['rcarriga/nvim-notify'] = {
-    lazy = false,
+    event = 'VimEnter',
     init = function()
       vim.notify = require('notify')
     end,
@@ -286,10 +287,10 @@ return {
       timeout = 4000,
       max_width = 60,
       icons = {
-        ERROR = '',
-        WARN = '',
-        INFO = '',
-        DEBUG = '',
+        ERROR = ' ',
+        WARN = ' ',
+        INFO = ' ',
+        DEBUG = ' ',
         TRACE = '✎',
       },
     },
