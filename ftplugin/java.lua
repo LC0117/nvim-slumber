@@ -5,7 +5,6 @@ local fn = vim.fn
 local lombok = fn.expand(path.concat(server_root, 'lombok.jar'))
 local workspace_root = fn.expand(path.concat(fn.stdpath('cache'), 'jdtls-workspace'))
 local workspace_dir = path.concat(workspace_root, fn.fnamemodify(fn.getcwd(), ':p:h:t'))
-local defaults = require('slumber.lsp.defaults')
 local java_debug_path =
   path.concat(U.mason_package, 'java-debug-adapter', 'extension', 'server', 'com.microsoft.java.debug.plugin-*.jar')
 local java_test_path = path.concat(U.mason_package, 'java-test', 'extension', 'server', '*.jar')
@@ -20,6 +19,9 @@ if not ok then
 end
 
 local java_settings = {
+  references = {
+    includeDecompiledSources = true,
+  },
   configuration = {
     runtimes = runtimes,
   },
@@ -28,6 +30,15 @@ local java_settings = {
       enabled = 'all',
     },
   },
+  signatureHelp = { enable = true },
+  completion = {
+    importOrder = {
+      'java',
+      'javax',
+      'com',
+      'org'
+    }
+  }
 }
 local bundle_path = {}
 for _, jar_pattern in ipairs(jar_patterns) do
@@ -59,6 +70,6 @@ jdtls.start_or_attach({
   on_attach = function(client, bufnr)
     jdtls.setup_dap({ hotcodereplace = 'auto' })
     jdtls.setup.add_commands()
-    defaults.on_attach(client, bufnr)
+    -- defaults.on_attach(client, bufnr)
   end,
 })
