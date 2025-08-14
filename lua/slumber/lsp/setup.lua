@@ -5,7 +5,7 @@ local clients = {
   'sorbet',
   'taplo',
   'vue_ls',
-  'pyright',
+  'ty',
   'groovyls',
   'clojure_lsp',
   'qmlls',
@@ -16,11 +16,11 @@ local clients = {
   'mesonlsp',
   'ruby_lsp',
   'clangd',
-  'sourcekit',
   'ts_ls',
   'gopls',
   'rust_analyzer',
   'kotlin_lsp',
+  'ltex_plus',
 }
 
 for _, lsp in ipairs(clients) do
@@ -101,4 +101,9 @@ vim.lsp.config('yamlls', {
       schemas = require('schemastore').yaml.schemas(),
     },
   },
+})
+vim.lsp.enable('yamlls')
+
+vim.lsp.config('sourcekit', {
+  filetypes = { 'swift' }
 })
