@@ -4,11 +4,11 @@ vim.diagnostic.config({
     prefix = [[ ]],
     format = function(diagnostic)
       if diagnostic.severity == severity.ERROR then
-        return string.format('ERROR: %s', diagnostic.message)
+        return string.format('ERROR: %s', diagnostic.code)
       elseif diagnostic.severity == severity.HINT or diagnostic.severity == severity.INFO then
-        return string.format('NOTE: %s', diagnostic.message)
+        return string.format('NOTE: %s', diagnostic.code)
       elseif diagnostic.severity == severity.WARN then
-        return string.format('WARNING: %s', diagnostic.message)
+        return string.format('WARNING: %s', diagnostic.code)
       end
       return diagnostic.message
     end,
