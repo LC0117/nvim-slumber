@@ -1,18 +1,4 @@
 return {
-  -- ['L3MON4D3/LuaSnip'] = {
-  --   lazy = false,
-  --   dependencies = {
-  --     'rafamadriz/friendly-snippets',
-  --     config = function()
-  --       require('luasnip.loaders.from_vscode').lazy_load()
-  --     end,
-  --   },
-  --   build = 'make install_jsregexp',
-  --   opts = {
-  --     history = true,
-  --     delete_check_events = 'TextChanged',
-  --   },
-  -- },
   ['saghen/blink.cmp'] = {
     event = 'InsertEnter',
     dependencies = {
@@ -100,20 +86,6 @@ return {
     },
   },
   ['windwp/nvim-autopairs'] = { config = true },
-  ['JoosepAlviste/nvim-ts-context-commentstring'] = {
-    dependencies = { 'nvim-treesitter/nvim-treesitter' },
-    config = function ()
-      require('ts_context_commentstring').setup({
-        enable_autocmd = false,
-      })
-      local get_option = vim.filetype.get_option
-      vim.filetype.get_option = function (filetype, option)
-        return option == 'commentstring'
-          and require('ts_context_commentstring.internal').calculate_commentstring()
-          or get_option(filetype, option)
-      end
-    end
-  },
   ['windwp/nvim-ts-autotag'] = {
     dependencies = { 'nvim-treesitter/nvim-treesitter', },
     config = true
